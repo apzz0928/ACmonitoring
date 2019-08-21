@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <parameter name="browser" value="chrome" />
+    <classes>
+<!--       <class name="aceCounter.termination"/> -->
+<!--       <class name="aceCounter.signUp"/> -->
+<!--       <class name="aceCounter.DightyAudienceManager"/> -->
+<!--       <class name="aceCounter.Setting"/> -->
+<!--       <class name="aceCounter.serviceManage"/> -->
+<!--       <class name="aceCounter.accessCount"/> -->
+<!--       <class name="aceCounter.inflowPath"/> -->
+<!--       <class name="aceCounter.searchADEffect"/> -->
+<!--       <class name="aceCounter.CPCInflow"/> -->
+<!--       <class name="aceCounter.marketingEffect"/> -->
+<!--       <class name="aceCounter.convert"/> -->
+<!--       <class name="aceCounter.movePath"/> -->
+      <class name="aceCounter.Page"/>
+<!--       <class name="aceCounter.Content"/> -->
+
+
+
+      
+<!--       <class name="aceCounter.Dightytest"/> -->
+<!--       <class name="aceCounter.demoAmDighty"/> -->
+<!--       <class name="aceCounter.temporarily"/> -->
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
