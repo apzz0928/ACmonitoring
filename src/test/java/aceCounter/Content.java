@@ -1716,7 +1716,7 @@ public class Content {
 		$(".sub24").waitUntil(visible, 10000);
 		for(int i=1;i<=24;i++) {
 			$(".sub" + i).scrollIntoView(false);
-			$(".sub" + i).click();;
+			$(".sub" + i).click();
 	  		System.out.println("sub" + i + " Å¬¸¯");
 			sleep(500);
 		}
