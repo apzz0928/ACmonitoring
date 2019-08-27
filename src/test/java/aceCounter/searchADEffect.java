@@ -119,16 +119,6 @@ public class searchADEffect {
 	private static void js(String javaScript) {
 		executeJavaScript(javaScript);
 	}
-	private static void alertCheck(String msg, String alert) {
-		if(switchTo().alert().getText().equals(alert)) {
-			System.out.println(" *** " + msg + " check Success !! *** ");
-			confirm(alert);
-		} else {
-			System.out.println(" *** " + msg + " check Fail ... !@#$%^&*() *** ");
-			System.out.println(switchTo().alert().getText());
-			close();
-		}
-	}
   	@Test(priority = 0)
   	public void login() {
   		System.out.println(" ! ----- login Start ----- ! ");
@@ -703,7 +693,7 @@ public class searchADEffect {
 		}
   		System.out.println(" ! ----- CPMlandingPage End ----- ! ");
   	}
-  	//@Test(priority = 99)
+  	@Test(priority = 99)
   	public void increaseVisit() {
   		System.out.println(" ! ----- increaseVisit Start ----- ! ");
 		open("http://apzz092888.blogspot.com/");

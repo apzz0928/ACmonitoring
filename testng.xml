@@ -16,8 +16,12 @@
 <!--       <class name="aceCounter.marketingEffect"/> -->
 <!--       <class name="aceCounter.convert"/> -->
 <!--       <class name="aceCounter.movePath"/> -->
-      <class name="aceCounter.Page"/> 
+<!--       <class name="aceCounter.Page"/> -->
 <!--       <class name="aceCounter.Content"/> -->
+<!--       <class name="aceCounter.pageLink"/> -->
+<!--       <class name="aceCounter.Member"/> -->
+<!--       <class name="aceCounter.Visitor"/> -->
+      <class name="aceCounter.systemEnvironment"/>
 
 
 

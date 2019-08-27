@@ -1065,20 +1065,13 @@ public class Page {
   			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
   			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
   			for(int y=0;y<=1;y++) {
-  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
+  	  			for(int a=0;a<=5;a++) {
+  	  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
+  	  			}
   	  			for(int z=0;z<=1;z++) {
 	  	  			if($(".highcharts-tooltip", 1).text().trim().split("¡Ü ")[z].equals(endCountLineChartData[x])) {
 	  					System.out.println(" *** endPage endCountLineChartData(" + x + ") check Success !! *** ");
 	  				} else {
-	  					
-	  					/////
-	  					
-	  					
-	  					
 	  					System.out.println(" *** endPage endCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
 	  					System.out.println($(".highcharts-tooltip", 1).text().trim().split("¡Ü ")[z]);
 	  					close();

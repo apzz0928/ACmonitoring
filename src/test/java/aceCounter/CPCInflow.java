@@ -36,7 +36,7 @@ public class CPCInflow {
     String id_date = date_format.format(date);
 	
 	@Parameters("browser")
-	@BeforeClass
+	@BeforeClass 
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "http://www.acecounter.com/www2/main.amz";
 		hubUrl = "http://10.77.129.79:5555/wd/hub";
@@ -420,7 +420,7 @@ public class CPCInflow {
 		}
   		System.out.println(" ! ----- CPClandingpageComparison End ----- ! ");
   	}
-  	//@Test(priority = 99)
+  	@Test(priority = 99)
   	public void increaseVisit() {
   		System.out.println(" ! ----- increaseVisit Start ----- ! ");
 		open("http://apzz092888.blogspot.com/");

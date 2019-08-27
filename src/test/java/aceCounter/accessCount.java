@@ -711,112 +711,55 @@ public class accessCount {
   			}
   		}
   		String[] visitPieChartData = {"신규방문8", "88.89%", "재방문1", "11.11%"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 0).text();
-		String[] dataCheck = pageLoadCheck.split(": ");
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if(dataCheck[i].equals(visitPieChartData[i])) {
-  	  	  				System.out.println(" *** newAndReVisitCount visitPieChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** newAndReVisitCount visitPieChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(dataCheck[i]).text().trim());
-  	  	  				close();
-  	  	  			}
-  				}
-  			} else {
-  				dataCheck = null;
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  				pageLoadCheck = $(".highcharts-tooltip", 0).text();
-  				dataCheck = pageLoadCheck.split(": ");
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if(dataCheck[i].equals(visitPieChartData[(i+2)])) {
-  	  	  				System.out.println(" *** newAndReVisitCount visitPieChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** newAndReVisitCount visitPieChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(dataCheck[i]).text().trim());
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
+  		for(int i=0,y=0;i<=1;i++) {
+  		    for(int x=0;x<=5;x++) {
+  		        $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
+  		    }
+  		    for(int x=0;x<=1;x++) {
+  		        if($(".highcharts-tooltip", 0).text().trim().split(": ")[x].equals(visitPieChartData[y])) {
+  		            System.out.println(" *** newAndReVisitCount visitCountChartData(" + i + ") check Success !! *** ");
+  		        } else {
+  		            System.out.println(" *** newAndReVisitCount visitCountChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  		            System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  		            close();
+  		        }
+  		        y++;
+  		    }
   		}
-  		dataCheck = null;
   		String[] newVisitLineChartData = {"2019.07.11 (목)", "신규방문: 8", "2019.07.10 (수)", "신규방문: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-		pageLoadCheck = $(".highcharts-tooltip", 1).text();
-		dataCheck = pageLoadCheck.split("● ");
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if(dataCheck[i].equals(newVisitLineChartData[i])) {
-  	  	  				System.out.println(" *** newAndReVisitCount newVisitChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** newAndReVisitCount newVisitChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(dataCheck[i]).text().trim());
-  	  	  				close();
-  	  	  			}
-  				}
-  			} else {
-  				dataCheck = null;
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  				pageLoadCheck = $(".highcharts-tooltip", 1).text();
-  				dataCheck = pageLoadCheck.split("● ");
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if(dataCheck[i].equals(newVisitLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** newAndReVisitCount newVisitChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** newAndReVisitCount newVisitChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(dataCheck[i]).text().trim());
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
+  		for(int i=0,y=0;i<=1;i++) {
+  		    for(int x=0;x<=5;x++) {
+  		        $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();	
+  		    }
+  		    for(int x=0;x<=1;x++) {
+  		        if($(".highcharts-tooltip", 1).text().trim().split("● ")[x].equals(newVisitLineChartData[y])) {
+  		            System.out.println(" *** newAndReVisitCount newVisitChartData(" + i + ") check Success !! *** ");
+  		        } else {
+  		            System.out.println(" *** newAndReVisitCount newVisitChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  		            System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
+  		            close();
+  		        }
+  		        y++;
+  		    }
   		}
-  		dataCheck = null;
   		String[] reVisitLineChartData = {"2019.07.11 (목)", "재방문: 1", "2019.07.10 (수)", "재방문: 0"};
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).click();
   		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();  			
+  		for(int i=0,y=0;i<=1;i++) {
+  		    for(int x=0;x<=5;x++) {
+  		        $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();	
+  		    }
+  		    for(int x=0;x<=1;x++) {
+  		        if($(".highcharts-tooltip", 1).text().trim().split("● ")[x].equals(reVisitLineChartData[y])) {
+  		            System.out.println(" *** newAndReVisitCount reVisitChartData(" + i + ") check Success !! *** ");
+  		        } else {
+  		            System.out.println(" *** newAndReVisitCount reVisitChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  		            System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
+  		            close();
+  		        }
+  		        y++;
+  		    }
   		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ").equals(reVisitLineChartData[i])) {
-  	  	  				System.out.println(" *** newAndReVisitCount reVisitChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** newAndReVisitCount reVisitChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(dataCheck[i]).text().trim());
-  	  	  				close();
-  	  	  			}
-  				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				pageLoadCheck = $(".highcharts-tooltip", 1).text();
-  				dataCheck = pageLoadCheck.split("● ");
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if(dataCheck[i].equals(reVisitLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** newAndReVisitCount newVisitChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** newAndReVisitCount newVisitChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(dataCheck[i]).text().trim());
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
-  		}
-  		dataCheck = null;
   		System.out.println(" ! ----- newAndReVisitCount End ----- ! ");
   	}
   	@Test(priority = 7)

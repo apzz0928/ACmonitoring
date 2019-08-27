@@ -299,9 +299,9 @@ public class inflowPath {
 				close();
   		}
   		String[] inflowPieChartData = {"직접유입8", "88.89%", "내부유입1", "11.11%"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -314,9 +314,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
+  				for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();	
+  				}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[(i+2)])) {
   	  	  				System.out.println(" *** visitInflow inflowPieChartData(" + (i+2) + ") check Success !! *** ");
@@ -329,9 +329,9 @@ public class inflowPath {
   			}
   		}
   		String[] directLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -344,9 +344,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** visitInflow directLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -361,9 +361,9 @@ public class inflowPath {
   		String[] innerLineChartData = {"2019.07.11 (목)", "내부유입의 유입수 추이: 1", "2019.07.10 (수)", "내부유입의 유입수 추이: 0"};
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).click();
   		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -376,9 +376,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** visitInflow innerLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -430,9 +430,9 @@ public class inflowPath {
   			}
   		}
   		String[] progressLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -445,9 +445,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** visitInflow progressLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -709,9 +709,9 @@ public class inflowPath {
 				close();
   		}
   		String[] inflowPieChartData = {"직접유입8", "88.89%", "내부유입1", "11.11%"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -724,9 +724,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowDomain inflowPieChartData(" + (i+2) + ") check Success !! *** ");
@@ -739,9 +739,9 @@ public class inflowPath {
   			}
   		}
   		String[] directLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -754,9 +754,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowDomain directLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -786,9 +786,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowDomain innerLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -840,9 +840,9 @@ public class inflowPath {
   			}
   		}
   		String[] progressLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -855,9 +855,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowDomain progressLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -955,9 +955,9 @@ public class inflowPath {
 				close();
   		}
   		String[] inflowPieChartData = {"직접유입8", "88.89%", "내부유입1", "11.11%"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -970,9 +970,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowDomainDetail inflowPieChartData(" + (i+2) + ") check Success !! *** ");
@@ -985,9 +985,9 @@ public class inflowPath {
   			}
   		}
   		String[] directLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -1000,9 +1000,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowDomainDetail directLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -1017,9 +1017,9 @@ public class inflowPath {
   		String[] innerLineChartData = {"2019.07.11 (목)", "내부유입의 유입수 추이: 1", "2019.07.10 (수)", "내부유입의 유입수 추이: 0"};
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).click();
   		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -1032,9 +1032,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+				for(int i=0;i<=5;i++) {
+	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+				}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowDomainDetail innerLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -1086,9 +1086,9 @@ public class inflowPath {
   			}
   		}
   		String[] progressLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -1101,9 +1101,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowDomainDetail progressLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -1201,9 +1201,9 @@ public class inflowPath {
 				close();
   		}
   		String[] inflowPieChartData = {"직접유입8", "88.89%", "내부유입1", "11.11%"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -1216,9 +1216,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowURLDetail inflowPieChartData(" + (i+2) + ") check Success !! *** ");
@@ -1231,9 +1231,9 @@ public class inflowPath {
   			}
   		}
   		String[] directLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -1246,9 +1246,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowURLDetail directLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -1263,9 +1263,9 @@ public class inflowPath {
   		String[] innerLineChartData = {"2019.07.11 (목)", "내부유입의 유입수 추이: 1", "2019.07.10 (수)", "내부유입의 유입수 추이: 0"};
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).click();
   		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -1278,9 +1278,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowURLDetail innerLineChartData(" + (i+2) + ") check Success !! *** ");
@@ -1332,9 +1332,9 @@ public class inflowPath {
   			}
   		}
   		String[] progressLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		}
   		for(int x=0;x<=1;x++) {
   			if(x==0) {//툴팁 1, 2를 확인용 분기
   				for(int i=0;i<=1;i++) {//툴팁1 확인
@@ -1347,9 +1347,9 @@ public class inflowPath {
   	  	  			}
   				}
   			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
+  		  		for(int i=0;i<=5;i++) {
+  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
+  		  		}
   				for(int i=0;i<=1;i++) {//툴팁2 확인
   					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[(i+2)])) {
   	  	  				System.out.println(" *** inflowURLDetail progressLineChartData(" + (i+2) + ") check Success !! *** ");
