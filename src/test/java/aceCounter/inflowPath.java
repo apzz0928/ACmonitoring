@@ -151,16 +151,15 @@ public class inflowPath {
 			System.out.println(" *** inflowPathSummary pageLoad Fail ... !@#$%^&*() *** ");
 			System.out.println($("h3").text().trim());
 			close();
-  		}
-  		//날짜 선택 2019-07-10~2019-07-11 
+  		} 
   		$("#date_range1 > a > img", 0).click();
   		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
   		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-07-10')");
-  		js("$j('#user_end_date').val('2019-07-11')");
+  		js("$j('#user_srt_date').val('2019-08-08')");
+  		js("$j('#user_end_date').val('2019-08-09')");
   		$(".btn_srh").click();
   		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-07-10~2019-07-11)")) {
+  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
 			System.out.println(" *** inflowPathSummary calenderSet Success !! *** ");
 		} else {
 			System.out.println(" *** inflowPathSummary calenderSet Fail ... !@#$%^&*() *** ");
@@ -177,15 +176,28 @@ public class inflowPath {
   				close();
   			}
   		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 4).waitUntil(visible, 10000);
-  		String[] widgetChart = {"직접유입:8", "내부유입:1", "직접유입:8", "내부유입:1", "직접유입:8", "내부유입:1", "직접유입:8", "내부유입:1"};
-  		for(int i=0;i<=7;i++) {
-  			if($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g > text ", i).text().trim().equals(widgetChart[i])) {
-  				System.out.println(" *** inflowPathSummary widgetChart (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** inflowPathSummary widgetChart (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).text().trim());
-  				close();
+  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 7).waitUntil(visible, 10000);
+  		String[] widgetChart = {"직접유입36", "94.74%", "내부유입2", "5.26%", "직접유입36", "94.74%", "내부유입2", "5.26%"
+  				, "직접유입36", "94.74%", "내부유입2", "5.26%", "직접유입36", "94.74%", "내부유입2", "5.26%"};
+  		for(int i=0,y=0,z=0;i<=7;i++) { //각 차트 라벨에 마우스 오버
+  			if(i>=2) { //차트 툴팁용
+  				if(i%2 == 0) {
+  					z++;
+  				}
+  			}
+  			for(int x=0;x<=5;x++) {
+  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();			
+  			}
+  			$(".highcharts-tooltip", z).waitUntil(visible, 10000); //툴팁 로딩 대기
+  			for(int x=0;x<=1;x++) {
+  				if($(".highcharts-tooltip", z).text().trim().split(": ")[x].equals(widgetChart[y])) {
+  					System.out.println(" *** inflowPathSummary widgetChart (" + y + ") check Success !! *** ");
+  	  			} else {
+  	  				System.out.println(" *** inflowPathSummary widgetChart (" + y + ") check Fail ... !@#$%^&*() *** ");
+  	  				System.out.println($(".highcharts-tooltip", z).text().trim().split(": ")[x]);
+  	  				close();
+  				}
+  				y++;
   			}
   		}
   		$(".close_wiget", 3).click();
@@ -209,7 +221,7 @@ public class inflowPath {
   		$("#date_range1 > a > img", 1).scrollIntoView(false);
   		$("#date_range1 > a > img", 1).click();
   		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-07-10~2019-07-11)")) {
+  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
 			System.out.println(" *** inflowPathSummary defalut set restore Success !! *** ");
 		} else {
 			System.out.println(" *** inflowPathSummary defalut set restore Fail ... !@#$%^&*() *** ");
@@ -233,11 +245,11 @@ public class inflowPath {
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		$(".myValue", 1).click();
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
-  		js("$j('#calendar_data1').val('2019-07-10')");
-  		js("$j('#calendar_data2').val('2019-07-11')");
+  		js("$j('#calendar_data1').val('2019-08-08')");
+  		js("$j('#calendar_data2').val('2019-08-09')");
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "9", "상승", "0", "-", "0.00%", "-", "0", "-", "0.00%", "-", "00:02:06"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "38", "322.22%\n상승", "119", "상승", "313.16%", "313.16% p\n상승", "0", "-", "0.00%", "-", "00:00:57"};
   		for(int i=0;i<=11;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** visitInflow summaryTableData(" + i + ") check Success !! *** ");
@@ -247,7 +259,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "9", "0", "0.00%", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=6;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** visitInflow summaryFootTableData(" + i + ") check Success !! *** ");
@@ -257,17 +269,27 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statTableData = {"1.  직접유입", "8", "88.89%", "0", "0.00%", "2.  내부유입", "1", "11.11%", "0", "0.00%"};
+  		String[] statTopTableData = {"방문유입출처", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** visitInflow statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** visitInflow statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTableData = {"1.  직접유입", "36", "94.74%", "0", "0.00%", "2.  내부유입", "2", "5.26%", "0", "0.00%"};
   		for(int i=0;i<=9;i++) {
   			if($(".statDataCenter", (i+5)).text().trim().equals(statTableData[i])) {
   				System.out.println(" *** visitInflow statTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** visitInflow statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+5)).text().trim());
   				close();
   			}
   		}
-  		String[] statFootTableData = {"합계", "9", "100.00%", "0", "0.00%", "0"};
+  		String[] statFootTableData = {"합계", "38", "100.00%", "0", "0.00%"};
   		for(int i=0;i<=4;i++) {
   			if($(".statFootCenter", i).text().trim().equals(statFootTableData[i])) {
   				System.out.println(" *** visitInflow statFootTableData(" + i + ") check Success !! *** ");
@@ -281,112 +303,88 @@ public class inflowPath {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** visitInflow no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** visitInflow no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
   		$("form > table > tbody > tr > td > img", 0).click();  		
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-  		if($(".statDataCenter", 14).text().trim().equals("0.00%")) {
+  		if(!$(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** visitInflow search check Success !! *** ");
 			} else {
 				System.out.println(" *** visitInflow search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statDataCenter", 14).text().trim());
+				System.out.println($(".statFootRight", 14).text().trim());
 				close();
   		}
-  		String[] inflowPieChartData = {"직접유입8", "88.89%", "내부유입1", "11.11%"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[i])) {
-  	  	  				System.out.println(" *** visitInflow inflowPieChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** visitInflow inflowPieChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_13").click();
+  		$("#cell_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** visitInflow cellEdit check 0 Success !! *** ");
   			} else {
-  				for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();	
-  				}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[(i+2)])) {
-  	  	  				System.out.println(" *** visitInflow inflowPieChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** visitInflow inflowPieChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
+  				System.out.println(" *** visitInflow cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
-  		String[] directLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[i])) {
-  	  	  				System.out.println(" *** visitInflow directLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** visitInflow directLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** visitInflow cellEdit check 1 Success !! *** ");
   			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** visitInflow directLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** visitInflow directLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
+  				System.out.println(" *** visitInflow cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
-  		String[] innerLineChartData = {"2019.07.11 (목)", "내부유입의 유입수 추이: 1", "2019.07.10 (수)", "내부유입의 유입수 추이: 0"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).click();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		String[] inflowCountPieChartData = {"직접유입36", "94.74%", "내부유입2", "5.26%"};
+  		for(int i=0,y=0;i<=1;i++) {
+  		    for(int x=0;x<=5;x++) {
+  		        $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
+  		    }
+  		    for(int x=0;x<=1;x++) {
+  		        if($(".highcharts-tooltip", 0).text().trim().split(": ")[x].equals(inflowCountPieChartData[y])) {
+  		            System.out.println(" *** visitInflow visitCountChartData(" + i + ") check Success !! *** ");
+  		        } else {
+  		            System.out.println(" *** visitInflow visitCountChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  		            System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  		            close();
+  		        }
+  		        y++;
+  		    }
   		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[i])) {
-  	  	  				System.out.println(" *** visitInflow innerLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** visitInflow innerLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
+  		String[] LineChartData = {"2019.08.09 (금)", "직접유입의 유입수 추이: 28", "2019.08.08 (목)", "직접유입의 유입수 추이: 8"
+  				, "2019.08.09 (금)", "내부유입의 유입수 추이: 2", "2019.08.08 (목)", "내부유입의 유입수 추이: 0"};
+  		for(int i=0,z=0;i<=1;i++) {
+  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
+  			for(int x=0;x<=1;x++) {
+  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).waitUntil(visible, 10000);
+  				for(int y=0;y<=5;y++) {
+  					$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).hover();				
   				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** visitInflow innerLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** visitInflow innerLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
+  				for(int y=0;y<=1;y++) {
+  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[y].equals(LineChartData[z])) {
+  						System.out.println(" *** visitInflow LineChartData(" + z + ") check Success !! *** ");
+  					} else {
+  						System.out.println(" *** visitInflow LineChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+  						System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
+  						close();
+  					}
+  					z++;
   				}
   			}
   		}
@@ -399,7 +397,7 @@ public class inflowPath {
 			System.out.println($("h3", 0).text().trim());
 			close();
   		}
-  		String[] summaryProgressTableData = {"2019.07.10 ~ 2019.07.11", "8"};
+  		String[] summaryProgressTableData = {"2019.08.08 ~ 2019.08.09", "36"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryProgressTableData[i])) {
   				System.out.println(" *** visitInflowProgress summaryProgressTableData(" + i + ") check Success !! *** ");
@@ -409,7 +407,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootProgressTableData = {"2019.07.08 ~ 2019.07.09", "0"};
+  		String[] summaryFootProgressTableData = {"2019.08.06 ~ 2019.08.07", "9"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootProgressTableData[i])) {
   				System.out.println(" *** visitInflowProgress summaryFootProgressTableData(" + i + ") check Success !! *** ");
@@ -419,46 +417,33 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statProgressTableData = {"2019.07.10 (수)", "2019.07.11 (목)"};
+  		String[] statProgressTableData = {"2019.08.08 (목)", "2019.08.09 (금)"};
   		for(int i=0;i<=1;i++) {
   			if($(".statDataCenter", (i+1)).text().trim().equals(statProgressTableData[i])) {
   				System.out.println(" *** visitInflowProgress statProgressTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** visitInflowProgress statProgressTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
   				close();
   			}
   		}
-  		String[] progressLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[i])) {
-  	  	  				System.out.println(" *** visitInflow progressLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** visitInflow progressLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** visitInflow progressLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** visitInflow progressLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
-  		}
+  		String[] progressLineChartData = {"2019.08.09 (금)", "직접유입의 유입수 추이: 28", "2019.08.08 (목)", "직접유입의 유입수 추이: 8"};
+  		for(int i=0,y=0;i<=1;i++) {
+			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).waitUntil(visible, 10000);
+			for(int x=0;x<=5;x++) {
+				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();				
+			}
+			for(int x=0;x<=1;x++) {
+				if($(".highcharts-tooltip", 0).text().trim().split("● ")[x].equals(progressLineChartData[y])) {
+					System.out.println(" *** visitInflowProgress LineChartData(" + y + ") check Success !! *** ");
+				} else {
+					System.out.println(" *** visitInflowProgress LineChartData(" + y + ") check Fail ... !@#$%^&*() *** ");
+					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[x]);
+					close();
+				}
+				y++;
+			}
+		}
   		switchTo().window(0);
   		if($("h3", 0).text().trim().equals("방문유입출처")) {
 			System.out.println(" *** visitInflow window(0) check Success !! *** ");
@@ -482,7 +467,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0", "-", "0", "-", "0", "-", "0", "-", "0"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0", "-", "0", "-", "0", "-", "0", "-", "0"};
   		for(int i=0;i<=9;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** searchEngineWord summaryTableData(" + i + ") check Success !! *** ");
@@ -492,7 +477,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0", "0", "0"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "0", "0", "0", "0"};
   		for(int i=0;i<=5;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** searchEngineWord summaryFootTableData(" + i + ") check Success !! *** ");
@@ -502,6 +487,24 @@ public class inflowPath {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"검색어", "유입수합계\n        \n전환수합계\n        \n전환율\n        \n구매건수합계\n        \n구매율"
+  				, "네이버", "다음", "네이트", "구글코리아"};
+  		for(int i=0;i<=5;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** searchEngineWord statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** searchEngineWord statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** searchEngineWord statTableData check Success !! *** ");
+		} else {
+			System.out.println(" *** searchEngineWord statTableData check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight", 0).text().trim());
+			close();
+		}
   		System.out.println(" ! ----- searchEngineWord End ----- ! ");
   	}
   	@Test(priority = 4)
@@ -517,7 +520,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** searchEngineDetail summaryTableData(" + i + ") check Success !! *** ");
@@ -527,7 +530,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** searchEngineDetail summaryFootTableData(" + i + ") check Success !! *** ");
@@ -536,6 +539,54 @@ public class inflowPath {
   				System.out.println($(".summaryFootCenter", i).text().trim());
   				close();
   			}
+  		}
+  		String[] statTopTableData = {"검색엔진", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** searchEngineDetail statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** searchEngineDetail statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** searchEngineDetail statTableData check Success !! *** ");
+		} else {
+			System.out.println(" *** searchEngineDetail statTableData check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight", 0).text().trim());
+			close();
+		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_13").click();
+  		$("#cell_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** searchEngineDetail cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** searchEngineDetail cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** searchEngineDetail cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** searchEngineDetail cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
   		System.out.println(" ! ----- searchEngineDetail End ----- ! ");
   	}
@@ -552,7 +603,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** searchWordDetail summaryTableData(" + i + ") check Success !! *** ");
@@ -562,7 +613,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** searchWordDetail summaryFootTableData(" + i + ") check Success !! *** ");
@@ -571,6 +622,54 @@ public class inflowPath {
   				System.out.println($(".summaryFootCenter", i).text().trim());
   				close();
   			}
+  		}
+  		String[] statTopTableData = {"검색어", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** searchWordDetail statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** searchWordDetail statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** searchWordDetail statTableData check Success !! *** ");
+		} else {
+			System.out.println(" *** searchWordDetail statTableData check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight", 0).text().trim());
+			close();
+		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_13").click();
+  		$("#cell_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** searchWordDetail cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** searchWordDetail cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** searchWordDetail cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** searchWordDetail cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
   		System.out.println(" ! ----- searchWordDetail End ----- ! ");
   	}
@@ -587,15 +686,23 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=7;i++) {
-  			if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
-  				System.out.println(" *** changeSearchWord statTableData(" + i + ") check Success !! *** ");
+  		String[] statTopTableData = {"전환 이전 검색어"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** changeSearchWord statTopTableData(" + i + ") check Success !! *** ");
   			} else {
-  				System.out.println(" *** changeSearchWord statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statFootRight", 0).text().trim());
+  				System.out.println(" *** changeSearchWord statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** changeSearchWord statTableData check Success !! *** ");
+		} else {
+			System.out.println(" *** changeSearchWord statTableData check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight", 0).text().trim());
+			close();
+		}
   		System.out.println(" ! ----- changeSearchWord End ----- ! ");
   	}
   	@Test(priority = 7)
@@ -611,7 +718,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** portalInflow summaryTableData(" + i + ") check Success !! *** ");
@@ -621,7 +728,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** portalInflow summaryFootTableData(" + i + ") check Success !! *** ");
@@ -630,6 +737,54 @@ public class inflowPath {
   				System.out.println($(".summaryFootCenter", i).text().trim());
   				close();
   			}
+  		}
+  		String[] statTopTableData = {"주요포털", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** portalInflow statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** portalInflow statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** portalInflow statTableData check Success !! *** ");
+		} else {
+			System.out.println(" *** portalInflow statTableData check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statDataCenter", 0).text().trim());
+			close();
+		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_13").click();
+  		$("#cell_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** portalInflow cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** portalInflow cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** portalInflow cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** portalInflow cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
   		System.out.println(" ! ----- portalInflow End ----- ! ");
   	}
@@ -647,7 +802,7 @@ public class inflowPath {
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		$(".summaryDataCenter", 7).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "9", "상승", "0", "-", "0.00%", "-", "00:02:06"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "38", "322.22%\n상승", "0", "-", "0.00%", "-", "00:00:57"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** inflowDomain summaryTableData(" + i + ") check Success !! *** ");
@@ -657,7 +812,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "9", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** inflowDomain summaryFootTableData(" + i + ") check Success !! *** ");
@@ -667,7 +822,17 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statTableData = {"1.   직접유입", "8", "88.89%", "0", "0.00%", "2.   내부유입", "1", "11.11%", "0", "0.00%"};
+  		String[] statTopTableData = {"유입도메인", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** inflowDomain statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** inflowDomain statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTableData = {"1.   직접유입", "36", "94.74%", "0", "0.00%", "2.   내부유입", "2", "5.26%", "0", "0.00%"};
   		for(int i=0;i<=9;i++) {
   			if($(".statDataCenter", (i+5)).text().trim().equals(statTableData[i])) {
   				System.out.println(" *** inflowDomain statTableData(" + i + ") check Success !! *** ");
@@ -677,7 +842,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statFootTableData = {"합계", "9", "100.00%", "0", "0.00%", "0"};
+  		String[] statFootTableData = {"합계", "38", "100.00%", "0", "0.00%", "0"};
   		for(int i=0;i<=4;i++) {
   			if($(".statFootCenter", i).text().trim().equals(statFootTableData[i])) {
   				System.out.println(" *** inflowDomain statFootTableData(" + i + ") check Success !! *** ");
@@ -691,11 +856,11 @@ public class inflowPath {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** inflowDomain no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** inflowDomain no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
@@ -708,95 +873,71 @@ public class inflowPath {
 				System.out.println($(".statDataCenter", 14).text().trim());
 				close();
   		}
-  		String[] inflowPieChartData = {"직접유입8", "88.89%", "내부유입1", "11.11%"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[i])) {
-  	  	  				System.out.println(" *** inflowDomain inflowPieChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomain inflowPieChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_13").click();
+  		$("#cell_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** inflowDomain cellEdit check 0 Success !! *** ");
   			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowDomain inflowPieChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomain inflowPieChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
+  				System.out.println(" *** inflowDomain cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
-  		String[] directLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowDomain directLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomain directLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** inflowDomain cellEdit check 1 Success !! *** ");
   			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowDomain directLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomain directLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
+  				System.out.println(" *** inflowDomain cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
-  		String[] innerLineChartData = {"2019.07.11 (목)", "내부유입의 유입수 추이: 1", "2019.07.10 (수)", "내부유입의 유입수 추이: 0"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).click();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
+  		String[] inflowCountPieChartData = {"직접유입36", "94.74%", "내부유입2", "5.26%"};
+  		for(int i=0,y=0;i<=1;i++) {
+  		    for(int x=0;x<=5;x++) {
+  		        $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
+  		    }
+  		    for(int x=0;x<=1;x++) {
+  		        if($(".highcharts-tooltip", 0).text().trim().split(": ")[x].equals(inflowCountPieChartData[y])) {
+  		            System.out.println(" *** inflowDomain visitCountChartData(" + i + ") check Success !! *** ");
+  		        } else {
+  		            System.out.println(" *** inflowDomain visitCountChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  		            System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  		            close();
+  		        }
+  		        y++;
+  		    }
   		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowDomain innerLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomain innerLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
+  		String[] LineChartData = {"2019.08.09 (금)", "직접유입의 유입수 추이: 28", "2019.08.08 (목)", "직접유입의 유입수 추이: 8"
+  				, "2019.08.09 (금)", "내부유입의 유입수 추이: 2", "2019.08.08 (목)", "내부유입의 유입수 추이: 0"};
+  		for(int i=0,z=0;i<=1;i++) {
+  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
+  			for(int x=0;x<=1;x++) {
+  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).waitUntil(visible, 10000);
+  				for(int y=0;y<=5;y++) {
+  					$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).hover();				
   				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowDomain innerLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomain innerLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
+  				for(int y=0;y<=1;y++) {
+  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[y].equals(LineChartData[z])) {
+  						System.out.println(" *** inflowDomain LineChartData(" + z + ") check Success !! *** ");
+  					} else {
+  						System.out.println(" *** inflowDomain LineChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+  						System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
+  						close();
+  					}
+  					z++;
   				}
   			}
   		}
@@ -809,7 +950,7 @@ public class inflowPath {
 			System.out.println($("h3", 0).text().trim());
 			close();
   		}
-  		String[] summaryProgressTableData = {"2019.07.10 ~ 2019.07.11", "8"};
+  		String[] summaryProgressTableData = {"2019.08.08 ~ 2019.08.09", "36"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryProgressTableData[i])) {
   				System.out.println(" *** inflowDomainProgress summaryProgressTableData(" + i + ") check Success !! *** ");
@@ -819,7 +960,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootProgressTableData = {"2019.07.08 ~ 2019.07.09", "0"};
+  		String[] summaryFootProgressTableData = {"2019.08.06 ~ 2019.08.07", "9"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootProgressTableData[i])) {
   				System.out.println(" *** inflowDomainProgress summaryFootProgressTableData(" + i + ") check Success !! *** ");
@@ -829,44 +970,31 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statProgressTableData = {"2019.07.10 (수)", "2019.07.11 (목)"};
+  		String[] statProgressTableData = {"2019.08.08 (목)", "2019.08.09 (금)"};
   		for(int i=0;i<=1;i++) {
   			if($(".statDataCenter", (i+1)).text().trim().equals(statProgressTableData[i])) {
   				System.out.println(" *** inflowDomainProgress statProgressTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** inflowDomainProgress statProgressTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
   				close();
   			}
   		}
-  		String[] progressLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowDomain progressLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomain progressLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
+  		String[] progressLineChartData = {"2019.08.09 (금)", "직접유입의 유입수 추이: 28", "2019.08.08 (목)", "직접유입의 유입수 추이: 8"};
+  		for(int i=0,y=0;i<=1;i++) {
+  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).waitUntil(visible, 10000);
+  			for(int x=0;x<=5;x++) {
+  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();				
+  			}
+  			for(int x=0;x<=1;x++) {
+  				if($(".highcharts-tooltip", 0).text().trim().split("● ")[x].equals(progressLineChartData[y])) {
+  					System.out.println(" *** inflowDomainProgress LineChartData(" + y + ") check Success !! *** ");
+  				} else {
+  					System.out.println(" *** inflowDomainProgress LineChartData(" + y + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[x]);
+  					close();
   				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowDomain progressLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomain progressLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  				y++;
   			}
   		}
   		switchTo().window(0);
@@ -893,7 +1021,7 @@ public class inflowPath {
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		$(".summaryDataCenter", 7).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "9", "상승", "0", "-", "0.00%", "-", "00:02:06"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "38", "322.22%\n상승", "0", "-", "0.00%", "-", "00:00:57"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** inflowDomainDetail summaryTableData(" + i + ") check Success !! *** ");
@@ -903,7 +1031,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "9", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** inflowDomainDetail summaryFootTableData(" + i + ") check Success !! *** ");
@@ -913,7 +1041,17 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statTableData = {"1.   직접유입", "8", "88.89%", "0", "0.00%", "2.   내부유입", "1", "11.11%", "0", "0.00%"};
+  		String[] statTopTableData = {"유입도메인상세", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** inflowDomainDetail statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** inflowDomainDetail statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTableData = {"1.   직접유입", "36", "94.74%", "0", "0.00%", "2.   내부유입", "2", "5.26%", "0", "0.00%"};
   		for(int i=0;i<=9;i++) {
   			if($(".statDataCenter", (i+5)).text().trim().equals(statTableData[i])) {
   				System.out.println(" *** inflowDomainDetail statTableData(" + i + ") check Success !! *** ");
@@ -923,7 +1061,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statFootTableData = {"합계", "9", "100.00%", "0", "0.00%", "0"};
+  		String[] statFootTableData = {"합계", "38", "100.00%", "0", "0.00%", "0"};
   		for(int i=0;i<=4;i++) {
   			if($(".statFootCenter", i).text().trim().equals(statFootTableData[i])) {
   				System.out.println(" *** inflowDomainDetail statFootTableData(" + i + ") check Success !! *** ");
@@ -937,11 +1075,11 @@ public class inflowPath {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** inflowDomainDetail no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** inflowDomainDetail no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
@@ -954,95 +1092,71 @@ public class inflowPath {
 				System.out.println($(".statDataCenter", 14).text().trim());
 				close();
   		}
-  		String[] inflowPieChartData = {"직접유입8", "88.89%", "내부유입1", "11.11%"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[i])) {
-  	  	  				System.out.println(" *** inflowDomainDetail inflowPieChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomainDetail inflowPieChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_13").click();
+  		$("#cell_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** inflowDomainDetail cellEdit check 0 Success !! *** ");
   			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowDomainDetail inflowPieChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomainDetail inflowPieChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
+  				System.out.println(" *** inflowDomainDetail cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** inflowDomainDetail cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** inflowDomainDetail cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		String[] inflowCountPieChartData = {"직접유입36", "94.74%", "내부유입2", "5.26%"};
+  		for(int i=0,y=0;i<=1;i++) {
+  			for(int x=0;x<=5;x++) {
+  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
+  			}
+  			for(int x=0;x<=1;x++) {
+  				if($(".highcharts-tooltip", 0).text().trim().split(": ")[x].equals(inflowCountPieChartData[y])) {
+  					System.out.println(" *** inflowDomainDetail visitCountChartData(" + i + ") check Success !! *** ");
+  				} else {
+  					System.out.println(" *** inflowDomainDetail visitCountChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  					close();
   				}
+  				y++;
   			}
   		}
-  		String[] directLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowDomainDetail directLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomainDetail directLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
+  		String[] LineChartData = {"2019.08.09 (금)", "직접유입의 유입수 추이: 28", "2019.08.08 (목)", "직접유입의 유입수 추이: 8"
+  				, "2019.08.09 (금)", "내부유입의 유입수 추이: 2", "2019.08.08 (목)", "내부유입의 유입수 추이: 0"};
+  		for(int i=0,z=0;i<=1;i++) {
+  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
+  			for(int x=0;x<=1;x++) {
+  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).waitUntil(visible, 10000);
+  				for(int y=0;y<=5;y++) {
+  					$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).hover();				
   				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowDomainDetail directLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomainDetail directLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
-  		}
-  		String[] innerLineChartData = {"2019.07.11 (목)", "내부유입의 유입수 추이: 1", "2019.07.10 (수)", "내부유입의 유입수 추이: 0"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).click();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowDomainDetail innerLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomainDetail innerLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			} else {
-				for(int i=0;i<=5;i++) {
-	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-				}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowDomainDetail innerLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomainDetail innerLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
+  				for(int y=0;y<=1;y++) {
+  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[y].equals(LineChartData[z])) {
+  						System.out.println(" *** inflowDomainDetail LineChartData(" + z + ") check Success !! *** ");
+  					} else {
+  						System.out.println(" *** inflowDomainDetail LineChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+  						System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
+  						close();
+  					}
+  					z++;
   				}
   			}
   		}
@@ -1055,7 +1169,7 @@ public class inflowPath {
 			System.out.println($("h3", 0).text().trim());
 			close();
   		}
-  		String[] summaryProgressTableData = {"2019.07.10 ~ 2019.07.11", "8"};
+  		String[] summaryProgressTableData = {"2019.08.08 ~ 2019.08.09", "36"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryProgressTableData[i])) {
   				System.out.println(" *** inflowDomainDetailProgress summaryProgressTableData(" + i + ") check Success !! *** ");
@@ -1065,7 +1179,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootProgressTableData = {"2019.07.08 ~ 2019.07.09", "0"};
+  		String[] summaryFootProgressTableData = {"2019.08.06 ~ 2019.08.07", "9"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootProgressTableData[i])) {
   				System.out.println(" *** inflowDomainDetailProgress summaryFootProgressTableData(" + i + ") check Success !! *** ");
@@ -1075,44 +1189,31 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statProgressTableData = {"2019.07.10 (수)", "2019.07.11 (목)"};
+  		String[] statProgressTableData = {"2019.08.08 (목)", "2019.08.09 (금)"};
   		for(int i=0;i<=1;i++) {
   			if($(".statDataCenter", (i+1)).text().trim().equals(statProgressTableData[i])) {
   				System.out.println(" *** inflowDomainDetailProgress statProgressTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** inflowDomainDetailProgress statProgressTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
   				close();
   			}
   		}
-  		String[] progressLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowDomainDetail progressLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomainDetail progressLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
+  		String[] progressLineChartData = {"2019.08.09 (금)", "직접유입의 유입수 추이: 28", "2019.08.08 (목)", "직접유입의 유입수 추이: 8"};
+  		for(int i=0,y=0;i<=1;i++) {
+  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).waitUntil(visible, 10000);
+  			for(int x=0;x<=5;x++) {
+  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();				
+  			}
+  			for(int x=0;x<=1;x++) {
+  				if($(".highcharts-tooltip", 0).text().trim().split("● ")[x].equals(progressLineChartData[y])) {
+  					System.out.println(" *** inflowDomainDetailProgress LineChartData(" + y + ") check Success !! *** ");
+  				} else {
+  					System.out.println(" *** inflowDomainDetailProgress LineChartData(" + y + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[x]);
+  					close();
   				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowDomainDetail progressLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowDomainDetail progressLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  				y++;
   			}
   		}
   		switchTo().window(0);
@@ -1139,7 +1240,7 @@ public class inflowPath {
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		$(".summaryDataCenter", 7).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "9", "상승", "0", "-", "0.00%", "-", "00:02:06"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "38", "322.22%\n상승", "0", "-", "0.00%", "-", "00:00:57"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** inflowURLDetail summaryTableData(" + i + ") check Success !! *** ");
@@ -1149,7 +1250,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "9", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** inflowURLDetail summaryFootTableData(" + i + ") check Success !! *** ");
@@ -1159,7 +1260,17 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statTableData = {"1.   직접유입", "8", "88.89%", "0", "0.00%", "2.   내부유입", "1", "11.11%", "0", "0.00%"};
+  		String[] statTopTableData = {"유입 URL 상세", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** inflowURLDetail statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** inflowURLDetail statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTableData = {"1.   직접유입", "36", "94.74%", "0", "0.00%", "2.   내부유입", "2", "5.26%", "0", "0.00%"};
   		for(int i=0;i<=9;i++) {
   			if($(".statDataCenter", (i+5)).text().trim().equals(statTableData[i])) {
   				System.out.println(" *** inflowURLDetail statTableData(" + i + ") check Success !! *** ");
@@ -1169,7 +1280,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statFootTableData = {"합계", "9", "100.00%", "0", "0.00%", "0"};
+  		String[] statFootTableData = {"합계", "38", "100.00%", "0", "0.00%", "0"};
   		for(int i=0;i<=4;i++) {
   			if($(".statFootCenter", i).text().trim().equals(statFootTableData[i])) {
   				System.out.println(" *** inflowURLDetail statFootTableData(" + i + ") check Success !! *** ");
@@ -1183,11 +1294,11 @@ public class inflowPath {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** inflowURLDetail no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** inflowURLDetail no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
@@ -1200,95 +1311,71 @@ public class inflowPath {
 				System.out.println($(".statDataCenter", 14).text().trim());
 				close();
   		}
-  		String[] inflowPieChartData = {"직접유입8", "88.89%", "내부유입1", "11.11%"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[i])) {
-  	  	  				System.out.println(" *** inflowURLDetail inflowPieChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowURLDetail inflowPieChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_13").click();
+  		$("#cell_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** inflowURLDetail cellEdit check 0 Success !! *** ");
   			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split(": ")[i].equals(inflowPieChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowURLDetail inflowPieChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowURLDetail inflowPieChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
+  				System.out.println(" *** inflowURLDetail cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_13").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** inflowURLDetail cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** inflowURLDetail cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		String[] inflowCountPieChartData = {"직접유입36", "94.74%", "내부유입2", "5.26%"};
+  		for(int i=0,y=0;i<=1;i++) {
+  			for(int x=0;x<=5;x++) {
+  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
+  			}
+  			for(int x=0;x<=1;x++) {
+  				if($(".highcharts-tooltip", 0).text().trim().split(": ")[x].equals(inflowCountPieChartData[y])) {
+  					System.out.println(" *** inflowURLDetailProgress visitCountChartData(" + i + ") check Success !! *** ");
+  				} else {
+  					System.out.println(" *** inflowURLDetailProgress visitCountChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  					close();
   				}
+  				y++;
   			}
   		}
-  		String[] directLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowURLDetail directLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowURLDetail directLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
+  		String[] LineChartData = {"2019.08.09 (금)", "직접유입의 유입수 추이: 28", "2019.08.08 (목)", "직접유입의 유입수 추이: 8"
+  				, "2019.08.09 (금)", "내부유입의 유입수 추이: 2", "2019.08.08 (목)", "내부유입의 유입수 추이: 0"};
+  		for(int i=0,z=0;i<=1;i++) {
+  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
+  			for(int x=0;x<=1;x++) {
+  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).waitUntil(visible, 10000);
+  				for(int y=0;y<=5;y++) {
+  					$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).hover();				
   				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(directLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowURLDetail directLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowURLDetail directLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
-  		}
-  		String[] innerLineChartData = {"2019.07.11 (목)", "내부유입의 유입수 추이: 1", "2019.07.10 (수)", "내부유입의 유입수 추이: 0"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 1).click();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowURLDetail innerLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowURLDetail innerLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(innerLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowURLDetail innerLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowURLDetail innerLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
+  				for(int y=0;y<=1;y++) {
+  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[y].equals(LineChartData[z])) {
+  						System.out.println(" *** inflowURLDetailProgress LineChartData(" + z + ") check Success !! *** ");
+  					} else {
+  						System.out.println(" *** inflowURLDetailProgress LineChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+  						System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
+  						close();
+  					}
+  					z++;
   				}
   			}
   		}
@@ -1301,7 +1388,7 @@ public class inflowPath {
 			System.out.println($("h3", 0).text().trim());
 			close();
   		}
-  		String[] summaryProgressTableData = {"2019.07.10 ~ 2019.07.11", "8"};
+  		String[] summaryProgressTableData = {"2019.08.08 ~ 2019.08.09", "36"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryProgressTableData[i])) {
   				System.out.println(" *** inflowURLDetailProgress summaryProgressTableData(" + i + ") check Success !! *** ");
@@ -1311,7 +1398,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootProgressTableData = {"2019.07.08 ~ 2019.07.09", "0"};
+  		String[] summaryFootProgressTableData = {"2019.08.06 ~ 2019.08.07", "9"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootProgressTableData[i])) {
   				System.out.println(" *** inflowURLDetailProgress summaryFootProgressTableData(" + i + ") check Success !! *** ");
@@ -1321,44 +1408,31 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] statProgressTableData = {"2019.07.10 (수)", "2019.07.11 (목)"};
+  		String[] statProgressTableData = {"2019.08.08 (목)", "2019.08.09 (금)"};
   		for(int i=0;i<=1;i++) {
   			if($(".statDataCenter", (i+1)).text().trim().equals(statProgressTableData[i])) {
   				System.out.println(" *** inflowURLDetailProgress statProgressTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** inflowURLDetailProgress statProgressTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
   				close();
   			}
   		}
-  		String[] progressLineChartData = {"2019.07.11 (목)", "직접유입의 유입수 추이: 8", "2019.07.10 (수)", "직접유입의 유입수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();	
-  		}
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[i])) {
-  	  	  				System.out.println(" *** inflowURLDetail progressLineChartData(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowURLDetail progressLineChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
+  		String[] progressLineChartData = {"2019.08.09 (금)", "직접유입의 유입수 추이: 28", "2019.08.08 (목)", "직접유입의 유입수 추이: 8"};
+  		for(int i=0,y=0;i<=1;i++) {
+  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).waitUntil(visible, 10000);
+  			for(int x=0;x<=5;x++) {
+  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();				
+  			}
+  			for(int x=0;x<=1;x++) {
+  				if($(".highcharts-tooltip", 0).text().trim().split("● ")[x].equals(progressLineChartData[y])) {
+  					System.out.println(" *** inflowURLDetailProgress LineChartData(" + y + ") check Success !! *** ");
+  				} else {
+  					System.out.println(" *** inflowURLDetailProgress LineChartData(" + y + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[x]);
+  					close();
   				}
-  			} else {
-  		  		for(int i=0;i<=5;i++) {
-  	  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();	
-  		  		}
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 0).text().trim().split("● ")[i].equals(progressLineChartData[(i+2)])) {
-  	  	  				System.out.println(" *** inflowURLDetail progressLineChartData(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** inflowURLDetail progressLineChartData(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
+  				y++;
   			}
   		}
   		switchTo().window(0);
@@ -1384,7 +1458,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0", "-", "0", "-", "0.00", "-", "00:00:00"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0", "-", "0", "-", "0.00", "-", "00:00:00"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** webMail summaryTableData(" + i + ") check Success !! *** ");
@@ -1394,7 +1468,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "0", "0.00", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** webMail summaryFootTableData(" + i + ") check Success !! *** ");
@@ -1404,6 +1478,54 @@ public class inflowPath {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"웹메일", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** webMail statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** webMail statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** webMail statFootTableData no-data check Success !! *** ");
+		} else {
+			System.out.println(" *** webMail statFootTableData no-data check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight", 0).text().trim());
+			close();
+		}
+		$(".floatLeft > a > img", 1).click();
+		$("#cell_check_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+		confirm("현재구성이 기본구성과 같습니다!");
+		$("#cell_check_13").click();
+		$("#cell_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+				System.out.println(" *** webMail cellEdit check 0 Success !! *** ");
+			} else {
+				System.out.println(" *** webMail cellEdit check 0 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
+		$(".floatLeft > a > img", 1).click();
+		$("#cell_check_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+		$("#cell_13").waitUntil(hidden, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+				System.out.println(" *** webMail cellEdit check 1 Success !! *** ");
+			} else {
+				System.out.println(" *** webMail cellEdit check 1 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
   		System.out.println(" ! ----- webMail End ----- ! ");
   	}
   	@Test(priority = 12)
@@ -1419,7 +1541,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** SNS summaryTableData(" + i + ") check Success !! *** ");
@@ -1429,7 +1551,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** SNS summaryFootTableData(" + i + ") check Success !! *** ");
@@ -1439,6 +1561,54 @@ public class inflowPath {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"전체\n        블로그\n        카페\n        SNS\n        뉴스\n        게시판", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** SNS statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** SNS statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** SNS statFootTableData no-data check Success !! *** ");
+		} else {
+			System.out.println(" *** SNS statFootTableData no-data check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight", 0).text().trim());
+			close();
+		}
+		$(".floatLeft > a > img", 1).click();
+		$("#cell_check_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+		confirm("현재구성이 기본구성과 같습니다!");
+		$("#cell_check_13").click();
+		$("#cell_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+				System.out.println(" *** SNS cellEdit check 0 Success !! *** ");
+			} else {
+				System.out.println(" *** SNS cellEdit check 0 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
+		$(".floatLeft > a > img", 1).click();
+		$("#cell_check_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+		$("#cell_13").waitUntil(hidden, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+				System.out.println(" *** SNS cellEdit check 1 Success !! *** ");
+			} else {
+				System.out.println(" *** SNS cellEdit check 1 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
   		System.out.println(" ! ----- SNS End ----- ! ");
   	}
   	@Test(priority = 13)
@@ -1454,7 +1624,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0", "-", "0", "-", "0.00%", "-", "00:00:00"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** shoppingSearch summaryTableData(" + i + ") check Success !! *** ");
@@ -1464,7 +1634,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0", "0", "0.00%", "00:00:00"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "0", "0.00%", "00:00:00"};
   		for(int i=0;i<=4;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** shoppingSearch summaryFootTableData(" + i + ") check Success !! *** ");
@@ -1474,6 +1644,54 @@ public class inflowPath {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"쇼핑검색", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** shoppingSearch statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** shoppingSearch statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** shoppingSearch statFootTableData no-data check Success !! *** ");
+		} else {
+			System.out.println(" *** shoppingSearch statFootTableData no-data check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight", 0).text().trim());
+			close();
+		}
+		$(".floatLeft > a > img", 1).click();
+		$("#cell_check_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+		confirm("현재구성이 기본구성과 같습니다!");
+		$("#cell_check_13").click();
+		$("#cell_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+				System.out.println(" *** shoppingSearch cellEdit check 0 Success !! *** ");
+			} else {
+				System.out.println(" *** shoppingSearch cellEdit check 0 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
+		$(".floatLeft > a > img", 1).click();
+		$("#cell_check_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+		$("#cell_13").waitUntil(hidden, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+				System.out.println(" *** shoppingSearch cellEdit check 1 Success !! *** ");
+			} else {
+				System.out.println(" *** shoppingSearch cellEdit check 1 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
   		System.out.println(" ! ----- shoppingSearch End ----- ! ");
   	}
   	@Test(priority = 14)
@@ -1489,7 +1707,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** domain summaryTableData(" + i + ") check Success !! *** ");
@@ -1499,7 +1717,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** domain summaryFootTableData(" + i + ") check Success !! *** ");
@@ -1509,6 +1727,54 @@ public class inflowPath {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"도메인 용도", "유입수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** domain statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** domain statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** domain statFootTableData no-data check Success !! *** ");
+		} else {
+			System.out.println(" *** domain statFootTableData no-data check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight").text().trim());
+			close();
+		}
+		$(".floatLeft > a > img", 0).click();
+		$("#cell_check_4").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+		confirm("현재구성이 기본구성과 같습니다!");
+		$("#cell_check_4").click();
+		$("#cell_4").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+				System.out.println(" *** domain cellEdit check 0 Success !! *** ");
+			} else {
+				System.out.println(" *** domain cellEdit check 0 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
+		$(".floatLeft > a > img", 0).click();
+		$("#cell_check_4").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+		$("#cell_4").waitUntil(hidden, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("유입률")) {
+				System.out.println(" *** domain cellEdit check 1 Success !! *** ");
+			} else {
+				System.out.println(" *** domain cellEdit check 1 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
   		System.out.println(" ! ----- domain End ----- ! ");
   	}
   	@Test(priority = 15)
@@ -1524,7 +1790,7 @@ public class inflowPath {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.07.10 ~ 2019.07.11", "0"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** nationDomain summaryTableData(" + i + ") check Success !! *** ");
@@ -1534,7 +1800,7 @@ public class inflowPath {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.07.08 ~ 2019.07.09", "0"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** nationDomain summaryFootTableData(" + i + ") check Success !! *** ");
@@ -1544,21 +1810,55 @@ public class inflowPath {
   				close();
   			}
   		}
-  		System.out.println(" ! ----- nationDomain End ----- ! ");
-  	}
-  	//@Test(priority = 99)
-  	public void increaseVisit() {
-  		System.out.println(" ! ----- increaseVisit Start ----- ! ");
-		open("http://apzz092888.blogspot.com/");
-		$(".sub24").waitUntil(visible, 10000);
-		for(int i=1;i<=24;i++) {
-			$(".sub" + i).scrollIntoView(false);
-			$(".sub" + i).click();
-	  		System.out.println("sub" + i + " 클릭");
-			sleep(500);
+  		String[] statTopTableData = {"국가별 도메인", "유입수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** nationDomain statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** nationDomain statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+			System.out.println(" *** nationDomain statFootTableData no-data check Success !! *** ");
+		} else {
+			System.out.println(" *** nationDomain statFootTableData no-data check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statFootRight", 0).text().trim());
+			close();
 		}
-		open("http://apzz98288.egloos.com");
-  		System.out.println(" ! ----- increaseVisit End ----- ! ");
+		$(".floatLeft > a > img", 0).click();
+		$("#cell_check_4").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+		confirm("현재구성이 기본구성과 같습니다!");
+		$("#cell_check_4").click();
+		$("#cell_4").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+				System.out.println(" *** nationDomain cellEdit check 0 Success !! *** ");
+			} else {
+				System.out.println(" *** nationDomain cellEdit check 0 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
+		$(".floatLeft > a > img", 0).click();
+		$("#cell_check_4").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+		$("#cell_4").waitUntil(hidden, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("유입률")) {
+				System.out.println(" *** nationDomain cellEdit check 1 Success !! *** ");
+			} else {
+				System.out.println(" *** nationDomain cellEdit check 1 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
+  		System.out.println(" ! ----- nationDomain End ----- ! ");
   	}
 	@AfterClass
 	public void afterTest() {

@@ -186,35 +186,21 @@ public class marketingEffect {
 			close();
 		}
 		String[] widgetLineChart = {"2019.08.09 (금)", "이메일마케팅: 9", "2019.08.08 (목)", "이메일마케팅: 8"};
-		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
-  		for(int x=0;x<=1;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-  				for(int i=0;i<=1;i++) {//툴팁1 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(widgetLineChart[i])) {
-  	  	  				System.out.println(" *** marketingEffectSummary widgetLineChart(" + i + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** marketingEffectSummary widgetLineChart(" + i + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			} else {
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  		  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 1).hover();
-  				for(int i=0;i<=1;i++) {//툴팁2 확인
-  					if($(".highcharts-tooltip", 1).text().trim().split("● ")[i].equals(widgetLineChart[(i+2)])) {
-  	  	  				System.out.println(" *** marketingEffectSummary widgetLineChart(" + (i+2) + ") check Success !! *** ");
-  	  	  			} else {
-  	  	  				System.out.println(" *** marketingEffectSummary widgetLineChart(" + (i+2) + ") check Fail ... !@#$%^&*() *** ");
-  	  	  				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[i]);
-  	  	  				close();
-  	  	  			}
-  				}
-  			}
-  		}
+		for(int x=0,z=0;x<=1;x++) {
+			for(int y=0;y<=5;y++) {
+				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).hover();				
+			}
+			for(int y=0;y<=1;y++) {
+				if($(".highcharts-tooltip", 1).text().trim().split("● ")[y].equals(widgetLineChart[z])) {
+					System.out.println(" *** marketingEffectSummary widgetLineChart(" + z + ") check Success !! *** ");
+				} else {
+					System.out.println(" *** marketingEffectSummary widgetLineChart(" + z + ") check Fail ... !@#$%^&*() *** ");
+					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
+					close();
+				}
+				z++;
+			}
+		}
   		$(".close_wiget", 5).click();
   		$("#widget6").waitUntil(hidden, 10000);
   		js("openWidgetRemoconSub('C', '6')");
@@ -232,8 +218,6 @@ public class marketingEffect {
 				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
 				close();
   		}
-  		
-  		
   		$("#date_range1 > a > img", 1).scrollIntoView(false);
   		$("#date_range1 > a > img", 1).click();
   		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
@@ -285,12 +269,53 @@ public class marketingEffect {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"배너프로모션", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** bannerAD statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** bannerAD statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
 		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** bannerAD statTableData check Success !! *** ");
 		} else {
 			System.out.println(" *** bannerAD statTableData check Fail ... !@#$%^&*() *** ");
 			System.out.println($(".statDataCenter", 0).text().trim());
 			close();
+		}
+		$(".floatLeft > a > img", 1).click();
+		$("#cell_check_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+		confirm("현재구성이 기본구성과 같습니다!");
+		$("#cell_check_13").click();
+		$("#cell_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+				System.out.println(" *** visitInflow cellEdit check 0 Success !! *** ");
+			} else {
+				System.out.println(" *** visitInflow cellEdit check 0 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
+		}
+		$(".floatLeft > a > img", 1).click();
+		$("#cell_check_13").waitUntil(visible, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+		$("#cell_13").waitUntil(hidden, 10000);
+		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+		$("#cell_edit_div").waitUntil(hidden, 10000);
+		sleep(800);
+		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+				System.out.println(" *** visitInflow cellEdit check 1 Success !! *** ");
+			} else {
+				System.out.println(" *** visitInflow cellEdit check 1 Fail ... !@#$%^&*() *** ");
+				System.out.println($(".statDataRight", 0).text().trim());
+				close();
 		}
   		System.out.println(" ! ----- bannerAD End ----- ! ");
   	}
@@ -329,6 +354,27 @@ public class marketingEffect {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"시간대", "전체 배너프로모션\n      \n배너광고\n토스트익스체인지-AUTO\n      의 시간대별 평균", "프로모션없음->검색어없음"
+  				, "유입수", "유입률", "전환수", "전환율", "구매건수", "매출액", "평균유입수", "유입률", "평균전환수"};
+  		for(int i=0;i<=11;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** bannerADTimeAvg statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** bannerADTimeAvg statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statFootTableData = {"합계(평균)", "0.00 (0.00)", "0.00%", "0.00 (0.00)", "0.00%", "0.00 (0.00)", "0.00 (0.00)", "0.00 (0.00)", "0.00%", "0.00 (0.00)"};
+  		for(int i=0;i<=9;i++) {
+  			if($(".statFootCenter", i).text().trim().equals(statFootTableData[i])) {
+  				System.out.println(" *** bannerADTimeAvg statFootTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** bannerADTimeAvg statFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		System.out.println(" ! ----- bannerADTimeAvg End ----- ! ");
   	}
   	@Test(priority = 4)
@@ -364,13 +410,24 @@ public class marketingEffect {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"이메일", "오픈수", "유입수", "유입/오픈", "유입률", "전환수", "전환율", "구매건수", "구매율"
+  				, "전체\n전환-가입\n전환-주문\n전환-예약\n전환-신청\n전환-기타1\n전환-기타2\n전환-기타3", "전체"};
+  		for(int i=0;i<=10;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** emailMarketing statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** emailMarketing statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] statTableData = {"1.  이메일마케팅", "17", "0", "0.00%", "0.00%", "0", "0.00%", "0", "0.00%"};
   		for(int i=0;i<=8;i++) {
   			if($(".statDataCenter", (i+11)).text().trim().equals(statTableData[i])) {
   				System.out.println(" *** emailMarketing statTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** emailMarketing statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+11)).text().trim());
   				close();
   			}
   		}
@@ -384,32 +441,66 @@ public class marketingEffect {
   				close();
   			}
   		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-  		String[] openCountBarChartData = {"이메일마케팅17", "100.00%"};
-		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(": ")[y].equals(openCountBarChartData[x])) {
-				System.out.println(" *** emailMarketing openCountBarChartData(" + x + ") check Success !! *** ");
-			} else {
-				System.out.println(" *** emailMarketing openCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
-				close();
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_8").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_8").click();
+  		$("#cell_8").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("구매율")) {
+  				System.out.println(" *** emailMarketing cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** emailMarketing cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_8").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_8").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** emailMarketing cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** emailMarketing cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		for(int i=0;i<=5;i++) {
+  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+  		}
+  		String[] pieChartData = {"이메일마케팅17", "100.00%"};
+  		for(int i=0,y=0;i<=0;i++) {
+  			for(int x=0;x<=5;x++) {
+  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
   			}
-  			x++;
-		}
-  		String[] openCountLineChartData = {"2019.08.09 (금)", "이메일마케팅의 오픈수 추이: 9", "2019.08.08 (목)", "이메일마케팅의 오픈수 추이: 8"};
-		for(int y=0,x=0;y<=1;y++) {
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(openCountLineChartData[x])) {
-  					System.out.println(" *** emailMarketing openCountLineChartData(" + x + ") check Success !! *** ");
+  			for(int x=0;x<=1;x++) {
+  				if($(".highcharts-tooltip", 0).text().trim().split(": ")[x].equals(pieChartData[y])) {
+  					System.out.println(" *** emailMarketing pieChartData(" + y + ") check Success !! *** ");
   				} else {
-  					System.out.println(" *** emailMarketing openCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println(" *** emailMarketing pieChartData(" + y + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  					close();
+  				}
+  				y++;
+  			}
+  		}
+  		String[] lineChartData = {"2019.08.09 (금)", "이메일마케팅의 오픈수 추이: 9", "2019.08.08 (목)", "이메일마케팅의 오픈수 추이: 8"};
+		for(int y=0,x=0;y<=1;y++) {
+  			for(int i=0;i<=5;i++) {
+  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
+  			}
+  			for(int z=0;z<=1;z++) {
+  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(lineChartData[x])) {
+  					System.out.println(" *** emailMarketing lineChartData(" + x + ") check Success !! *** ");
+  				} else {
+  					System.out.println(" *** emailMarketing lineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
   					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
   					close();
   	  			}
@@ -505,7 +596,7 @@ public class marketingEffect {
   				System.out.println(" *** emailMarketing progressStatTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** emailMarketing progressStatTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
   				close();
   			}
   		}
@@ -568,6 +659,16 @@ public class marketingEffect {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"QR코드명", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** QRcodeAnalysis statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** QRcodeAnalysis statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** QRcodeAnalysis statTableData check Success !! *** ");
 		} else {
@@ -575,6 +676,37 @@ public class marketingEffect {
 			System.out.println($(".statDataCenter", 0).text().trim());
 			close();
 		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_7").click();
+  		$("#cell_7").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("구매율")) {
+  				System.out.println(" *** QRcodeAnalysis cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** QRcodeAnalysis cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** QRcodeAnalysis cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** QRcodeAnalysis cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- QRcodeAnalysis End ----- ! ");
   	}
   	@Test(priority = 6)
@@ -610,6 +742,16 @@ public class marketingEffect {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"한글인터넷주소", "유입수", "유입률", "전환수", "구매율", "전체\n전환-가입\n전환-주문\n전환-예약\n전환-신청\n전환-기타1\n전환-기타2\n전환-기타3"};
+  		for(int i=0;i<=5;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** koreanInternetAddress statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** koreanInternetAddress statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** koreanInternetAddress statTableData check Success !! *** ");
 		} else {
@@ -617,6 +759,37 @@ public class marketingEffect {
 			System.out.println($(".statDataCenter", 0).text().trim());
 			close();
 		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_7").click();
+  		$("#cell_7").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("구매율")) {
+  				System.out.println(" *** koreanInternetAddress cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** koreanInternetAddress cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** koreanInternetAddress cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** koreanInternetAddress cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- koreanInternetAddress End ----- ! ");
   	}
   	@Test(priority = 7)
@@ -652,6 +825,16 @@ public class marketingEffect {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"가격비교사이트", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** comparePricesSite statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** comparePricesSite statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** comparePricesSite statTableData check Success !! *** ");
 		} else {
@@ -659,6 +842,37 @@ public class marketingEffect {
 			System.out.println($(".statDataCenter", 0).text().trim());
 			close();
 		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_7").click();
+  		$("#cell_7").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("구매율")) {
+  				System.out.println(" *** comparePricesSite cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** comparePricesSite cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_7").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** comparePricesSite cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** comparePricesSite cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- comparePricesSite End ----- ! ");
   	}
   	@Test(priority = 8)
@@ -694,6 +908,16 @@ public class marketingEffect {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"캠페인 그룹", "유입수", "유입률", "구매건수", "구매율"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** campaignGroupAnalysis statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** campaignGroupAnalysis statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** campaignGroupAnalysis statTableData check Success !! *** ");
 		} else {
@@ -701,21 +925,38 @@ public class marketingEffect {
 			System.out.println($(".statDataCenter", 0).text().trim());
 			close();
 		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_11").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_11").click();
+  		$("#cell_11").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("구매율")) {
+  				System.out.println(" *** campaignGroupAnalysis cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** campaignGroupAnalysis cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 1).click();
+  		$("#cell_check_11").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_11").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("매출액")) {
+  				System.out.println(" *** campaignGroupAnalysis cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** campaignGroupAnalysis cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- campaignGroupAnalysis End ----- ! ");
-  	}
-  	//@Test(priority = 99)
-  	public void increaseVisit() {
-  		System.out.println(" ! ----- increaseVisit Start ----- ! ");
-		open("http://apzz092888.blogspot.com/");
-		$(".sub24").waitUntil(visible, 10000);
-		for(int i=1;i<=24;i++) {
-			$(".sub" + i).scrollIntoView(false);
-			$(".sub" + i).click();
-	  		System.out.println("sub" + i + " 클릭");
-			sleep(500);
-		}
-		open("http://apzz98288.egloos.com");
-  		System.out.println(" ! ----- increaseVisit End ----- ! ");
   	}
 	@AfterClass
 	public void afterTest() {

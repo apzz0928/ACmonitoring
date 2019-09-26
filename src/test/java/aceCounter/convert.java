@@ -24,7 +24,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
-public class convert {
+public class Convert {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, temp_pw, A, B, pageLoadCheck;
@@ -179,13 +179,23 @@ public class convert {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"유입출처", "유입수", "전체전환수", "반송수", "전환-가입", "전환-주문", "전환-예약", "전환-신청", "전환-기타1", "전환-기타2"};
+  		for(int i=0;i<=9;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** convertPageInflow statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertPageInflow statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] statTableData = {"1.  직접유입", "36", "119", "18", "17", "17", "17", "17", "17", "17", "2.  내부유입", "2", "0", "0", "0", "0", "0", "0", "0", "0"};
   		for(int i=0;i<=19;i++) {
   			if($(".statDataCenter", (i+10)).text().trim().equals(statTableData[i])) {
   				System.out.println(" *** convertPageInflow statTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** convertPageInflow statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+10)).text().trim());
   				close();
   			}
   		}
@@ -199,26 +209,43 @@ public class convert {
   				close();
   			}
   		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_10").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_10").click();
+  		$("#cell_10").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("전환-기타2")) {
+  				System.out.println(" *** visitInflow cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** visitInflow cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_10").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_10").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("전환-기타3")) {
+  				System.out.println(" *** visitInflow cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** visitInflow cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		String[] convertPageInflow = {"직접유입 : 119", "직접유입 : 18", "직접유입 : 36", "내부유입 : 2"};
-  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).hover();
-  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).hover();
-  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).hover();
   		for(int x=0;x<=3;x++) {
-  			if(x==0) {//툴팁 1, 2를 확인용 분기
-				if($(".highcharts-tooltip", 0).text().trim().equals(convertPageInflow[x])) {
-  	  				System.out.println(" *** convertPageInflow barChartData(" + x + ") check Success !! *** ");
-  	  				$("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > a", x).click();
-  	  				$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).waitUntil(visible, 10000);  	  				
-  	  			} else {
-  	  				System.out.println(" *** convertPageInflow barChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  	  				System.out.println($(".highcharts-tooltip", 0).text().trim());
-  	  				close();
-  	  			}
-  			} else if(x==1) {
-				sleep(500);
-  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).hover();
-  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).hover();
-  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).hover();
+  			if(x==0 || x==1) {
+				for(int i=0;i<=5;i++) {
+	  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).hover();	
+				}
 				if($(".highcharts-tooltip", 0).text().trim().equals(convertPageInflow[x])) {
   	  				System.out.println(" *** convertPageInflow barChartData(" + x + ") check Success !! *** ");
   	  				$("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > a", x).click();
@@ -230,12 +257,11 @@ public class convert {
   	  			}
   			} else if(x==2) {
   				for(int i=0;i<=1;i++) {
-  					sleep(500);
-  	  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", i).hover();
-  	  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", i).hover();
-  	  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", i).hover();
+  					for(int y=0;y<=5;y++) {
+  	  	  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", i).hover();	
+  					}
 	  	  		  	if($(".highcharts-tooltip", 0).text().trim().equals(convertPageInflow[x])) {
-	  	  				System.out.println(" *** convertPageInflow barChartData(" + i + ") check Success !! *** ");
+	  	  				System.out.println(" *** convertPageInflow barChartData(" + x + ") check Success !! *** ");
 	  	  				$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).waitUntil(visible, 10000);
 	  	  				x++;
 	  	  			} else {
@@ -281,7 +307,7 @@ public class convert {
   				System.out.println(" *** convertPageInflow progressStatTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** convertPageInflow progressStatTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
   				close();
   			}
   		}
@@ -293,12 +319,11 @@ public class convert {
 			close();
 		}
 		String[] progressLineChartData = {"2019.08.09 (금)", "직접유입의 전체전환수 추이: 119", "2019.08.08 (목)", "직접유입의 전체전환수 추이: 0"};
+		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
 		for(int y=0,x=0;y<=1;y++) {
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
+  			for(int i=0;i<=5;i++) {
+  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
+  			}
   			for(int z=0;z<=1;z++) {
   	  			if($(".highcharts-tooltip", 0).text().trim().split("● ")[z].equals(progressLineChartData[x])) {
   					System.out.println(" *** convertPageInflow Progress LineChartData(" + x + ") check Success !! *** ");
@@ -358,6 +383,67 @@ public class convert {
 			System.out.println($(".statDataCenter", 4).text().trim());
 			close();
   		}
+  		String[] statTopTableData = {"페이지 이동경로(아이콘)\n         \n페이지 이동경로(URL)", "페이지수", "방문수"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** convertPagePath statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertPagePath statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTableData = {"1.  (8)", "25", "16", "2.  (2) (9) (2)", "30", "1"};
+  		for(int i=0;i<=5;i++) {
+  			if($(".statDataCenter", (i+3)).text().trim().equals(statTableData[i])) {
+  				System.out.println(" *** convertPagePath statTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertPagePath statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", (i+3)).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statFootTableData = {"합계", "-", "17"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".statFootCenter", i).text().trim().equals(statFootTableData[i])) {
+  				System.out.println(" *** convertPagePath statFootTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertPagePath statFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_3").click();
+  		$("#cell_3").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("방문수")) {
+  				System.out.println(" *** convertPagePath cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertPagePath cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("방문비율")) {
+  				System.out.println(" *** convertPagePath cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertPagePath cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- convertPagePath End ----- ! ");
   	}
   	@Test(priority = 3)
@@ -373,6 +459,16 @@ public class convert {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] statTopTableData = {"순번", "IP", "유입출처", "방문구분", "이동경로", "전환구분", "회원ID", "방문일시"};
+  		for(int i=0;i<=7;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** convertVisitDetail statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertVisitDetail statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] statTableData = {"10.77.129.79", "[직접유입]", "신규방문", "25", "전환-기타3", "", "2019-08-09 17:28:04"};
   		for(int i=0;i<=6;i++) {
   			if($(".statDataCenter", (i+9)).text().trim().equals(statTableData[i])) {
@@ -388,9 +484,9 @@ public class convert {
   		$(".statDataCenterTableSub", 1).waitUntil(hidden, 10000);
   		$(".statFootRight", 0).waitUntil(visible, 10000);
 		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
-			System.out.println(" *** convertPagePath no-data check Success !! *** ");
+			System.out.println(" *** convertVisitDetail no-data check Success !! *** ");
 		} else {
-			System.out.println(" *** convertPagePath no-data check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** convertVisitDetail no-data check Fail ... !@#$%^&*() *** ");
 			System.out.println($(".statDataCenter", 0).text().trim());
 			close();
 		}
@@ -399,18 +495,18 @@ public class convert {
   		$(".statDataCenterTableSub", 1).waitUntil(visible, 10000);
   		$(".statDataCenter", 12).waitUntil(visible, 10000);
   		if($(".statDataCenter", 12).text().trim().equals("25")) {
-			System.out.println(" *** convertPagePath search check Success !! *** ");
+			System.out.println(" *** convertVisitDetail search check Success !! *** ");
 		} else {
-			System.out.println(" *** convertPagePath search check Fail ... !@#$%^&*() *** ");
-			System.out.println($(".statDataCenter", 4).text().trim());
+			System.out.println(" *** convertVisitDetail search check Fail ... !@#$%^&*() *** ");
+			System.out.println($(".statDataCenter", 12).text().trim());
 			close();
   		}
   		$(".statDataCenter > table > tbody > tr > td > a > img", 1).click();
   		switchTo().window(2);
   		if($("span", 9).text().trim().split(" : ")[1].equals(statTableData[0])) {
-			System.out.println(" *** convertPagePath WhoisIP check Success !! *** ");
+			System.out.println(" *** convertVisitDetail WhoisIP check Success !! *** ");
 		} else {
-			System.out.println(" *** convertPagePath WhoisIP check Fail ... !@#$%^&*() *** ");
+			System.out.println(" *** convertVisitDetail WhoisIP check Fail ... !@#$%^&*() *** ");
 			System.out.println($("span", 9).text().trim().split(" : ")[1]);
 			close();
   		}
@@ -430,6 +526,16 @@ public class convert {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] statTopTableData = {"소요기간", "전환수", "전환비율", "전환-가입", "전환-주문", "전환-예약", "전환-신청", "전환-기타1", "전환-기타2"};
+  		for(int i=0;i<=8;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** convertRequiredPeriod statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertRequiredPeriod statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] statTableData = {"1.  당일", "119", "100.00%", "17", "17", "17", "17", "17", "17"};
   		for(int i=0;i<=8;i++) {
   			if($(".statDataCenter", (i+9)).text().trim().equals(statTableData[i])) {
@@ -450,6 +556,38 @@ public class convert {
   				close();
   			}
   		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_9").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_9").click();
+  		$("#cell_9").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("전환-기타2")) {
+  				System.out.println(" *** convertRequiredPeriod cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertRequiredPeriod cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_9").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_9").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("전환-기타3")) {
+  				System.out.println(" *** convertRequiredPeriod cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertRequiredPeriod cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
   		switchTo().window(3);
   		if($("h3", 0).text().trim().equals("전환까지 소요기간 추이")) {
@@ -465,7 +603,7 @@ public class convert {
   				System.out.println(" *** convertRequiredPeriod progressStatTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** convertRequiredPeriod progressStatTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+9)).text().trim());
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
   				close();
   			}
   		}
@@ -478,9 +616,9 @@ public class convert {
 		}
 		String[] progressLineChartData = {"2019.08.09 (금)", "당일의 전체 전환수 추이: 119", "2019.08.08 (목)", "당일의 전체 전환수 추이: 0"};
 		for(int y=0,x=0;y<=1;y++) {
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
+  			for(int i=0;i<=5;i++) {
+  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
+  			}
   			for(int z=0;z<=1;z++) {
   	  			if($(".highcharts-tooltip", 0).text().trim().split("● ")[z].equals(progressLineChartData[x])) {
   					System.out.println(" *** convertRequiredPeriod Progress LineChartData(" + x + ") check Success !! *** ");
@@ -508,6 +646,16 @@ public class convert {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] statTopTableData = {"유입횟수", "전환수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** convertInflowCount statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertInflowCount statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] statTableData = {"1회", "119"};
   		for(int i=0;i<=1;i++) {
   			if($(".statDataCenter", (i+2)).text().trim().equals(statTableData[i])) {
@@ -528,6 +676,38 @@ public class convert {
   				close();
   			}
   		}
+  		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
+  		$(".statDataCenter", 7).waitUntil(visible, 10000);
+  		String[] subStatTopTableData = {"유입출처 경로", "전환수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", (i+4)).text().trim().equals(subStatTopTableData[i])) {
+  				System.out.println(" *** convertInflowCount subStatTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertInflowCount subStatTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				close();
+  			}
+  		}
+  		String[] subStatTableData = {"1.   직접유입", "119"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", (i+6)).text().trim().equals(subStatTableData[i])) {
+  				System.out.println(" *** convertInflowCount subStatTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertInflowCount subStatTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", (i+6)).text().trim());
+  				close();
+  			}
+  		}
+  		String[] subStatFootTableData = {"합계", "119"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statFootCenter", i).text().trim().equals(subStatFootTableData[i])) {
+  				System.out.println(" *** convertInflowCount subStatFootTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertInflowCount subStatFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 1).click();
   		switchTo().window(4);
   		if($("h3", 0).text().trim().equals("전환까지 유입횟수 추이")) {
@@ -543,7 +723,7 @@ public class convert {
   				System.out.println(" *** convertInflowCount progressStatTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** convertInflowCount progressStatTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+9)).text().trim());
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
   				close();
   			}
   		}
@@ -556,9 +736,9 @@ public class convert {
 		}
 		String[] progressLineChartData = {"2019.08.09 (금)", "1회의 전체 전환수 추이: 119", "2019.08.08 (목)", "1회의 전체 전환수 추이: 0"};
 		for(int y=0,x=0;y<=1;y++) {
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
+  			for(int i=0;i<=5;i++) {
+  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
+  			}
   			for(int z=0;z<=1;z++) {
   	  			if($(".highcharts-tooltip", 0).text().trim().split("● ")[z].equals(progressLineChartData[x])) {
   					System.out.println(" *** convertInflowCount Progress LineChartData(" + x + ") check Success !! *** ");
@@ -586,6 +766,16 @@ public class convert {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] statTopTableData = {"유입출처", "전환수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** convertInflow statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** convertInflow statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] statTableData = {"1. \n직접유입", "119"};
   		for(int i=0;i<=1;i++) {
   			if($(".statDataCenter", (i+2)).text().trim().equals(statTableData[i])) {
@@ -641,6 +831,16 @@ public class convert {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"검색어", "직접 전환수", "간접 전환수", "직접 전환수+간접 전환수"};
+  		for(int i=0;i<=3;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** inflowIndirectConvert statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** inflowIndirectConvert statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** inflowIndirectConvert statTableData check Success !! *** ");
 		} else {
@@ -649,20 +849,6 @@ public class convert {
 			close();
 		}
   		System.out.println(" ! ----- inflowIndirectConvert End ----- ! ");
-  	}
-  	//@Test(priority = 99)
-  	public void increaseVisit() {
-  		System.out.println(" ! ----- increaseVisit Start ----- ! ");
-		open("http://apzz092888.blogspot.com/");
-		$(".sub24").waitUntil(visible, 10000);
-		for(int i=1;i<=24;i++) {
-			$(".sub" + i).scrollIntoView(false);
-			$(".sub" + i).click();
-	  		System.out.println("sub" + i + " 클릭");
-			sleep(500);
-		}
-		open("http://apzz98288.egloos.com");
-  		System.out.println(" ! ----- increaseVisit End ----- ! ");
   	}
 	@AfterClass
 	public void afterTest() {

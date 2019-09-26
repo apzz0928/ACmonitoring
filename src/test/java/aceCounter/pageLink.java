@@ -159,6 +159,16 @@ public class pageLink {
   		js("$j('#calendar_data2').val('2019-08-09')");
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석기간", "페이지뷰", "클릭수"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** linkAnalysis summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysis summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "442", "상승", "172", "상승", "38.91 %"};
   		for(int i=0;i<=5;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -179,13 +189,23 @@ public class pageLink {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"페이지명", "페이지뷰", "클릭수"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** linkAnalysis statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysis statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] statTableData = {"1.  전환-기타1", "34", "23"};
   		for(int i=0;i<=2;i++) {
   			if($(".statDataCenter", (i+3)).text().trim().equals(statTableData[i])) {
   				System.out.println(" *** linkAnalysis statTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** linkAnalysis statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+2)).text().trim());
+  				System.out.println($(".statDataCenter", (i+3)).text().trim());
   				close();
   			}
   		}
@@ -199,18 +219,88 @@ public class pageLink {
   				close();
   			}
   		}
-  		String[] fileNameBarChartData = {"23", "21", "21", "20", "20", "20", "19"};
+  		$("#data_subimg1").click();
+  		$(".subTableHeaderText", 0).waitUntil(visible, 10000);
+  		if($("#data_subdiv1 > table > tbody > tr > td", 0).text().trim().equals("\" 전환-기타1 \" 의 상세")) {
+				System.out.println(" *** linkAnalysis subStatTableTitle check Success !! *** ");
+			} else {
+				System.out.println(" *** linkAnalysis subStatTableTitle check Fail ... !@#$%^&*() *** ");
+				System.out.println($("#data_subdiv1 > table > tbody > tr > td", 0).text().trim());
+				close();
+  		}
+  		String[] subStatTopTableData = {"링크", "클릭수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", (i+6)).text().trim().equals(subStatTopTableData[i])) {
+  				System.out.println(" *** linkAnalysis subStatTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysis subStatTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", (i+6)).text().trim());
+  				close();
+  			}
+  		}
+  		String[] subStatTableData = {"1.    \n  /search/label/change-other2", "13", "2.    \n  /search/label/change-signIn", "10"};
+  		for(int i=0;i<=3;i++) {
+  			if($(".statDataCenter", (i+8)).text().trim().equals(subStatTableData[i])) {
+  				System.out.println(" *** linkAnalysis subStatTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysis subStatTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", (i+8)).text().trim());
+  				close();
+  			}
+  		}
+  		String[] subStatFootTableData = {"합계", "23"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statFootCenter", i).text().trim().equals(subStatFootTableData[i])) {
+  				System.out.println(" *** linkAnalysis subStatFootTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysis subStatFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_3").click();
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("클릭수")) {
+  				System.out.println(" *** linkAnalysis cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysis cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("클릭률")) {
+  				System.out.println(" *** linkAnalysis cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysis cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		String[] BarChartData = {"23", "21", "21", "20", "20", "20", "19"};
   		for(int i=0;i<=6;i++) {
   			for(int y=0;y<=5;y++) {
   	  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();
   			}
-  			if($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).text().trim().equals(fileNameBarChartData[i])) {
-				System.out.println(" *** fileDownload fileNameBarChartData(" + i + ") check Success !! *** ");
+  			if($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).text().trim().equals(BarChartData[i])) {
+				System.out.println(" *** linkAnalysis BarChartData(" + i + ") check Success !! *** ");
 			} else {
-				System.out.println(" *** fileDownload fileNameBarChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
+				System.out.println(" *** linkAnalysis BarChartData(" + i + ") check Fail ... !@#$%^&*() *** ");
   			}
   		}
-  		String[] fileNameLineChartData = {"23", "0", "21", "0", "21", "0", "20", "0", "20", "0", "20", "0", "19", "0"};
+  		String[] LineChartData = {"23", "0", "21", "0", "21", "0", "20", "0", "20", "0", "20", "0", "19", "0"};
   		for(int i=0,a=0;i<=6;i++) {
   			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
   			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
@@ -220,10 +310,10 @@ public class pageLink {
   				}
   				for(int z=0;z<=1;z++) {
   					if(z==1) {
-  	  					if($(".highcharts-tooltip", 1).text().trim().split(": ")[z].equals(fileNameLineChartData[a])) {
-  	  	  					System.out.println(" *** fileDownload fileNameLineChartData(" + a + ") check Success !! *** ");
+  	  					if($(".highcharts-tooltip", 1).text().trim().split(": ")[z].equals(LineChartData[a])) {
+  	  	  					System.out.println(" *** linkAnalysis LineChartData(" + a + ") check Success !! *** ");
   	  	  				} else {
-  	  	  					System.out.println(" *** fileDownload fileNameLineChartData(" + a + ") check Fail ... !@#$%^&*() *** ");
+  	  	  					System.out.println(" *** linkAnalysis LineChartData(" + a + ") check Fail ... !@#$%^&*() *** ");
   	  	  					System.out.println($(".highcharts-tooltip", 1).text().trim().split(": ")[z]);
   	  	  					close();
   	  					}
@@ -231,6 +321,70 @@ public class pageLink {
   					}
   				}
   			}
+  		}
+  		$(".statDataCenter > table > tbody > tr > td > a > img", 1).click();
+  		switchTo().window(1);
+  		if($("h3", 0).text().trim().equals("주요페이지 링크분석 추이")) {
+  			System.out.println(" *** linkAnalysisProgress window(1) Success !! *** ");
+  		} else {
+  			System.out.println(" *** linkAnalysisProgress window(1) Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
+  		String[] summaryProgressTableData = {"2019.08.08 ~ 2019.08.09", "23"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".summaryDataCenter", i).text().trim().equals(summaryProgressTableData[i])) {
+  				System.out.println(" *** linkAnalysisProgress summaryProgressTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysisProgress summaryProgressTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] summaryFootProgressTableData = {"2019.08.06 ~ 2019.08.07", "0"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".summaryFootCenter", i).text().trim().equals(summaryFootProgressTableData[i])) {
+  				System.out.println(" *** linkAnalysisProgress summaryFootProgressTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysisProgress summaryFootProgressTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statProgressTableData = {"2019.08.08 (목)", "2019.08.09 (금)"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", (i+1)).text().trim().equals(statProgressTableData[i])) {
+  				System.out.println(" *** linkAnalysisProgress statProgressTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** linkAnalysisProgress statProgressTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", (i+1)).text().trim());
+  				close();
+  			}
+  		}
+  		String[] progressLineChartData = {"2019.08.09 (금)", "전환-기타1 의 클릭수 추이: 23", "2019.08.08 (목)", "전환-기타1 의 클릭수 추이: 0"};
+  		for(int i=0,y=0;i<=1;i++) {
+  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).waitUntil(visible, 10000);
+  			for(int x=0;x<=5;x++) {
+  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();				
+  			}
+  			for(int x=0;x<=1;x++) {
+  				if($(".highcharts-tooltip", 0).text().trim().split("● ")[x].equals(progressLineChartData[y])) {
+  					System.out.println(" *** linkAnalysis progressLineChartData(" + y + ") check Success !! *** ");
+  				} else {
+  					System.out.println(" *** linkAnalysis progressLineChartData(" + y + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[x]);
+  					close();
+  				}
+  				y++;
+  			}
+  		}
+  		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("주요페이지 링크분석")) {
+  			System.out.println(" *** linkAnalysis window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** linkAnalysis window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
   		}
   		System.out.println(" ! ----- linkAnalysis End ----- ! ");
   	}
@@ -247,6 +401,16 @@ public class pageLink {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** inputFormAnalysis summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** inputFormAnalysis summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -267,6 +431,16 @@ public class pageLink {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"폼 변수", "속성", "폼 입력수"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** inputFormAnalysis statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** inputFormAnalysis statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}	
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** inputFormAnalysis statFootTableData check Success !! *** ");
 		} else {
@@ -274,14 +448,45 @@ public class pageLink {
 			System.out.println($(".statFootRight", 0).text().trim());
 			close();
 		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_3").click();
+  		$("#cell_3").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 1).text().trim().equals("폼 입력수")) {
+  				System.out.println(" *** inputFormAnalysis cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** inputFormAnalysis cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 1).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 1).text().trim().equals("비율")) {
+  				System.out.println(" *** inputFormAnalysis cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** inputFormAnalysis cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 1).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- inputFormAnalysis End ----- ! ");
   	}
   	@Test(priority = 3)
   	public void flashMenuAnalysis() {
   		System.out.println(" ! ----- flashMenuAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
-  		if($("h3", 0).text().trim().equals("주요페이지 입력폼분석")) {
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
+  		if($("h3", 0).text().trim().equals("플래쉬 메뉴 분석")) {
 			System.out.println(" *** flashMenuAnalysis pageLoad Success !! *** ");
 		} else {
 			System.out.println(" *** flashMenuAnalysis pageLoad Fail ... !@#$%^&*() *** ");
@@ -289,6 +494,16 @@ public class pageLink {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** flashMenuAnalysis summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** flashMenuAnalysis summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -309,6 +524,16 @@ public class pageLink {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"메뉴명", "클릭수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** flashMenuAnalysis statDataTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** flashMenuAnalysis statDataTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}	
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** flashMenuAnalysis statFootTableData check Success !! *** ");
 		} else {
@@ -316,21 +541,38 @@ public class pageLink {
 			System.out.println($(".statFootRight", 0).text().trim());
 			close();
 		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_2").click();
+  		$("#cell_2").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 1).text().trim().equals("클릭수")) {
+  				System.out.println(" *** flashMenuAnalysis cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** flashMenuAnalysis cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 1).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 1).text().trim().equals("비율")) {
+  				System.out.println(" *** flashMenuAnalysis cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** flashMenuAnalysis cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 1).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- flashMenuAnalysis End ----- ! ");
-  	}
-  	//@Test(priority = 99)
-  	public void increaseVisit() {
-  		System.out.println(" ! ----- increaseVisit Start ----- ! ");
-		open("http://apzz092888.blogspot.com/");
-		$(".sub24").waitUntil(visible, 10000);
-		for(int i=1;i<=24;i++) {
-			$(".sub" + i).scrollIntoView(false);
-			$(".sub" + i).click();
-	  		System.out.println("sub" + i + " 클릭");
-			sleep(500);
-		}
-		open("http://apzz98288.egloos.com");
-  		System.out.println(" ! ----- increaseVisit End ----- ! ");
   	}
 	@AfterClass
 	public void afterTest() {

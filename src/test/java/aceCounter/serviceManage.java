@@ -191,8 +191,8 @@ public class serviceManage {
   	public void memberInfo() {
 		System.out.println(" ! ----- memberInfo Start ----- ! ");
 		$(".btn_menu").click();
-		$("ul > li > a > span", 6).waitUntil(visible, 10000);
-		$("ul > li > a > span", 6).click();
+		$("ul > li > a > span", 5).waitUntil(visible, 10000);
+		$("ul > li > a > span", 5).click();
 		if($("h3", 0).text().trim().equals("회원정보수정")) {
 			System.out.println(" *** memberInfo pageLoad check Success !! *** ");
 		} else {
@@ -293,7 +293,7 @@ public class serviceManage {
   	@Test(priority = 4)
   	public void serviceInfo() {
 		System.out.println(" ! ----- serviceInfo Start ----- ! ");
-		$("ul > li > a > span", 7).click();
+		$("ul > li > a > span", 6).click();
 		if($("h3", 0).text().trim().equals("서비스정보수정")) {
 			System.out.println(" *** serviceInfo pageLoad check Success !! *** ");
 		} else {
@@ -352,7 +352,7 @@ public class serviceManage {
   	@Test(priority = 5)
   	public void addService() {
 		System.out.println(" ! ----- addService Start ----- ! ");
-		$("ul > li > a > span", 8).click();
+		$("ul > li > a > span", 7).click();
 		if($("h3", 0).text().trim().equals("서비스 추가")) {
 			System.out.println(" *** addService pageLoad check Success !! *** ");
 		} else {
@@ -395,7 +395,7 @@ public class serviceManage {
     @Test(priority = 6)
   	public void subAdmin() {
 		System.out.println(" ! ----- subAdmin Start ----- ! ");
-		$("ul > li > a > span", 9).click();
+		$("ul > li > a > span", 8).click();
 		if($("h3", 0).text().trim().equals("부관리자 관리")) {
 			System.out.println(" *** subAdmin pageLoad check Success !! *** ");
 		} else {
@@ -469,7 +469,7 @@ public class serviceManage {
     @Test(priority = 7)
   	public void coupon() {
 		System.out.println(" ! ----- coupon Start ----- ! ");
-		$("ul > li > a > span", 10).click();
+		$("ul > li > a > span", 9).click();
 		if($("h3", 0).text().trim().equals("쿠폰관리")) {
 			System.out.println(" *** coupon pageLoad check Success !! *** ");
 		} else {
@@ -482,8 +482,8 @@ public class serviceManage {
     @Test(priority = 8)
   	public void leaveService() {
 		System.out.println(" ! ----- leaveService Start ----- ! ");
-		$("ul > li > a > span", 11).waitUntil(visible, 10000);
-		$("ul > li > a > span", 11).click();
+		$("ul > li > a > span", 10).waitUntil(visible, 10000);
+		$("ul > li > a > span", 10).click();
 		if($("h3", 0).text().trim().equals("서비스 해지신청")) {
 			System.out.println(" *** leaveService pageLoad check Success !! *** ");
 		} else {
@@ -528,8 +528,8 @@ public class serviceManage {
   	public void extendCharge() {
 		System.out.println(" ! ----- extendCharge Start ----- ! ");
 		$("span.title", 2).click();
-		$("ul > li > a > span", 15).waitUntil(visible, 10000);
-		$("ul > li > a > span", 15).click();
+		$("ul > li > a > span", 14).waitUntil(visible, 10000);
+		$("ul > li > a > span", 14).click();
 		if($("h3", 0).text().trim().equals("연장요금결제")) {
 			System.out.println(" *** extendCharge pageLoad check Success !! *** ");
 		} else {
@@ -680,8 +680,8 @@ public class serviceManage {
     @Test(priority = 10)
   	public void additionalCharge() {
 		System.out.println(" ! ----- additionalCharge Start ----- ! ");
-		$("ul > li > a > span", 16).waitUntil(visible, 10000);
-		$("ul > li > a > span", 16).click();
+		$("ul > li > a > span", 15).waitUntil(visible, 10000);
+		$("ul > li > a > span", 15).click();
 		if($("h3", 0).text().trim().equals("추가요금결제")) {
 			System.out.println(" *** additionalCharge pageLoad check Success !! *** ");
 		} else {
@@ -703,8 +703,8 @@ public class serviceManage {
     @Test(priority = 11)
   	public void myTaxList() {
 		System.out.println(" ! ----- myTaxList Start ----- ! ");
-		$("ul > li > a > span", 17).waitUntil(visible, 10000);
-		$("ul > li > a > span", 17).click();
+		$("ul > li > a > span", 16).waitUntil(visible, 10000);
+		$("ul > li > a > span", 16).click();
 		if($("h3", 0).text().trim().equals("세금계산서")) {
 			System.out.println(" *** myTaxList pageLoad check Success !! *** ");
 		} else {
@@ -717,8 +717,8 @@ public class serviceManage {
     @Test(priority = 12)
   	public void myPayInfo() {
 		System.out.println(" ! ----- myPayInfo Start ----- ! ");
-		$("ul > li > a > span", 18).waitUntil(visible, 10000);
-		$("ul > li > a > span", 18).click();
+		$("ul > li > a > span", 17).waitUntil(visible, 10000);
+		$("ul > li > a > span", 17).click();
 		if($("h3", 0).text().trim().equals("결제내역조회")) {
 			System.out.println(" *** myPayInfo pageLoad check Success !! *** ");
 		} else {
@@ -738,8 +738,8 @@ public class serviceManage {
     @Test(priority = 13)
   	public void myBankInfo() {
 		System.out.println(" ! ----- myBankInfo Start ----- ! ");
-		$("ul > li > a > span", 19).waitUntil(visible, 10000);
-		$("ul > li > a > span", 19).click();
+		$("ul > li > a > span", 18).waitUntil(visible, 10000);
+		$("ul > li > a > span", 18).click();
 		if($("h3", 0).text().trim().equals("무통장 입금안내")) {
 			System.out.println(" *** myBankInfo pageLoad check Success !! *** ");
 		} else {
@@ -776,8 +776,8 @@ public class serviceManage {
   	public void installScript() {
 		System.out.println(" ! ----- installScript Start ----- ! ");
 		$("span.title", 3).click();
-		$("ul > li > a > span", 23).waitUntil(visible, 10000);
-		$("ul > li > a > span", 23).click();
+		$("ul > li > a > span", 22).waitUntil(visible, 10000);
+		$("ul > li > a > span", 22).click();
 		if($("h3", 0).text().trim().equals("분석스크립트 설치신청")) {
 			System.out.println(" *** installScript pageLoad check Success !! *** ");
 		} else {
@@ -825,8 +825,8 @@ public class serviceManage {
     @Test(priority = 15)
   	public void serviceModify() {
 		System.out.println(" ! ----- serviceModify Start ----- ! ");
-		$("ul > li > a > span", 24).waitUntil(visible, 10000);
-		$("ul > li > a > span", 24).click();
+		$("ul > li > a > span", 23).waitUntil(visible, 10000);
+		$("ul > li > a > span", 23).click();
 		if($("h3", 0).text().trim().equals("서비스버전 변경신청")) {
 			System.out.println(" *** serviceModify pageLoad check Success !! *** ");
 		} else {
@@ -853,8 +853,8 @@ public class serviceManage {
     @Test(priority = 16)
   	public void Report() {
 		System.out.println(" ! ----- Report Start ----- ! ");
-		$("ul > li > a > span", 25).waitUntil(visible, 10000);
-		$("ul > li > a > span", 25).click();
+		$("ul > li > a > span", 24).waitUntil(visible, 10000);
+		$("ul > li > a > span", 24).click();
 		if($("h3", 0).text().trim().equals("요약리포트 발송설정")) {
 			System.out.println(" *** Report pageLoad check Success !! *** ");
 		} else {
@@ -918,8 +918,8 @@ public class serviceManage {
     @Test(priority = 17)
   	public void Monitoring() {
 		System.out.println(" ! ----- Monitoring Start ----- ! ");
-		$("ul > li > a > span", 26).waitUntil(visible, 10000);
-		$("ul > li > a > span", 26).click();
+		$("ul > li > a > span", 25).waitUntil(visible, 10000);
+		$("ul > li > a > span", 25).click();
 		if($("h3", 0).text().trim().equals("알림메일 발송설정")) {
 			System.out.println(" *** Monitoring pageLoad check Success !! *** ");
 		} else {
@@ -965,8 +965,8 @@ public class serviceManage {
   	public void serviceNotice() {
 		System.out.println(" ! ----- serviceNotice Start ----- ! ");
 		$("span.title", 4).click();
-		$("ul > li > a > span", 30).waitUntil(visible, 10000);
-		$("ul > li > a > span", 30).click();
+		$("ul > li > a > span", 29).waitUntil(visible, 10000);
+		$("ul > li > a > span", 29).click();
 		if($("h3", 0).text().trim().equals("서비스 공지")) {
 			System.out.println(" *** serviceNotice pageLoad check Success !! *** ");
 		} else {
@@ -1010,8 +1010,8 @@ public class serviceManage {
     @Test(priority = 19)
   	public void serviceAlarm() {
 		System.out.println(" ! ----- serviceAlarm Start ----- ! ");
-		$("ul > li > a > span", 31).waitUntil(visible, 10000);
-		$("ul > li > a > span", 31).click();
+		$("ul > li > a > span", 30).waitUntil(visible, 10000);
+		$("ul > li > a > span", 30).click();
 		if($("h3", 0).text().trim().equals("서비스 알림내역")) {
 			System.out.println(" *** serviceAlarm pageLoad check Success !! *** ");
 		} else {
@@ -1054,8 +1054,8 @@ public class serviceManage {
   	public void mWebConnect() {
 		System.out.println(" ! ----- mWebConnect Start ----- ! ");
 		$("span.title", 5).click();
-		$("ul > li > a > span", 35).waitUntil(visible, 10000);
-		$("ul > li > a > span", 35).click();
+		$("ul > li > a > span", 34).waitUntil(visible, 10000);
+		$("ul > li > a > span", 34).click();
 		if($("h3", 0).text().trim().equals("모바일웹 캠페인 연결신청")) {
 			System.out.println(" *** mWebGuide pageLoad check Success !! *** ");
 		} else {
@@ -1104,8 +1104,8 @@ public class serviceManage {
     @Test(priority = 21)
   	public void download() {
 		System.out.println(" ! ----- download Start ----- ! ");
-		$("ul > li > a > span", 37).waitUntil(visible, 10000);
-		$("ul > li > a > span", 37).click();
+		$("ul > li > a > span", 36).waitUntil(visible, 10000);
+		$("ul > li > a > span", 36).click();
 		if($("h3", 0).text().trim().equals("다운로드 센터")) {
 			System.out.println(" *** download pageLoad check Success !! *** ");
 		} else {

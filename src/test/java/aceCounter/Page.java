@@ -235,6 +235,16 @@ public class Page {
   		js("$j('#calendar_data2').val('2019-08-09')");
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간", "페이지뷰", "방문수", "방문당 페이지뷰"};
+  		for(int i=0;i<=3;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** pupolarPage summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** pupolarPage summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "463", "5044.44%\n상승", "208", "2211.11%\n상승", "2.23", "123.00%\n상승", "00:00:10"};
   		for(int i=0;i<=7;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -252,6 +262,16 @@ public class Page {
   			} else {
   				System.out.println(" *** pupolarPage summaryFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTopTableData = {"페이지명", "페이지뷰", "비율", "방문수"};
+  		for(int i=0;i<=3;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** pupolarPage statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** pupolarPage statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
@@ -279,85 +299,101 @@ public class Page {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** pupolarPage no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** pupolarPage no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
-  		$("form > table > tbody > tr > td > img", 0).click();  		
+  		$("form > table > tbody > tr > td > img", 0).click();
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-  		String[] pageviewBarChartData = {"/index.html", "173"};
-		for(int i=0;i<=5;i++) {
-			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
-		}
-		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(pageviewBarChartData[x])) {
-				System.out.println(" *** popularPage pageviewBarChartData(" + x + ") check Success !! *** ");
-			} else {
-				System.out.println(" *** popularPage pageviewBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
-				close();
-  			}
-  			x++;
-		}
-  		String[] pageviewLineChartData = {"2019.08.09 (금)", "/index.html의 페이지뷰 추이: 165", "2019.08.08 (목)", "/index.html의 페이지뷰 추이: 8"};
-		for(int i=0;i<=5;i++) {
-			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-		}
-		for(int y=0,x=0;y<=1;y++) {
-			for(int i=0;i<=5;i++) {
-				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-			}
-  			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(pageviewLineChartData[x])) {
-  					System.out.println(" *** popularPage pageviewLineChartData(" + x + ") check Success !! *** ");
-  				} else {
-  					System.out.println(" *** popularPage pageviewLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
-  					close();
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_4").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_4").click();
+  		$("#cell_4").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("방문수")) {
+  				System.out.println(" *** pupolarPage cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** pupolarPage cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_4").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_4").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("방문당 페이지뷰")) {
+  				System.out.println(" *** pupolarPage cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** pupolarPage cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		String[] BarChartData = {"173", "34", "34", "34", "34", "34", "34", "38", "17", "17", "17", "17", "17", "17"};
+  		for(int i=0,z=0;i<=1;i++) {
+  	  		for(int x=0;x<=6;x++) {
+  	  			for(int y=0;y<=5;y++) {
+  	  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", x).hover();
   	  			}
-  	  			x++;
-  			}
-		}
-  		$("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > font").click();
-  		sleep(500);
-		String[] visitCountBarChartData = {"/index.html", "38"};
-		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-		for(int i=0;i<=5;i++) {
-			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-		}
-		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(visitCountBarChartData[x])) {
-				System.out.println(" *** popularPage visitCountBarChartData(" + x + ") check Success !! *** ");
-			} else {
-				System.out.println(" *** popularPage visitCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
-				close();
-  			}
-  			x++;
-		}
-  		String[] visitCountLineChartData = {"2019.08.09 (금)", "/index.html의 방문수 추이: 30", "2019.08.08 (목)", "/index.html의 방문수 추이: 8"};
-		for(int i=0;i<=5;i++) {
-			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-		}
-		for(int y=0,x=0;y<=1;y++) {
-			for(int i=0;i<=5;i++) {
-				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-			}
-  			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(visitCountLineChartData[x])) {
-  					System.out.println(" *** popularPage visitCountLineChartData(" + x + ") check Success !! *** ");
-  				} else {
-  					System.out.println(" *** popularPage visitCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
-  					close();
+  	  			$(".highcharts-tooltip", 0).waitUntil(visible, 10000);
+  	  			for(int y=1;y<=1;y++) {
+  	  	  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(BarChartData[z])) {
+  	  					System.out.println(" *** popularPage BarChartData(" + z + ") check Success !! *** ");
+  	  				} else {
+  	  					System.out.println(" *** popularPage BarChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+  	  					System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  	  					close();
+  	  	  			}
+  	    	  		z++;
   	  			}
-  	  			x++;
-  			}
-		}
+  	  		}
+  	  		$("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a  > font").click();
+  	  		sleep(800);
+  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
+	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
+	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		}
+  		String[] LineChartData = {"165", "8", "34", "0", "34", "0", "34", "0", "34", "0", "34", "0", "34", "0"
+  				, "30", "8", "17", "0", "17", "0", "17", "0", "17", "0", "17", "0", "17", "0"};
+  		for(int i=0,a=0;i<=1;i++) {
+  	  		for(int x=0;x<=6;x++) {
+  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", x).click();
+  				for(int y=0;y<=1;y++) {
+  					for(int z=0;z<=5;z++) {
+  		  				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).waitUntil(visible, 10000);
+  						$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
+  					}
+  					for(int z=1;z<=1;z++) {
+  						if($(".highcharts-tooltip", 1).text().trim().split(": ")[z].equals(LineChartData[a])) {
+  	  	  					System.out.println(" *** popularPage LineChartData(" + a + ") check Success !! *** ");
+  						} else {
+  	  	  					System.out.println(" *** popularPage LineChartData(" + a + ") check Fail ... !@#$%^&*() *** ");
+  	  	  					System.out.println($(".highcharts-tooltip", 1).text().trim().split(": ")[z]);
+  	  	  					close();
+  						}
+  						a++;
+  					}
+  				}
+  	  		}
+  	  		$("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a  > font").click();
+  	  		sleep(800);
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
+  	  		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+	        $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+	        $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+  		}
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
   		switchTo().window(1);
   		if($("h3", 0).text().trim().equals("많이 찾는 페이지 추이")) {
@@ -405,22 +441,29 @@ public class Page {
 			close();
 		}
 		String[] progressLineChartData = {"2019.08.09 (금)", "/index.html의 페이지뷰 추이: 165", "2019.08.08 (목)", "/index.html의 페이지뷰 추이: 8"};
-		for(int y=0,x=0;y<=1;y++) {
-			for(int i=0;i<=5;i++) {
-	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();				
+		for(int i=0,y=0;i<=1;i++) {
+			for(int x=0;x<=5;x++) {
+	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();				
 			}
-  			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 0).text().trim().split("● ")[z].equals(progressLineChartData[x])) {
-  					System.out.println(" *** pupolarPage Progress LineChartData(" + x + ") check Success !! *** ");
+  			for(int x=0;x<=1;x++) {
+  	  			if($(".highcharts-tooltip", 0).text().trim().split("● ")[x].equals(progressLineChartData[y])) {
+  					System.out.println(" *** pupolarPage Progress LineChartData(" + y + ") check Success !! *** ");
   				} else {
-  					System.out.println(" *** pupolarPage Progress LineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[z]);
+  					System.out.println(" *** pupolarPage Progress LineChartData(" + y + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[x]);
   					close();
   	  			}
-  	  			x++;
+  	  			y++;
   			}
 		}
-  		switchTo().window(0); 		
+  		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("많이 찾는 페이지")) {
+  			System.out.println(" *** pupolarPage window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** pupolarPage window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
   		System.out.println(" ! ----- popularPage End ----- ! ");
   	}
   	@Test(priority = 3)
@@ -436,8 +479,18 @@ public class Page {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "463", "5044.44%\n상승", "208", "2211.11%\n상승", "2.23", "123.00%\n상승", "00:00:10"};
-  		for(int i=0;i<=7;i++) {
+  		String[] summaryTopTableData = {"분석 기간", "페이지뷰", "방문수", "방문당 페이지뷰", "평균체류시간"};
+  		for(int i=0;i<=4;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** popularDirectory summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** popularDirectory summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "463", "5044.44%\n상승", "208", "2211.11%\n상승", "2.23", "123.00%\n상승", "00:00:10", "상승"};
+  		for(int i=0;i<=8;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** popularDirectory summaryTableData(" + i + ") check Success !! *** ");
   			} else {
@@ -453,6 +506,16 @@ public class Page {
   			} else {
   				System.out.println(" *** popularDirectory summaryFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTopTableData = {"디렉토리명", "페이지뷰", "비율", "방문수"};
+  		for(int i=0;i<=3;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** popularDirectory statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** popularDirectory statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
@@ -480,105 +543,111 @@ public class Page {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** popularDirectory no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** popularDirectory no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
-  		$(".formgray", 0).setValue("");  		
-  		$("form > table > tbody > tr > td > img", 0).click();  		
+  		$(".formgray", 0).setValue("");
+  		$("form > table > tbody > tr > td > img", 0).click();
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-  		String[] pageviewBarChartData = {"/search/label/", "239", "/", "173", "/search/label/missing/", "48", "/2019/08/", "3"};
-  		for(int i=0,x=0;i<=3;i++) {
-  			for(int z=0;z<=5;z++) {
-  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
-  			}
-  			for(int y=0;y<=1;y++) {
-  	  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(pageviewBarChartData[x])) {
-  					System.out.println(" *** popularDirectory pageviewBarChartData(" + x + ") check Success !! *** ");
-  				} else {
-  					System.out.println(" *** popularDirectory pageviewBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
-  					close();
-  	  			}
-  	  			x++;
-  			}
+  		if(!$(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
+  				System.out.println(" *** popularDirectory search check Success !! *** ");
+  			} else {
+  				System.out.println(" *** popularDirectory search check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statFootRight", 0).text().trim());
+  				close();
   		}
-  		String[] pageviewLineChartData = {"2019.08.09 (금)", "/search/label/의 페이지뷰 추이: 239", "2019.08.08 (목)", "/search/label/의 페이지뷰 추이: 0", 
-  				"2019.08.09 (금)", "/의 페이지뷰 추이: 165", "2019.08.08 (목)", "/의 페이지뷰 추이: 8", 
-  				"2019.08.09 (금)", "/search/label/missing/의 페이지뷰 추이: 48", "2019.08.08 (목)", "/search/label/missing/의 페이지뷰 추이: 0", 
-  				"2019.08.09 (금)", "/2019/08/의 페이지뷰 추이: 3", "2019.08.08 (목)", "/2019/08/의 페이지뷰 추이: 0"};
-  		for(int i=0,x=0;i<=3;i++) {
-  			for(int z=0;z<=5;z++) {
-  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
-  			}
-  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  			for(int y=0;y<=1;y++) {
-  				for(int a=0;a<=5;a++) {
-  	  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
-  				}
-  	  			for(int z=0;z<=1;z++) {
-	  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(pageviewLineChartData[x])) {
-	  					System.out.println(" *** popularDirectory pageviewLineChartData(" + x + ") check Success !! *** ");
-	  				} else {
-	  					System.out.println(" *** popularDirectory pageviewLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-	  					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
-	  					close();
-	  	  			}
-	  	  			x++;
-  	  			}
-  			}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_5").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_5").click();
+  		$("#cell_5").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("평균체류시간")) {
+  				System.out.println(" *** popularDirectory cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** popularDirectory cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
-  		$("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > font").click();
-  		sleep(500);
-		String[] visitCountBarChartData = {"/search/label/", "120", "/search/label/missing/", "48", "/", "38", "/2019/08/", "2"};
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=5;i++) {
-			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
-		}
-  		for(int i=0,x=0;i<=3;i++) {
-  			for(int z=0;z<=5;z++) {
-  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
-  			}
-  			for(int y=0;y<=1;y++) {
-  	  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(visitCountBarChartData[x])) {
-  					System.out.println(" *** popularDirectory visitCountBarChartData(" + x + ") check Success !! *** ");
-  				} else {
-  					System.out.println(" *** popularDirectory visitCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
-  					close();
-  	  			}
-  	  			x++;
-  			}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_5").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_5").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("방문당 페이지뷰")) {
+  				System.out.println(" *** popularDirectory cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** popularDirectory cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
-  		String[] visitCountLineChartData = {"2019.08.09 (금)", "/search/label/의 방문수 추이: 120", "2019.08.08 (목)", "/search/label/의 방문수 추이: 0", 
-  				"2019.08.09 (금)", "/search/label/missing/의 방문수 추이: 48", "2019.08.08 (목)", "/search/label/missing/의 방문수 추이: 0", 
-  				"2019.08.09 (금)", "/의 방문수 추이: 30", "2019.08.08 (목)", "/의 방문수 추이: 8", 
-  				"2019.08.09 (금)", "/2019/08/의 방문수 추이: 2", "2019.08.08 (목)", "/2019/08/의 방문수 추이: 0"};
-  		for(int i=0,x=0;i<=3;i++) {
-  			for(int a=0;a<=5;a++) {
-  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();
-  			}
-  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
-  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
-  			for(int y=0;y<=1;y++) {
-  				for(int b=0;b<=5;b++) {
-  					$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-  				}
-  	  			for(int z=0;z<=1;z++) {
-	  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(visitCountLineChartData[x])) {
-	  					System.out.println(" *** popularDirectory visitCountLineChartData(" + x + ") check Success !! *** ");
-	  				} else {
-	  					System.out.println(" *** popularDirectory visitCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-	  					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
-	  					close();
-	  	  			}
-	  	  			x++;
-  	  			}
-  			}
+  		String[] BarChartData = {"/search/label/", "239", "/", "173", "/search/label/missing/", "48", "/2019/08/", "3"
+  				, "/search/label/", "120", "/search/label/missing/", "48", "/", "38", "/2019/08/", "2"};
+  		for(int i=0,z=0;i<=1;i++) {
+  		    for(int x=0;x<=3;x++) {
+  		        for(int y=0;y<=5;y++) {
+  		            $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", x).hover();
+  		        }
+  		        $(".highcharts-tooltip", 0).waitUntil(visible, 10000);
+  		        for(int y=0;y<=1;y++) {
+  		            if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(BarChartData[z])) {
+  		                System.out.println(" *** popularDirectory BarChartData(" + z + ") check Success !! *** ");
+  		            } else {
+  		                System.out.println(" *** popularDirectory BarChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+  		                System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  		                close();
+  		            }
+  		            z++;
+  		        }
+  		    }
+  		    $("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a  > font").click();
+  		    sleep(800);
+  		    $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+  		}
+  		String[] LineChartData = {"2019.08.09 (금)", "/search/label/의 페이지뷰 추이: 239", "2019.08.08 (목)", "/search/label/의 페이지뷰 추이: 0"
+  		        , "2019.08.09 (금)", "/의 페이지뷰 추이: 165", "2019.08.08 (목)", "/의 페이지뷰 추이: 8"
+  				, "2019.08.09 (금)", "/search/label/missing/의 페이지뷰 추이: 48", "2019.08.08 (목)", "/search/label/missing/의 페이지뷰 추이: 0"
+  		        , "2019.08.09 (금)", "/2019/08/의 페이지뷰 추이: 3", "2019.08.08 (목)", "/2019/08/의 페이지뷰 추이: 0"
+  		        , "2019.08.09 (금)", "/search/label/의 방문수 추이: 120", "2019.08.08 (목)", "/search/label/의 방문수 추이: 0"
+  				, "2019.08.09 (금)", "/search/label/missing/의 방문수 추이: 48", "2019.08.08 (목)", "/search/label/missing/의 방문수 추이: 0"
+  		        , "2019.08.09 (금)", "/의 방문수 추이: 30", "2019.08.08 (목)", "/의 방문수 추이: 8"
+  		        , "2019.08.09 (금)", "/2019/08/의 방문수 추이: 2", "2019.08.08 (목)", "/2019/08/의 방문수 추이: 0"};
+  		for(int i=0,a=0;i<=1;i++) {
+  		    for(int x=0;x<=3;x++) {
+  		        $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", x).click();
+  		        for(int y=0;y<=1;y++) {
+  		            for(int z=0;z<=5;z++) {
+  		                $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).waitUntil(visible, 10000);
+  		                $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
+  		            }
+  		            for(int z=0;z<=1;z++) {
+  		                if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(LineChartData[a])) {
+  		                    System.out.println(" *** popularDirectory LineChartData(" + a + ") check Success !! *** ");
+  		                } else {
+  		                    System.out.println(" *** popularDirectory LineChartData(" + a + ") check Fail ... !@#$%^&*() *** ");
+  		                    System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
+  		                    close();
+  		                }
+  		                a++;
+  		            }
+  		        }
+  		    }
+  		    $("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a  > font").click();
+  		    sleep(800);
+  		    $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
+  		    $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		    $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+  		    $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
   		}
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
   		switchTo().window(2);
@@ -627,22 +696,29 @@ public class Page {
 			close();
 		}
 		String[] progressLineChartData = {"2019.08.09 (금)", "/search/label/의 페이지뷰 추이: 239", "2019.08.08 (목)", "/search/label/의 페이지뷰 추이: 0"};
-		for(int y=0,x=0;y<=1;y++) {
-			for(int i=0;i<=5;i++) {
-	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();				
+		for(int i=0,y=0;i<=1;i++) {
+			for(int x=0;x<=5;x++) {
+	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", i).hover();				
 			}
-  			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 0).text().trim().split("● ")[z].equals(progressLineChartData[x])) {
-  					System.out.println(" *** popularDirectory Progress LineChartData(" + x + ") check Success !! *** ");
+  			for(int x=0;x<=1;x++) {
+  	  			if($(".highcharts-tooltip", 0).text().trim().split("● ")[x].equals(progressLineChartData[y])) {
+  					System.out.println(" *** popularDirectory Progress LineChartData(" + y + ") check Success !! *** ");
   				} else {
-  					System.out.println(" *** popularDirectory Progress LineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[z]);
+  					System.out.println(" *** popularDirectory Progress LineChartData(" + y + ") check Fail ... !@#$%^&*() *** ");
+  					System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[x]);
   					close();
   	  			}
-  	  			x++;
+  	  			y++;
   			}
 		}
   		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("많이 찾는 디렉토리")) {
+  			System.out.println(" *** popularDirectory window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** popularDirectory window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
   		System.out.println(" ! ----- popularDirectory End ----- ! ");
   	}
   	@Test(priority = 4)
@@ -658,6 +734,16 @@ public class Page {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** refreshPage summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** refreshPage summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "11"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -678,14 +764,28 @@ public class Page {
   				close();
   			}
   		}
-  		String[] statTableData = {"1.   \n  /index.html", "9"};
+  		String[] statTopTableData = {"페이지명", "새로고침수"};
   		for(int i=0;i<=1;i++) {
-  			if($(".statDataCenter", (i+2)).text().trim().equals(statTableData[i])) {
-  				System.out.println(" *** refreshPage statTableData(" + i + ") check Success !! *** ");
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** refreshPage statTopTableData(" + i + ") check Success !! *** ");
   			} else {
-  				System.out.println(" *** refreshPage statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+2)).text().trim());
+  				System.out.println(" *** refreshPage statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
+  			}
+  		}
+  		String[] statTableData = {"1.   \n  /index.html", "9", "", "1", "", "1"};
+  		for(int i=0;i<=5;i++) {
+  			if(i==2 || i==4) {
+  				
+  			} else {
+  	  			if($(".statDataCenter", (i+2)).text().trim().equals(statTableData[i])) {
+  	  				System.out.println(" *** refreshPage statTableData(" + i + ") check Success !! *** ");
+  	  			} else {
+  	  				System.out.println(" *** refreshPage statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  	  				System.out.println($(".statDataCenter", (i+2)).text().trim());
+  	  				close();
+  	  			}
   			}
   		}
   		String[] statFootTableData = {"합계", "11"};
@@ -702,49 +802,90 @@ public class Page {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** refreshPage no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** refreshPage no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
   		$("form > table > tbody > tr > td > img", 0).click();  		
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-  		String[] refreshPageBarChartData = {"/index.html", "9"};
-  		for(int z=0;z<=5;z++) {
-  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_2").click();
+  		$("#cell_2").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("새로고침수")) {
+  				System.out.println(" *** refreshPage cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** refreshPage cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
-		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(refreshPageBarChartData[x])) {
-				System.out.println(" *** refreshPage refreshCountBarChartData(" + x + ") check Success !! *** ");
-			} else {
-				System.out.println(" *** refreshPage refreshCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
-				close();
-  			}
-  			x++;
-		}
-  		String[] refreshPageLineChartData = {"2019.08.09 (금)", "/index.html의 새로고침수 추이: 9", "2019.08.08 (목)", "/index.html의 새로고침수 추이: 0"};
-  		for(int i=0;i<=5;i++) {
-  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("비율")) {
+  				System.out.println(" *** refreshPage cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** refreshPage cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
   		}
-		for(int y=0,x=0;y<=1;y++) {
-			for(int i=0;i<=5;i++) {
-				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
-			}
-  			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(refreshPageLineChartData[x])) {
-  					System.out.println(" *** refreshPage refreshCountLineChartData(" + x + ") check Success !! *** ");
-  				} else {
-  					System.out.println(" *** refreshPage refreshCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
-  					close();
-  	  			}
-  	  			x++;
-  			}
-		}
+  		String[] BarChartData = {"/index.html", "9", "", "1", "", "1"};
+	    for(int x=0,z=0;x<=2;x++) {
+	        for(int y=0;y<=5;y++) {
+	            $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", x).hover();
+	        }
+	        $(".highcharts-tooltip", 0).waitUntil(visible, 10000);
+	        for(int y=0;y<=1;y++) {
+	        	if(y==0 && z==2 || z==4) {
+	        		z++;
+	        	} else {
+		            if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(BarChartData[z])) {
+		                System.out.println(" *** refreshPage BarChartData(" + z + ") check Success !! *** ");
+		            } else {
+		                System.out.println(" *** refreshPage BarChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+		                System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+		                close();
+		            }
+		            z++;
+	        	}
+	        }
+	    }
+	    String[] LineChartData = {"2019.08.09 (금)", "/index.html의 새로고침수 추이: 9", "2019.08.08 (목)", "/index.html의 새로고침수 추이: 0"
+	    		, "2019.08.09 (금)", "/search/label/fileDownload의 새로고침수 추이: 1", "2019.08.08 (목)", "/search/label/fileDownload의 새로고침수 추이: 0"
+	    		, "2019.08.09 (금)", "/2019/08/index.html의 새로고침수 추이: 1", "2019.08.08 (목)", "/2019/08/index.html의 새로고침수 추이: 0"};
+	    for(int i=0,z=0;i<=2;i++) {
+	    	$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
+	    	for(int x=0;x<=1;x++) {
+	    		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).waitUntil(visible, 10000);
+	    		for(int y=0;y<=5;y++) {
+	    			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).hover();				
+	    		}
+	    		for(int y=0;y<=1;y++) {
+	    			if($(".highcharts-tooltip", 1).text().trim().split("● ")[y].equals(LineChartData[z])) {
+	    				System.out.println(" *** refreshPage LineChartData(" + z + ") check Success !! *** ");
+	    			} else {
+	    				System.out.println(" *** refreshPage LineChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+	    				System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
+	    				close();
+	    			}
+	    			z++;
+	    		}
+	    	}
+	    }
 		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
   		switchTo().window(3);
   		if($("h3", 0).text().trim().equals("페이지별 새로고침 추이")) {
@@ -808,6 +949,13 @@ public class Page {
   			}
 		}
   		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("페이지별 새로고침")) {
+  			System.out.println(" *** refreshPage window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** refreshPage window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
   		System.out.println(" ! ----- refreshPage End ----- ! ");
   	}
   	@Test(priority = 5)
@@ -823,6 +971,16 @@ public class Page {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** startPage summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** startPage summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "38"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -840,6 +998,16 @@ public class Page {
   			} else {
   				System.out.println(" *** startPage summaryFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTopTableData = {"페이지명", "시작횟수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** startPage statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** startPage statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
@@ -880,9 +1048,43 @@ public class Page {
   		for(int i=0;i<=5;i++) {
   	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
   		}
-  		String[] startCountBarChartData = {"/index.html", "38"};
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_2").click();
+  		$("#cell_2").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("시작횟수")) {
+  				System.out.println(" *** startPage cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** startPage cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("비율")) {
+  				System.out.println(" *** startPage cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** startPage cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		for(int i=0;i<=5;i++) {
+  			$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 0).hover();
+  		}
+  		String[] BarChartData = {"/index.html", "38"};
 		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(startCountBarChartData[x])) {
+  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(BarChartData[x])) {
 				System.out.println(" *** startPage startCountBarChartData(" + x + ") check Success !! *** ");
 			} else {
 				System.out.println(" *** startPage startCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
@@ -891,13 +1093,13 @@ public class Page {
   			}
   			x++;
 		}
-  		String[] startCountLineChartData = {"2019.08.09 (금)", "/index.html의 시작횟수 추이: 30", "2019.08.08 (목)", "/index.html의 시작횟수 추이: 8"};
+  		String[] LineChartData = {"2019.08.09 (금)", "/index.html의 시작횟수 추이: 30", "2019.08.08 (목)", "/index.html의 시작횟수 추이: 8"};
 		for(int y=0,x=0;y<=1;y++) {
   			for(int i=0;i<=5;i++) {
   	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();  				
   			}
   			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(startCountLineChartData[x])) {
+  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(LineChartData[x])) {
   					System.out.println(" *** startPage startCountLineChartData(" + x + ") check Success !! *** ");
   				} else {
   					System.out.println(" *** startPage startCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
@@ -970,6 +1172,13 @@ public class Page {
   			}
 		}
   		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("시작된 페이지")) {
+  			System.out.println(" *** startPage window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** startPage window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
   		System.out.println(" ! ----- startPage End ----- ! ");
   	}
   	@Test(priority = 6)
@@ -985,6 +1194,16 @@ public class Page {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** endPage summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** endPage summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "38"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -1002,6 +1221,16 @@ public class Page {
   			} else {
   				System.out.println(" *** endPage summaryFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTopTableData = {"페이지명", "종료횟수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** endPage statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** endPage statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
@@ -1029,23 +1258,54 @@ public class Page {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** endPage no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** endPage no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
   		$("form > table > tbody > tr > td > img", 0).click();  		
   		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-  		String[] endCountBarChartData = {"/index.html", "21", "/search/label/missing/missingC", "16", "/2019/08/index.html", "1"};
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_2").click();
+  		$("#cell_2").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("종료횟수")) {
+  				System.out.println(" *** endPage cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** endPage cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("비율")) {
+  				System.out.println(" *** endPage cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** endPage cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		String[] BarChartData = {"/index.html", "21", "/search/label/missing/missingC", "16", "/2019/08/index.html", "1"};
   		for(int i=0,x=0;i<=2;i++) {
   			for(int z=0;z<=5;z++) {
   	  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();	
   			}
   			for(int y=0;y<=1;y++) {
-  	  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(endCountBarChartData[x])) {
+  	  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(BarChartData[x])) {
   					System.out.println(" *** endPage endCountBarChartData(" + x + ") check Success !! *** ");
   				} else {
   					System.out.println(" *** endPage endCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
@@ -1055,7 +1315,7 @@ public class Page {
   	  			x++;
   			}
   		}
-  		String[] endCountLineChartData = {"2019.08.09 (금)", "/index.html의 종료횟수 추이: 13", "2019.08.08 (목)", "/index.html의 종료횟수 추이: 8", 
+  		String[] LineChartData = {"2019.08.09 (금)", "/index.html의 종료횟수 추이: 13", "2019.08.08 (목)", "/index.html의 종료횟수 추이: 8", 
   				"2019.08.09 (금)", "/search/label/missing/missingC의 종료횟수 추이: 16", "2019.08.08 (목)", "/search/label/missing/missingC의 종료횟수 추이: 0", 
   				"2019.08.09 (금)", "/2019/08/index.html의 종료횟수 추이: 1", "2019.08.08 (목)", "/2019/08/index.html의 종료횟수 추이: 0"};
   		for(int i=0,x=0;i<=2;i++) {
@@ -1068,8 +1328,9 @@ public class Page {
   	  			for(int a=0;a<=5;a++) {
   	  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
   	  			}
+  	  			$(".highcharts-tooltip", 1).waitUntil(visible, 10000);
   	  			for(int z=0;z<=1;z++) {
-	  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(endCountLineChartData[x])) {
+	  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(LineChartData[x])) {
 	  					System.out.println(" *** endPage endCountLineChartData(" + x + ") check Success !! *** ");
 	  				} else {
 	  					System.out.println(" *** endPage endCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
@@ -1143,6 +1404,13 @@ public class Page {
   			}
 		}
   		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("종료된 페이지")) {
+  			System.out.println(" *** endPage window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** endPage window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
   		System.out.println(" ! ----- endPage End ----- ! ");
   	}
   	@Test(priority = 7)
@@ -1158,6 +1426,16 @@ public class Page {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** returnPage summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** returnPage summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "18"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -1175,6 +1453,16 @@ public class Page {
   			} else {
   				System.out.println(" *** returnPage summaryFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTopTableData = {"페이지명", "반송횟수", "시작횟수"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** returnPage statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** returnPage statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
@@ -1202,22 +1490,53 @@ public class Page {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** returnPage no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** returnPage no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
   		$("form > table > tbody > tr > td > img", 0).click();
-	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_3").click();
+  		$("#cell_3").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("시작횟수")) {
+  				System.out.println(" *** returnPage cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** returnPage cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** returnPage cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** returnPage cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		for(int i=0;i<=5;i++) {
   	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
   		}
-  		String[] startCountBarChartData = {"/index.html", "18"};
+  		String[] BarChartData = {"/index.html", "18"};
 		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(startCountBarChartData[x])) {
+  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(BarChartData[x])) {
 				System.out.println(" *** returnPage returnCountBarChartData(" + x + ") check Success !! *** ");
 			} else {
 				System.out.println(" *** returnPage returnCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
@@ -1226,13 +1545,13 @@ public class Page {
   			}
   			x++;
 		}
-  		String[] returnCountLineChartData = {"2019.08.09 (금)", "/index.html의 반송횟수 추이: 10", "2019.08.08 (목)", "/index.html의 반송횟수 추이: 8"};
+  		String[] LineChartData = {"2019.08.09 (금)", "/index.html의 반송횟수 추이: 10", "2019.08.08 (목)", "/index.html의 반송횟수 추이: 8"};
 		for(int y=0,x=0;y<=1;y++) {
   			for(int i=0;i<=5;i++) {
   	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
   			}
   			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(returnCountLineChartData[x])) {
+  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(LineChartData[x])) {
   					System.out.println(" *** returnPage returnCountLineChartData(" + x + ") check Success !! *** ");
   				} else {
   					System.out.println(" *** returnPage returnCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
@@ -1305,6 +1624,13 @@ public class Page {
   			}
 		}
   		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("반송된 페이지")) {
+  			System.out.println(" *** returnPage window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** returnPage window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
   		System.out.println(" ! ----- returnPage End ----- ! ");
   	}
   	@Test(priority = 8)
@@ -1320,6 +1646,16 @@ public class Page {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간", "페이지뷰", "방문수"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** menuPageview summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** menuPageview summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "237", "상승", "17", "상승", "13.94"};
   		for(int i=0;i<=5;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -1337,6 +1673,16 @@ public class Page {
   			} else {
   				System.out.println(" *** menuPageview summaryFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTopTableData = {"메뉴명", "페이지뷰", "비율", "방문수"};
+  		for(int i=0;i<=3;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** menuPageview statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** menuPageview statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
@@ -1364,79 +1710,96 @@ public class Page {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** menuPageview no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** menuPageview no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
   		$("form > table > tbody > tr > td > img", 0).click();  		
-	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
+  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_4").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_4").click();
+  		$("#cell_4").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 1).text().trim().equals("방문수")) {
+  				System.out.println(" *** menuPageview cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** menuPageview cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 1).text().trim());
+  				close();
   		}
-  		String[] pageviewBarChartData = {"전환테스트", "237"};
-		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(pageviewBarChartData[x])) {
-				System.out.println(" *** menuPageview pageviewBarChartData(" + x + ") check Success !! *** ");
-			} else {
-				System.out.println(" *** menuPageview pageviewBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
-				close();
-  			}
-  			x++;
-		}
-  		String[] pageviewLineChartData = {"2019.08.09 (금)", "전환테스트의 페이지뷰 추이: 237", "2019.08.08 (목)", "전환테스트의 페이지뷰 추이: 0"};
-		for(int y=0,x=0;y<=1;y++) {
-  			for(int i=0;i<=5;i++) {
-  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
-  			}
-  			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(pageviewLineChartData[x])) {
-  					System.out.println(" *** menuPageview pageviewLineChartData(" + x + ") check Success !! *** ");
-  				} else {
-  					System.out.println(" *** menuPageview pageviewLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
-  					close();
-  	  			}
-  	  			x++;
-  			}
-		}
-  		$("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > font").click();
-  		sleep(500);
-	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-  		for(int i=0;i<=5;i++) {
-  	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_4").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_4").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 1).text().trim().equals("방문당 페이지뷰")) {
+  				System.out.println(" *** menuPageview cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** menuPageview cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 1).text().trim());
+  				close();
   		}
-  		String[] visitCountBarChartData = {"전환테스트", "17"};
-		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(visitCountBarChartData[x])) {
-				System.out.println(" *** menuVisitCount visitCountBarChartData(" + x + ") check Success !! *** ");
-			} else {
-				System.out.println(" *** menuVisitCount visitCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
-				close();
-  			}
-  			x++;
-		}
-  		String[] visitCountLineChartData = {"2019.08.09 (금)", "전환테스트의 방문수 추이: 17", "2019.08.08 (목)", "전환테스트의 방문수 추이: 0"};
-		for(int y=0,x=0;y<=1;y++) {
-  			for(int i=0;i<=5;i++) {
-  	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
-  			}
-  			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(visitCountLineChartData[x])) {
-  					System.out.println(" *** menuVisitCount visitCountLineChartData(" + x + ") check Success !! *** ");
-  				} else {
-  					System.out.println(" *** menuVisitCount visitCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
-  					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
-  					close();
-  	  			}
-  	  			x++;
-  			}
-		}
+  		String[] BarChartData = {"전환테스트", "237", "전환테스트", "17"};
+  		for(int i=0,z=0;i<=1;i++) {
+  		    for(int x=0;x<=0;x++) {
+  		        for(int y=0;y<=5;y++) {
+  		            $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", x).hover();
+  		        }
+  		        $(".highcharts-tooltip", 0).waitUntil(visible, 10000);
+  		        for(int y=0;y<=1;y++) {
+  		            if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(BarChartData[z])) {
+  		                System.out.println(" *** menuPageview BarChartData(" + z + ") check Success !! *** ");
+  		            } else {
+  		                System.out.println(" *** menuPageview BarChartData(" + z + ") check Fail ... !@#$%^&*() *** ");
+  		                System.out.println($(".highcharts-tooltip", 0).text().trim().split(": ")[y]);
+  		                close();
+  		            }
+  		            z++;
+  		        }
+  		    }
+  		    $("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a  > font").click();
+  		    $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+  		}
+  		String[] LineChartData = {"2019.08.09 (금)", "전환테스트의 페이지뷰 추이: 237", "2019.08.08 (목)", "전환테스트의 페이지뷰 추이: 0"
+  				, "2019.08.09 (금)", "전환테스트의 방문수 추이: 17", "2019.08.08 (목)", "전환테스트의 방문수 추이: 0"};
+  		for(int i=0,a=0;i<=1;i++) {
+  		    for(int x=0;x<=0;x++) {
+  		        $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", x).click();
+  		        for(int y=0;y<=1;y++) {
+  		            for(int z=0;z<=5;z++) {
+  		                $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).waitUntil(visible, 10000);
+  		                $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();
+  		            }
+  		            for(int z=0;z<=1;z++) {
+  		                if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(LineChartData[a])) {
+  		                    System.out.println(" *** popularPage LineChartData(" + a + ") check Success !! *** ");
+  		                } else {
+  		                    System.out.println(" *** popularPage LineChartData(" + a + ") check Fail ... !@#$%^&*() *** ");
+  		                    System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[z]);
+  		                    close();
+  		                }
+  		                a++;
+  		            }
+  		        }
+  		    }
+  		    $("#stat_graph > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a  > font").click();
+  		    $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).waitUntil(visible, 10000);
+  		    $(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", 0).hover();
+  		    $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
+  		    $(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+  		}
 		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
   		switchTo().window(7);
   		if($("h3", 0).text().trim().equals("메뉴별 페이지뷰 추이")) {
@@ -1500,6 +1863,13 @@ public class Page {
   			}
 		}
   		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("메뉴별 페이지뷰")) {
+  			System.out.println(" *** menuPageview window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** menuPageview window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
   		System.out.println(" ! ----- menuPageview End ----- ! ");
   	}
   	@Test(priority = 9)
@@ -1515,6 +1885,16 @@ public class Page {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간", "오류횟수"};
+  		for(int i=0;i<=1;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** scriptErrorPage summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** scriptErrorPage summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "10", "상승", "2.16%"};
   		for(int i=0;i<=3;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -1535,13 +1915,23 @@ public class Page {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"스크립트 오류 페이지", "페이지뷰", "오류 횟수"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** scriptErrorPage statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** scriptErrorPage statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] statTableData = {"1.   \n  /index.html", "173", "10"};
   		for(int i=0;i<=2;i++) {
   			if($(".statDataCenter", (i+3)).text().trim().equals(statTableData[i])) {
   				System.out.println(" *** scriptErrorPage statTableData(" + i + ") check Success !! *** ");
   			} else {
   				System.out.println(" *** scriptErrorPage statTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".statDataCenter", (i+4)).text().trim());
+  				System.out.println($(".statDataCenter", (i+3)).text().trim());
   				close();
   			}
   		}
@@ -1559,11 +1949,11 @@ public class Page {
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** scriptErrorPage no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** scriptErrorPage no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
   		$(".formgray", 0).setValue("");  		
@@ -1572,9 +1962,43 @@ public class Page {
   		for(int i=0;i<=5;i++) {
   	  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();
   		}
-  		String[] errorCountBarChartData = {"/index.html", "10"};
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_3").click();
+  		$("#cell_3").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("오류 횟수")) {
+  				System.out.println(" *** scriptErrorPage cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** scriptErrorPage cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_3").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("오류율")) {
+  				System.out.println(" *** scriptErrorPage cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** scriptErrorPage cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		String[] BarChartData = {"/index.html", "10"};
+		for(int i=0;i<=5;i++) {
+  			$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).hover();	
+		}
 		for(int y=0,x=0;y<=1;y++) {
-  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(errorCountBarChartData[x])) {
+  			if($(".highcharts-tooltip", 0).text().trim().split(" : ")[y].equals(BarChartData[x])) {
 				System.out.println(" *** scriptErrorPage errorCountBarChartData(" + x + ") check Success !! *** ");
 			} else {
 				System.out.println(" *** scriptErrorPage errorCountBarChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
@@ -1583,13 +2007,13 @@ public class Page {
   			}
   			x++;
 		}
-  		String[] errorCountLineChartData = {"2019.08.09 (금)", "/index.html의 오류횟수 추이: 10", "2019.08.08 (목)", "/index.html의 오류횟수 추이: 0"};
+  		String[] LineChartData = {"2019.08.09 (금)", "/index.html의 오류횟수 추이: 10", "2019.08.08 (목)", "/index.html의 오류횟수 추이: 0"};
 		for(int y=0,x=0;y<=1;y++) {
   			for(int i=0;i<=5;i++) {
   	  			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", y).hover();	
   			}
   			for(int z=0;z<=1;z++) {
-  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(errorCountLineChartData[x])) {
+  	  			if($(".highcharts-tooltip", 1).text().trim().split("● ")[z].equals(LineChartData[x])) {
   					System.out.println(" *** scriptErrorPage errorCountLineChartData(" + x + ") check Success !! *** ");
   				} else {
   					System.out.println(" *** scriptErrorPage errorCountLineChartData(" + x + ") check Fail ... !@#$%^&*() *** ");
@@ -1662,6 +2086,13 @@ public class Page {
   			}
 		}
   		switchTo().window(0);
+  		if($("h3", 0).text().trim().equals("스크립트 오류 페이지")) {
+  			System.out.println(" *** scriptErrorPage window(0) check Success !! *** ");
+  		} else {
+  			System.out.println(" *** scriptErrorPage window(0) check Fail ... !@#$%^&*() *** ");
+  			System.out.println($("h3", 0).text().trim());
+  			close();
+  		}
   		System.out.println(" ! ----- scriptErrorPage End ----- ! ");
   	}
   	@Test(priority = 10)
@@ -1677,6 +2108,16 @@ public class Page {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] summaryTopTableData = {"분석 기간"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
+  				System.out.println(" *** errorPage summaryTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** errorPage summaryTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".summaryTopCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "0"};
   		for(int i=0;i<=1;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
@@ -1697,28 +2138,55 @@ public class Page {
   				close();
   			}
   		}
-  		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
+  		String[] statDataTopTable = {"에러 페이지"};
+  		for(int i=0;i<=0;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statDataTopTable[i])) {
+  				System.out.println(" *** errorPage statDataTable Detail (" + i + ") Success !! *** ");
+  			} else {
+  				System.out.println(" *** errorPage statDataTable Detail (" + i + ") Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  	  		}	
+  		}
+  		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** errorPage no-data search check Success !! *** ");
 			} else {
 				System.out.println(" *** errorPage no-data search check Fail ... !@#$%^&*() *** ");
-				System.out.println($(".statFootRight").text().trim());
+				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_2").click();
+  		$("#cell_2").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("에러요청횟수")) {
+  				System.out.println(" *** errorPage cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** errorPage cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_2").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("비율")) {
+  				System.out.println(" *** errorPage cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** errorPage cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- errorPage End ----- ! ");
-  	}
-  	//@Test(priority = 99)
-  	public void increaseVisit() {
-  		System.out.println(" ! ----- increaseVisit Start ----- ! ");
-		open("http://apzz092888.blogspot.com/");
-		$(".sub24").waitUntil(visible, 10000);
-		for(int i=1;i<=24;i++) {
-			$(".sub" + i).scrollIntoView(false);
-			$(".sub" + i).click();
-	  		System.out.println("sub" + i + " 클릭");
-			sleep(500);
-		}
-		open("http://apzz98288.egloos.com");
-  		System.out.println(" ! ----- increaseVisit End ----- ! ");
   	}
 	@AfterClass
 	public void afterTest() {

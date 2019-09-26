@@ -1132,7 +1132,7 @@ public class Setting {
 		$("#chkidx_1").waitUntil(visible, 10000);
 		$("#chkidx_1").click();
 		$(".btn_purple", 0).click();
-		alertCheck("campaignGroup add msg", "캠페인그룹이 등록되었습니다.");	
+		alertCheck("campaignGroup add msg", "캠페인그룹이 등록되었습니다.");
 		$(".left", 1).waitUntil(visible, 10000);
 		if($(".left", 1).text().trim().equals(id_date + " 캠페인 그룹명")) {
 			System.out.println(" *** campaignGroup add check Success !! *** ");

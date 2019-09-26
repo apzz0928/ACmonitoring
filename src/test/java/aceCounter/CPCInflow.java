@@ -179,6 +179,16 @@ public class CPCInflow {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"순번", "Unique ID", "IP", "광고상품", "광고매체", "검색어", "유입일시", "페이지뷰"};
+  		for(int i=0;i<=7;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** CPCInflowBreakdown statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPCInflowBreakdown statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
 		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** CPCInflowBreakdown statTableData check Success !! *** ");
 		} else {
@@ -218,6 +228,17 @@ public class CPCInflow {
   			} else {
   				System.out.println(" *** CPCDupInflow summaryFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTopTableData = {"순번", "Unique ID", "IP 수", "유입수/\n페이지뷰", "기간내 최초\n유입일시", "기간내 최초 유입 후 중복유입 내역", "합계"
+  				, "평균\n페이지뷰", "~10분\n이내", "~30분\n이내", "~1시간\n이내", "~3시간\n이내", "~6시간\n이내", "6시간\n이후~"};
+  		for(int i=0;i<=13;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** CPCDupInflow statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPCDupInflow statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
@@ -263,6 +284,16 @@ public class CPCInflow {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"순번", "Unique ID", "유입수"};
+  		for(int i=0;i<=2;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** CPCIPChange statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPCIPChange statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
 		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** CPCIPChange statTableData check Success !! *** ");
 		} else {
@@ -305,6 +336,16 @@ public class CPCInflow {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"순번", "Unique ID", "최초 유입일시", "누적 유입수", "기간내 유입수", "의심 유입수"};
+  		for(int i=0;i<=5;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** CPCSuspicionInflow statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPCSuspicionInflow statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** CPCSuspicionInflow statTableData check Success !! *** ");
 		} else {
@@ -327,6 +368,16 @@ public class CPCInflow {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
+  		String[] statTopTableData = {"순번", "광고상품", "검색어", "기준일", "(최근 30일)\n일평균 유입수", "모니터링 기준", "초과일시", "기준일 유입수"};
+  		for(int i=0;i<=7;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** CPCsearchKeyword statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPCsearchKeyword statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** CPCsearchKeyword statTableData check Success !! *** ");
 		} else {
@@ -366,6 +417,16 @@ public class CPCInflow {
   			} else {
   				System.out.println(" *** CPClandingLoss summaryFootTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".summaryFootCenter", i).text().trim());
+  				close();
+  			}
+  		}
+  		String[] statTopTableData = {"순번", "Unique ID", "IP", "광고상품", "광고매체", "검색어", "랜딩페이지"};
+  		for(int i=0;i<=6;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** CPClandingLoss statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPClandingLoss statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
   		}
@@ -411,6 +472,16 @@ public class CPCInflow {
   				close();
   			}
   		}
+  		String[] statTopTableData = {"랜딩페이지", "유입수", "유입률", "구매건수", "구매율", "반송수"};
+  		for(int i=0;i<=5;i++) {
+  			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
+  				System.out.println(" *** CPClandingpageComparison statTopTableData(" + i + ") check Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPClandingpageComparison statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataCenter", i).text().trim());
+  				close();
+  			}
+  		}
   		if($(".statFootRight", 0).text().trim().equals("자료가 없습니다.")) {
 			System.out.println(" *** CPClandingpageComparison statTableData check Success !! *** ");
 		} else {
@@ -418,21 +489,38 @@ public class CPCInflow {
 			System.out.println($(".statDataCenter", 0).text().trim());
 			close();
 		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_10").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
+  		confirm("현재구성이 기본구성과 같습니다!");
+  		$("#cell_check_10").click();
+  		$("#cell_13").waitUntil(hidden, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송수")) {
+  				System.out.println(" *** CPClandingpageComparison cellEdit check 0 Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPClandingpageComparison cellEdit check 0 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
+  		$(".floatLeft > a > img", 0).click();
+  		$("#cell_check_10").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click(); 		
+  		confirm("기본구성으로 되돌리시겠습니까?\n현재구성은 다시 복구되지 않습니다.");
+  		$("#cell_10").waitUntil(visible, 10000);
+  		$("#cell_edit_div > table > tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
+  		$("#cell_edit_div").waitUntil(hidden, 10000);
+  		sleep(800);
+  		if($(".statDataRight", 0).text().trim().equals("반송률")) {
+  				System.out.println(" *** CPClandingpageComparison cellEdit check 1 Success !! *** ");
+  			} else {
+  				System.out.println(" *** CPClandingpageComparison cellEdit check 1 Fail ... !@#$%^&*() *** ");
+  				System.out.println($(".statDataRight", 0).text().trim());
+  				close();
+  		}
   		System.out.println(" ! ----- CPClandingpageComparison End ----- ! ");
-  	}
-  	@Test(priority = 99)
-  	public void increaseVisit() {
-  		System.out.println(" ! ----- increaseVisit Start ----- ! ");
-		open("http://apzz092888.blogspot.com/");
-		$(".sub24").waitUntil(visible, 10000);
-		for(int i=1;i<=24;i++) {
-			$(".sub" + i).scrollIntoView(false);
-			$(".sub" + i).click();
-	  		System.out.println("sub" + i + " 클릭");
-			sleep(500);
-		}
-		open("http://apzz98288.egloos.com");
-  		System.out.println(" ! ----- increaseVisit End ----- ! ");
   	}
 	@AfterClass
 	public void afterTest() {
