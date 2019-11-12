@@ -140,87 +140,11 @@ public class movePath {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void movePathSummary() {
-  		System.out.println(" ! ----- movePathSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 9).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("이동경로 요약")) {
-			System.out.println(" *** movePathSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** movePathSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** movePathSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** movePathSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"이전 페이지경로", "페이지 이동 깊이", "다음 페이지경로"};
-  		for(int i=0;i<=2;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** movePathSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** movePathSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 3).waitUntil(visible, 10000);
-  		String[] widgetChart = {"1 페이지:18", "21 페이지 이상:17", "2~4 페이지:2", "5~9 페이지:1"};
-  		for(int i=0;i<=3;i++) {
-  			if($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g > text", i).text().trim().equals(widgetChart[i])) {
-  				System.out.println(" *** movePathSummary widgetChart (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** movePathSummary widgetChart (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".close_wiget", 2).click();
-  		$("#widget3").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '7')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 6).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget4 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget4 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("다음 페이지경로")) {
-				System.out.println(" *** movePathSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** movePathSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget4 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** movePathSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** movePathSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- movePathSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void majorPagePath() {
   		System.out.println(" ! ----- majorPagePath Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 8).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("주요 페이지경로")) {
 			System.out.println(" *** majorPagePath pageLoad Success !! *** ");
 		} else {
@@ -330,11 +254,11 @@ public class movePath {
   		}
   		System.out.println(" ! ----- majorPagePath End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void customerMovePath() {
   		System.out.println(" ! ----- customerMovePath Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("구매자 이동경로")) {
 			System.out.println(" *** customerMovePath pageLoad Success !! *** ");
 		} else {
@@ -393,11 +317,11 @@ public class movePath {
   		}
   		System.out.println(" ! ----- customerMovePath End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void nextPrevmovePath() {
   		System.out.println(" ! ----- nextPrevmovePath Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("이전,다음 페이지경로")) {
 			System.out.println(" *** nextPrevmovePath pageLoad Success !! *** ");
 		} else {
@@ -436,11 +360,11 @@ public class movePath {
   		}
   		System.out.println(" ! ----- nextPrevmovePath End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void menuMovePath() {
   		System.out.println(" ! ----- menuMovePath Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("메뉴별 이동경로")) {
 			System.out.println(" *** menuMovePath pageLoad Success !! *** ");
 		} else {
@@ -565,11 +489,11 @@ public class movePath {
   		}
   		System.out.println(" ! ----- menuMovePath End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void nextPrevMenuPath() {
   		System.out.println(" ! ----- nextPrevMenuPath Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("이전,다음 메뉴경로")) {
 			System.out.println(" *** nextPrevMenuPath pageLoad Success !! *** ");
 		} else {
@@ -590,11 +514,11 @@ public class movePath {
   		}
   		System.out.println(" ! ----- nextPrevMenuPath End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void pageMoveDepth() {
   		System.out.println(" ! ----- pageMoveDepth Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("페이지 이동 깊이")) {
 			System.out.println(" *** pageMoveDepth pageLoad Success !! *** ");
 		} else {
@@ -799,11 +723,11 @@ public class movePath {
 		switchTo().window(0);
   		System.out.println(" ! ----- pageMoveDepth End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void keywordMovePath() {
   		System.out.println(" ! ----- keywordMovePath Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("키워드별 이동경로")) {
 			System.out.println(" *** keywordMovePath pageLoad Success !! *** ");
 		} else {

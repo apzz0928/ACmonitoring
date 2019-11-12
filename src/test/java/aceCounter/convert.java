@@ -142,7 +142,7 @@ public class Convert {
   	@Test(priority = 1)
   	public void convertPageInflow() {
   		System.out.println(" ! ----- convertPageInflow Start ----- ! ");
-  		$("#m_stat > ul > li > a", 8).click();
+  		$("#m_stat > ul > li > a", 7).click();
   		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
   		$(".active > ul > li > a > span", 0).click();
   		if($("h3").text().trim().equals("전환 페이지 유입출처")) {

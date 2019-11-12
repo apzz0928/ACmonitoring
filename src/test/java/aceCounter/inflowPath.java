@@ -140,101 +140,11 @@ public class inflowPath {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void inflowPathSummary() {
-  		System.out.println(" ! ----- inflowPathSummary Start ----- ! ");
+  	public void visitInflow() {
+  		System.out.println(" ! ----- visitInflow Start ----- ! ");
   		$("#m_stat > ul > li > a", 4).click();
   		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
   		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("유입경로 요약")) {
-			System.out.println(" *** inflowPathSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** inflowPathSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		} 
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** inflowPathSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** inflowPathSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"방문유입출처", "유입 도메인", "유입 도메인상세", "유입 URL상세"};
-  		for(int i=0;i<=3;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** inflowPathSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** inflowPathSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 7).waitUntil(visible, 10000);
-  		String[] widgetChart = {"직접유입36", "94.74%", "내부유입2", "5.26%", "직접유입36", "94.74%", "내부유입2", "5.26%"
-  				, "직접유입36", "94.74%", "내부유입2", "5.26%", "직접유입36", "94.74%", "내부유입2", "5.26%"};
-  		for(int i=0,y=0,z=0;i<=7;i++) { //각 차트 라벨에 마우스 오버
-  			if(i>=2) { //차트 툴팁용
-  				if(i%2 == 0) {
-  					z++;
-  				}
-  			}
-  			for(int x=0;x<=5;x++) {
-  		  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();			
-  			}
-  			$(".highcharts-tooltip", z).waitUntil(visible, 10000); //툴팁 로딩 대기
-  			for(int x=0;x<=1;x++) {
-  				if($(".highcharts-tooltip", z).text().trim().split(": ")[x].equals(widgetChart[y])) {
-  					System.out.println(" *** inflowPathSummary widgetChart (" + y + ") check Success !! *** ");
-  	  			} else {
-  	  				System.out.println(" *** inflowPathSummary widgetChart (" + y + ") check Fail ... !@#$%^&*() *** ");
-  	  				System.out.println($(".highcharts-tooltip", z).text().trim().split(": ")[x]);
-  	  				close();
-  				}
-  				y++;
-  			}
-  		}
-  		$(".close_wiget", 3).click();
-  		$("#widget4").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '3')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 11).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 8).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g > text", 7).waitUntil(visible, 10000);
-  		$("#widget5 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget5 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("유입 URL상세")) {
-				System.out.println(" *** inflowPathSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** inflowPathSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget5 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}  		
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** inflowPathSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** inflowPathSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- inflowPathSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
-  	public void visitInflow() {
-  		System.out.println(" ! ----- visitInflow Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("방문유입출처")) {
 			System.out.println(" *** visitInflow pageLoad Success !! *** ");
 		} else {
@@ -454,11 +364,11 @@ public class inflowPath {
   		}
   		System.out.println(" ! ----- visitInflow End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void searchEngineWord() {
   		System.out.println(" ! ----- searchEngineWord Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("검색엔진/검색어")) {
 			System.out.println(" *** searchEngineWord pageLoad Success !! *** ");
 		} else {
@@ -507,11 +417,11 @@ public class inflowPath {
 		}
   		System.out.println(" ! ----- searchEngineWord End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void searchEngineDetail() {
   		System.out.println(" ! ----- searchEngineDetail Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("검색엔진 상세")) {
 			System.out.println(" *** searchEngineDetail pageLoad Success !! *** ");
 		} else {
@@ -590,11 +500,11 @@ public class inflowPath {
   		}
   		System.out.println(" ! ----- searchEngineDetail End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void searchWordDetail() {
   		System.out.println(" ! ----- searchWordDetail Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("검색어 상세")) {
 			System.out.println(" *** searchWordDetail pageLoad Success !! *** ");
 		} else {
@@ -673,11 +583,11 @@ public class inflowPath {
   		}
   		System.out.println(" ! ----- searchWordDetail End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void changeSearchWord() {
   		System.out.println(" ! ----- changeSearchWord Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("전환 이전 검색어")) {
 			System.out.println(" *** changeSearchWord pageLoad Success !! *** ");
 		} else {
@@ -705,11 +615,11 @@ public class inflowPath {
 		}
   		System.out.println(" ! ----- changeSearchWord End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void portalInflow() {
   		System.out.println(" ! ----- portalInflow Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("주요포털 섹션별 유입")) {
 			System.out.println(" *** portalInflow pageLoad Success !! *** ");
 		} else {
@@ -788,11 +698,11 @@ public class inflowPath {
   		}
   		System.out.println(" ! ----- portalInflow End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void inflowDomain() {
   		System.out.println(" ! ----- inflowDomain Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("유입 도메인")) {
 			System.out.println(" *** inflowDomain pageLoad Success !! *** ");
 		} else {
@@ -1007,11 +917,11 @@ public class inflowPath {
   		}
   		System.out.println(" ! ----- inflowDomain End ----- ! ");
   	}
-  	@Test(priority = 9)
+  	@Test(priority = 8)
   	public void inflowDomainDetail() {
   		System.out.println(" ! ----- inflowDomainDetail Start ----- ! ");
-  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 8).click();
+  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 7).click();
   		if($("h3", 0).text().trim().equals("유입 도메인상세")) {
 			System.out.println(" *** inflowDomainDetail pageLoad Success !! *** ");
 		} else {
@@ -1226,11 +1136,11 @@ public class inflowPath {
   		}
   		System.out.println(" ! ----- inflowDomainDetail End ----- ! ");
   	}
-  	@Test(priority = 10)
+  	@Test(priority = 9)
   	public void inflowURLDetail() {
   		System.out.println(" ! ----- inflowURLDetail Start ----- ! ");
-  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 9).click();
+  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 8).click();
   		if($("h3", 0).text().trim().equals("유입 URL상세")) {
 			System.out.println(" *** inflowURLDetail pageLoad Success !! *** ");
 		} else {
@@ -1445,11 +1355,11 @@ public class inflowPath {
   		}
   		System.out.println(" ! ----- inflowURLDetail End ----- ! ");
   	}
-  	@Test(priority = 11)
+  	@Test(priority = 10)
   	public void webMail() {
   		System.out.println(" ! ----- webMail Start ----- ! ");
-  		$(".active > ul > li > a > span", 10).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 10).click();
+  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 9).click();
   		if($("h3", 0).text().trim().equals("웹메일")) {
 			System.out.println(" *** webMail pageLoad Success !! *** ");
 		} else {
@@ -1528,11 +1438,11 @@ public class inflowPath {
 		}
   		System.out.println(" ! ----- webMail End ----- ! ");
   	}
-  	@Test(priority = 12)
+  	@Test(priority = 11)
   	public void SNS() {
   		System.out.println(" ! ----- SNS Start ----- ! ");
-  		$(".active > ul > li > a > span", 11).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 11).click();
+  		$(".active > ul > li > a > span", 10).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 10).click();
   		if($("h3", 0).text().trim().equals("블로그/카페/SNS")) {
 			System.out.println(" *** SNS pageLoad Success !! *** ");
 		} else {
@@ -1611,11 +1521,11 @@ public class inflowPath {
 		}
   		System.out.println(" ! ----- SNS End ----- ! ");
   	}
-  	@Test(priority = 13)
+  	@Test(priority = 12)
   	public void shoppingSearch() {
   		System.out.println(" ! ----- shoppingSearch Start ----- ! ");
-  		$(".active > ul > li > a > span", 12).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 12).click();
+  		$(".active > ul > li > a > span", 11).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 11).click();
   		if($("h3", 0).text().trim().equals("쇼핑검색")) {
 			System.out.println(" *** shoppingSearch pageLoad Success !! *** ");
 		} else {
@@ -1694,11 +1604,11 @@ public class inflowPath {
 		}
   		System.out.println(" ! ----- shoppingSearch End ----- ! ");
   	}
-  	@Test(priority = 14)
+  	@Test(priority = 13)
   	public void domain() {
   		System.out.println(" ! ----- domain Start ----- ! ");
-  		$(".active > ul > li > a > span", 13).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 13).click();
+  		$(".active > ul > li > a > span", 12).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 12).click();
   		if($("h3", 0).text().trim().equals("도메인 용도별")) {
 			System.out.println(" *** domain pageLoad Success !! *** ");
 		} else {
@@ -1777,11 +1687,11 @@ public class inflowPath {
 		}
   		System.out.println(" ! ----- domain End ----- ! ");
   	}
-  	@Test(priority = 15)
+  	@Test(priority = 14)
   	public void nationDomain() {
   		System.out.println(" ! ----- nationDomain Start ----- ! ");
-  		$(".active > ul > li > a > span", 14).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 14).click();
+  		$(".active > ul > li > a > span", 13).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 13).click();
   		if($("h3", 0).text().trim().equals("국가별 도메인")) {
 			System.out.println(" *** nationDomain pageLoad Success !! *** ");
 		} else {

@@ -140,87 +140,11 @@ public class Page {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void pageSummary() {
-  		System.out.println(" ! ----- pageSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 10).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("페이지 요약")) {
-			System.out.println(" *** pageSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** pageSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** pageSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** pageSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"많이 찾는 페이지", "시작된 페이지", "반송된 페이지", "페이지별 새로고침", "종료된 페이지", "메뉴별 페이지뷰"};
-  		for(int i=0;i<=5;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** pageSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** pageSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 3).waitUntil(visible, 10000);
-  		String[] widgetChart = {"173", "34", "34", "34", "34", "34", "34", "38", "18", "9", "1", "1", "21", "16", "1", "237"};
-  		for(int i=0;i<=15;i++) {
-  			if($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g > text", i).text().trim().equals(widgetChart[i])) {
-  				System.out.println(" *** pageSummary widgetChart (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** pageSummary widgetChart (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".close_wiget", 5).click();
-  		$("#widget6").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '8')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 9).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 6).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget7 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("메뉴별 페이지뷰")) {
-				System.out.println(" *** pageSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** pageSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** pageSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** pageSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- pageSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void popularPage() {
   		System.out.println(" ! ----- popularPage Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 9).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("많이 찾는 페이지")) {
 			System.out.println(" *** popularPage pageLoad Success !! *** ");
 		} else {
@@ -466,11 +390,11 @@ public class Page {
   		}
   		System.out.println(" ! ----- popularPage End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void popularDirectory() {
   		System.out.println(" ! ----- popularDirectory Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("많이 찾는 디렉토리")) {
 			System.out.println(" *** popularDirectory pageLoad Success !! *** ");
 		} else {
@@ -721,11 +645,11 @@ public class Page {
   		}
   		System.out.println(" ! ----- popularDirectory End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void refreshPage() {
   		System.out.println(" ! ----- refreshPage Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("페이지별 새로고침")) {
 			System.out.println(" *** refreshPage pageLoad Success !! *** ");
 		} else {
@@ -958,11 +882,11 @@ public class Page {
   		}
   		System.out.println(" ! ----- refreshPage End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void startPage() {
   		System.out.println(" ! ----- startPage Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("시작된 페이지")) {
 			System.out.println(" *** startPage pageLoad Success !! *** ");
 		} else {
@@ -1181,11 +1105,11 @@ public class Page {
   		}
   		System.out.println(" ! ----- startPage End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void endPage() {
   		System.out.println(" ! ----- endPage Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("종료된 페이지")) {
 			System.out.println(" *** endPage pageLoad Success !! *** ");
 		} else {
@@ -1413,11 +1337,11 @@ public class Page {
   		}
   		System.out.println(" ! ----- endPage End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void returnPage() {
   		System.out.println(" ! ----- returnPage Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("반송된 페이지")) {
 			System.out.println(" *** returnPage pageLoad Success !! *** ");
 		} else {
@@ -1633,11 +1557,11 @@ public class Page {
   		}
   		System.out.println(" ! ----- returnPage End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void menuPageview() {
   		System.out.println(" ! ----- menuPageview Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("메뉴별 페이지뷰")) {
 			System.out.println(" *** menuPageview pageLoad Success !! *** ");
 		} else {
@@ -1872,11 +1796,11 @@ public class Page {
   		}
   		System.out.println(" ! ----- menuPageview End ----- ! ");
   	}
-  	@Test(priority = 9)
+  	@Test(priority = 8)
   	public void scriptErrorPage() {
   		System.out.println(" ! ----- scriptErrorPage Start ----- ! ");
-  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 8).click();
+  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 7).click();
   		if($("h3", 0).text().trim().equals("스크립트 오류 페이지")) {
 			System.out.println(" *** scriptErrorPage pageLoad Success !! *** ");
 		} else {
@@ -2095,11 +2019,11 @@ public class Page {
   		}
   		System.out.println(" ! ----- scriptErrorPage End ----- ! ");
   	}
-  	@Test(priority = 10)
+  	@Test(priority = 9)
   	public void errorPage() {
   		System.out.println(" ! ----- errorPage Start ----- ! ");
-  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 9).click();
+  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 8).click();
   		if($("h3", 0).text().trim().equals("에러 페이지")) {
 			System.out.println(" *** errorPage pageLoad Success !! *** ");
 		} else {

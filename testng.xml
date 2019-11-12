@@ -4,15 +4,15 @@
   <test thread-count="5" name="Test">
     <parameter name="browser" value="chrome" />
     <classes>
-<!--       <class name="aceCounter.termination"/> -->
+      <class name="aceCounter.DightyAudienceManager"/>
 <!--       <class name="aceCounter.signUp"/> -->
-<!--       <class name="aceCounter.DightyAudienceManager"/> -->
+<!--       <class name="aceCounter.termination"/> -->
 <!--       <class name="aceCounter.Setting"/> -->
 <!--       <class name="aceCounter.serviceManage"/> -->
-<!--       <class name="aceCounter.accessCount"/> -->
+<!--       <class name="aceCounter.accessCount"/> 주석처리 부분 수정 필요 -->
 <!--       <class name="aceCounter.inflowPath"/> -->
-<!--       <class name="aceCounter.searchADEffect"/> -->
-<!--       <class name="aceCounter.CPCInflow"/> -->
+<!--       <class name="aceCounter.searchADEffect"/> CPC, CPM 개선으로 인한 내용 수정 필요 -->
+<!--       <class name="aceCounter.CPCInflow"/> CPC, CPM 개선으로 인한 내용 수정 필요 -->
 <!--       <class name="aceCounter.marketingEffect"/> -->
 <!--       <class name="aceCounter.Convert"/> -->
 <!--       <class name="aceCounter.movePath"/> -->
@@ -26,7 +26,7 @@
 <!--       <class name="aceCounter.Product"/> -->
 <!--       <class name="aceCounter.purchasePattern"/> -->
 <!--       <class name="aceCounter.shoppingBasket"/> -->
-      <class name="aceCounter.viralMarketing"/>
+<!--       <class name="aceCounter.viralMarketing"/> -->
 
 
       

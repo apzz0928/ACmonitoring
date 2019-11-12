@@ -140,88 +140,11 @@ public class Content {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void contentSummary() {
-  		System.out.println(" ! ----- contentSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 11).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("콘텐츠 요약")) {
-			System.out.println(" *** contentSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** contentSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** contentSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** contentSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"성취율이 높은 시나리오", "사이트 체류시간", "페이지별 체류시간(낮은순)", "파일다운로드", "페이지별 체류시간(높은순)", "인기있는 내부검색어"};
-  		for(int i=0;i<=5;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** contentSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** contentSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 3).waitUntil(visible, 10000);
-  		String[] widgetChart = {"100", "35", "2", "1", "0", "0", "0", "3", "10", "15", "16", "16", "17", "19", "12", "12", "10", "10", "10", "10", "10"
-  				, "1,776", "154", "54", "38", "38", "24", "19"};
-  		for(int i=0;i<=27;i++) {
-  			if($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g > text", i).text().trim().equals(widgetChart[i])) {
-  				System.out.println(" *** contentSummary widgetChart (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** contentSummary widgetChart (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".close_wiget", 5).click();
-  		$("#widget6").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '9')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 10).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 7).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget7 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("인기있는 내부검색어")) {
-				System.out.println(" *** contentSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** contentSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** contentSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** contentSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- contentSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void Scenario() {
   		System.out.println(" ! ----- Scenario Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 10).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("시나리오")) {
 			System.out.println(" *** Scenario pageLoad Success !! *** ");
 		} else {
@@ -317,11 +240,11 @@ public class Content {
   		} 		
   		System.out.println(" ! ----- Scenario End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void innerBannerAdv() {
   		System.out.println(" ! ----- innerBannerAdv Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("내부 배너광고")) {
 			System.out.println(" *** innerBannerAdv pageLoad Success !! *** ");
 		} else {
@@ -508,11 +431,11 @@ public class Content {
   		}
   		System.out.println(" ! ----- innerBannerAdv End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void fileDownload() {
   		System.out.println(" ! ----- fileDownload Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("파일다운로드")) {
 			System.out.println(" *** fileDownload pageLoad Success !! *** ");
 		} else {
@@ -731,11 +654,11 @@ public class Content {
 		}
   		System.out.println(" ! ----- fileDownload End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void siteStayTime() {
   		System.out.println(" ! ----- siteStayTime Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("사이트 체류시간")) {
 			System.out.println(" *** siteStayTime pageLoad Success !! *** ");
 		} else {
@@ -840,11 +763,11 @@ public class Content {
 		}
   		System.out.println(" ! ----- siteStayTime End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void pageStayTime() {
   		System.out.println(" ! ----- pageStayTime Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("페이지별 체류시간")) {
 			System.out.println(" *** pageStayTime pageLoad Success !! *** ");
 		} else {
@@ -1041,11 +964,11 @@ public class Content {
   		}
   		System.out.println(" ! ----- pageStayTime End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void menuStayTime() {
   		System.out.println(" ! ----- menuStayTime Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("메뉴별 체류시간")) {
 			System.out.println(" *** menuStayTime pageLoad Success !! *** ");
 		} else {
@@ -1230,11 +1153,11 @@ public class Content {
   		}
   		System.out.println(" ! ----- menuStayTime End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void innerSearchKeyword() {
   		System.out.println(" ! ----- innerSearchKeyword Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("내부검색어")) {
 			System.out.println(" *** innerSearchKeyword pageLoad Success !! *** ");
 		} else {

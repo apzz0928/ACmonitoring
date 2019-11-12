@@ -140,99 +140,11 @@ public class Member {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void memberSummary() {
-  		System.out.println(" ! ----- memberSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 13).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("회원 요약")) {
-			System.out.println(" *** memberSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** memberSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** memberSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** memberSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"방문 vs 로그인수", "방문 vs 회원가입수"};
-  		for(int i=0;i<=1;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** memberSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** memberSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", 3).waitUntil(visible, 10000);
-  		js("$j('.highcharts-series.highcharts-series-1').css('display', 'none')");
-  		js("$j('.highcharts-markers.highcharts-series-1.highcharts-tracker').css('display', 'none')");
-  		String[] widgetChart = {"08/08 (목)", "방문수: 8", "08/09 (금)", "방문수: 30", "08/08 (목)", "방문수: 8", "08/09 (금)", "방문수: 30"};
-  		for(int i=0,z=0,a=0;i<=3;i++) {
-  			for(int x=0;x<=5;x++) {
-  		  		$(".highcharts-series.highcharts-series-0.highcharts-tracker > rect", i).hover();
-  			}
-  			if(i>=2) {
-  				a = 1;
-  			}
-  			for(int y=0;y<=1;y++) {
-  				if($(".highcharts-tooltip", a).text().trim().split("● ")[y].equals(widgetChart[z])) {
-  	  				System.out.println(" *** memberSummary widgetChart (" + z + ") check Success !! *** ");
-  	  			} else {
-  	  				System.out.println(" *** memberSummary widgetChart (" + z + ") check Fail ... !@#$%^&*() *** ");
-  	  				System.out.println(widgetChart[z]);
-  	  				System.out.println($(".highcharts-tooltip", 0).text().trim().split("● ")[y]);
-  	  				close();
-  				}
-  				z++;
-  			}
-  		}
-  		$(".close_wiget", 1).click();
-  		$("#widget2").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '11')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 9).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget3 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget3 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("방문 vs 회원가입수")) {
-				System.out.println(" *** memberSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** memberSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget3 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** memberSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** memberSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- memberSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void signupTermination() {
   		System.out.println(" ! ----- signupTermination Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 12).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("회원가입/해지")) {
 			System.out.println(" *** signupTermination pageLoad Success !! *** ");
 		} else {
@@ -394,11 +306,11 @@ public class Member {
   		}
   		System.out.println(" ! ----- signupTermination End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void newVisitVSreVisitSignup() {
   		System.out.println(" ! ----- newVisitVSreVisitSignup Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("신규방문vs재방문가입")) {
 			System.out.println(" *** newVisitVSreVisitSignup pageLoad Success !! *** ");
 		} else {
@@ -470,11 +382,11 @@ public class Member {
   		}
   		System.out.println(" ! ----- newVisitVSreVisitSignup End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void loginCount() {
   		System.out.println(" ! ----- loginCount Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("로그인 횟수")) {
 			System.out.println(" *** loginCount pageLoad Success !! *** ");
 		} else {
@@ -629,11 +541,11 @@ public class Member {
 		}
   		System.out.println(" ! ----- loginCount End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void loginVisitDetail() {
   		System.out.println(" ! ----- loginVisitDetail Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("로그인 방문 상세")) {
 			System.out.println(" *** loginVisitDetail pageLoad Success !! *** ");
 		} else {
@@ -722,11 +634,11 @@ public class Member {
 		}
   		System.out.println(" ! ----- loginVisitDetail End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void memberAttribute() {
   		System.out.println(" ! ----- memberAttribute Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("회원 특성")) {
 			System.out.println(" *** memberAttribute pageLoad Success !! *** ");
 		} else {
@@ -785,11 +697,11 @@ public class Member {
 		}
   		System.out.println(" ! ----- memberAttribute End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void memberLogin() {
   		System.out.println(" ! ----- memberLogin Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("회원별 로그인현황")) {
 			System.out.println(" *** memberLogin pageLoad Success !! *** ");
 		} else {
@@ -878,11 +790,11 @@ public class Member {
 		}
   		System.out.println(" ! ----- memberLogin End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void loginTerm() {
   		System.out.println(" ! ----- loginTerm Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("로그인 간격")) {
 			System.out.println(" *** loginTerm pageLoad Success !! *** ");
 		} else {

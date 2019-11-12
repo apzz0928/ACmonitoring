@@ -140,93 +140,11 @@ public class systemEnvironment {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void systemSummary() {
-  		System.out.println(" ! ----- systemSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 15).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("시스템환경 요약")) {
-			System.out.println(" *** systemSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** systemSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-08')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-08)")) {
-			System.out.println(" *** systemSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** systemSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"웹브라우저", "모니터해상도", "쿠키가능여부", "운영체제", "사용 색상수", "자바스크립트 가능여부"};
-  		for(int i=0;i<=5;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** systemSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** systemSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 5).waitUntil(visible, 10000);
-  		String[] widgetChart = {"Chrome8", "100.00%", "1920*10808", "100.00%", "사용가능8", "100.00%", "Windows8", "100.00%", "24 비트 (16,700,000 colors)8", "100.00%", "사용불가능8", "100.00%"};
-  		for(int i=0,z=0;i<=5;i++) {
-  			for(int x=0;x<=5;x++) {
-  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();
-  			}
-			for(int y=0;y<=1;y++) {
-				if($(".highcharts-tooltip", i).text().trim().split(": ")[y].equals(widgetChart[z])) {
-	  				System.out.println(" *** systemSummary widgetChart (" + z + ") check Success !! *** ");
-	  			} else {
-	  				System.out.println(" *** systemSummary widgetChart (" + z + ") check Fail ... !@#$%^&*() *** ");
-	  				System.out.println($(".highcharts-tooltip", i).text().trim().split(": ")[y]);
-	  				close();
-				}
-				z++;
-			}
-  		}
-  		$(".close_wiget", 5).click();
-  		$("#widget6").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '13')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 7).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 5).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget7 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("자바스크립트 가능여부")) {
-				System.out.println(" *** systemSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** systemSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-08)")) {
-			System.out.println(" *** systemSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** systemSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- systemSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void webBrowser() {
   		System.out.println(" ! ----- webBrowser Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 14).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("웹브라우저")) {
 			System.out.println(" *** webBrowser pageLoad Success !! *** ");
 		} else {
@@ -464,11 +382,11 @@ public class systemEnvironment {
   		}
   		System.out.println(" ! ----- webBrowser End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void OS() {
   		System.out.println(" ! ----- OS Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("운영체제")) {
 			System.out.println(" *** OS pageLoad Success !! *** ");
 		} else {
@@ -691,11 +609,11 @@ public class systemEnvironment {
   		}
   		System.out.println(" ! ----- OS End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void monitorResolution() {
   		System.out.println(" ! ----- monitorResolution Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("모니터해상도")) {
 			System.out.println(" *** monitorResolution pageLoad Success !! *** ");
 		} else {
@@ -918,11 +836,11 @@ public class systemEnvironment {
   		}
   		System.out.println(" ! ----- monitorResolution End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void useColor() {
   		System.out.println(" ! ----- useColor Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("사용 색상수")) {
 			System.out.println(" *** useColor pageLoad Success !! *** ");
 		} else {
@@ -1124,11 +1042,11 @@ public class systemEnvironment {
   		}
   		System.out.println(" ! ----- useColor End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void cookie() {
   		System.out.println(" ! ----- cookie Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("쿠키가능여부")) {
 			System.out.println(" *** cookie pageLoad Success !! *** ");
 		} else {
@@ -1330,11 +1248,11 @@ public class systemEnvironment {
   		}
   		System.out.println(" ! ----- cookie End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void javaScriptUse() {
   		System.out.println(" ! ----- javaScriptUse Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("자바스크립트 가능여부")) {
 			System.out.println(" *** javaScriptUse pageLoad Success !! *** ");
 		} else {
@@ -1536,11 +1454,11 @@ public class systemEnvironment {
   		}
   		System.out.println(" ! ----- javaScriptUse End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void javaScriptVersion() {
   		System.out.println(" ! ----- javaScriptVersion Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("자바스크립트 버전")) {
 			System.out.println(" *** javaScriptVersion pageLoad Success !! *** ");
 		} else {

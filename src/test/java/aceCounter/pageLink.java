@@ -142,7 +142,7 @@ public class pageLink {
   	@Test(priority = 1)
   	public void linkAnalysis() {
   		System.out.println(" ! ----- linkAnalysis Start ----- ! ");
-  		$("#m_stat > ul > li > a", 12).click();
+  		$("#m_stat > ul > li > a", 11).click();
   		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
   		$(".active > ul > li > a > span", 0).click();
   		if($("h3").text().trim().equals("주요페이지 링크분석")) {

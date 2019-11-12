@@ -140,76 +140,11 @@ public class Product {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void productSummary() {
-  		System.out.println(" ! ----- productSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 17).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("제품 요약")) {
-			System.out.println(" *** productSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** productSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** productSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** productSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"구매건수가 높은 제품", "구매건수가 높은 제품군", "회원이 많이 구매한 제품", "구매율이 높은 제품", "구매율이 높은 제품군", "비회원이 많이 구매한 제품"};
-  		for(int i=0;i<=5;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** productSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** productSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".close_wiget", 5).click();
-  		$("#widget6").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '15')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 10).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 7).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget7 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("비회원이 많이 구매한 제품")) {
-				System.out.println(" *** productSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** productSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** productSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** productSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- productSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void productSalesAnalysis() {
   		System.out.println(" ! ----- productSalesAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 16).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("제품별 매출 분석")) {
 			System.out.println(" *** productSalesAnalysis pageLoad Success !! *** ");
 		} else {
@@ -304,11 +239,11 @@ public class Product {
   		}
   		System.out.println(" ! ----- productSalesAnalysis End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void productPurchaseRate() {
   		System.out.println(" ! ----- productPurchaseRate Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("제품별 구매율 분석")) {
 			System.out.println(" *** productPurchaseRate pageLoad Success !! *** ");
 		} else {
@@ -397,11 +332,11 @@ public class Product {
   		}
   		System.out.println(" ! ----- productPurchaseRate End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void productSuiteSalesAnalysis() {
   		System.out.println(" ! ----- productSuiteSalesAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("제품군별 매출 분석")) {
 			System.out.println(" *** productSuiteSalesAnalysis pageLoad Success !! *** ");
 		} else {
@@ -490,11 +425,11 @@ public class Product {
   		}
   		System.out.println(" ! ----- productSuiteSalesAnalysis End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void productSuitPurchaseRate() {
   		System.out.println(" ! ----- productSuitPurchaseRate Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("제품군별 구매율 분석")) {
 			System.out.println(" *** productSuitPurchaseRate pageLoad Success !! *** ");
 		} else {
@@ -583,11 +518,11 @@ public class Product {
   		}
   		System.out.println(" ! ----- productSuitPurchaseRate End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void productInflow() {
   		System.out.println(" ! ----- productInflow Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("제품별 유입출처")) {
 			System.out.println(" *** productInflow pageLoad Success !! *** ");
 		} else {
@@ -676,11 +611,11 @@ public class Product {
   		}
   		System.out.println(" ! ----- productInflow End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void interestProductAnalysis() {
   		System.out.println(" ! ----- interestProductAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("관심제품 분석")) {
 			System.out.println(" *** interestProductAnalysis pageLoad Success !! *** ");
 		} else {
@@ -769,11 +704,11 @@ public class Product {
   		}
   		System.out.println(" ! ----- interestProductAnalysis End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void productMemberAnalysis() {
   		System.out.println(" ! ----- productMemberAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("제품별 회원 분석")) {
 			System.out.println(" *** productMemberAnalysis pageLoad Success !! *** ");
 		} else {

@@ -140,76 +140,11 @@ public class purchasePattern {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void purchasePatternSummary() {
-  		System.out.println(" ! ----- purchasePatternSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 18).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("구매패턴 요약")) {
-			System.out.println(" *** purchasePatternSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** purchasePatternSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** purchasePatternSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** purchasePatternSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"성별 구매성향", "함께 팔린 제품 분석", "연령별 구매성향"};
-  		for(int i=0;i<=2;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** purchasePatternSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** purchasePatternSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".close_wiget", 2).click();
-  		$("#widget3").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '16')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 3).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 1).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget4 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget4 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("연령별 구매성향")) {
-				System.out.println(" *** purchasePatternSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** purchasePatternSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget4 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** purchasePatternSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** purchasePatternSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- purchasePatternSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void productPurchaseTendency() {
   		System.out.println(" ! ----- productPurchaseTendency Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 17).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("제품별 구매성향")) {
 			System.out.println(" *** productPurchaseTendency pageLoad Success !! *** ");
 		} else {
@@ -244,7 +179,7 @@ public class purchasePattern {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "여성", "0", "0.0%", "10대 이하", "0"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "0", "여성", "0", "0.00%", "10대 이하", "0"};
   		for(int i=0;i<=6;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** productPurchaseTendency summaryFootTableData(" + i + ") check Success !! *** ");
@@ -273,11 +208,11 @@ public class purchasePattern {
 		}
   		System.out.println(" ! ----- productPurchaseTendency End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void productsSoldTogether() {
   		System.out.println(" ! ----- productsSoldTogether Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("함께 팔린 제품 분석")) {
 			System.out.println(" *** productsSoldTogether pageLoad Success !! *** ");
 		} else {

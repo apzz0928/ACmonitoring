@@ -142,7 +142,7 @@ public class viralMarketing {
   	@Test(priority = 1)
   	public void viralMarketingSummary() {
   		System.out.println(" ! ----- viralMarketingSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 20).click();
+  		$("#m_stat > ul > li > a", 19).click();
   		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
   		$(".active > ul > li > a > span", 0).click();
   		if($("h3").text().trim().equals("바이럴마케팅 요약")) {

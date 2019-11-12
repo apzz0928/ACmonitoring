@@ -139,102 +139,12 @@ public class marketingEffect {
   		$("#contents_top").waitUntil(visible, 10000);
   		System.out.println(" ! ----- login End ----- ! ");
   	}
-  	@Test(priority = 1)
-  	public void marketingEffectSummary() {
-  		System.out.println(" ! ----- marketingEffectSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 7).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("마케팅효과 요약")) {
-			System.out.println(" *** marketingEffectSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** marketingEffectSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		//날짜 선택 2019-08-08~2019-08-09 
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** marketingEffectSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** marketingEffectSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"배너광고(유입수)", "이메일마케팅(오픈수)", "이메일마케팅 추이", "배너광고(전환수)", "이메일마케팅(유입수)", "가격비교 사이트"};
-  		for(int i=0;i<=5;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** marketingEffectSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** marketingEffectSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).waitUntil(visible, 10000);
-		if($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g > text ", 0).text().trim().equals("이메일마케팅:17")) {
-			System.out.println(" *** marketingEffectSummary widgetPieChart check Success !! *** ");
-		} else {
-			System.out.println(" *** marketingEffectSummary widgetPieChart check Fail ... !@#$%^&*() *** ");
-			System.out.println($(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 0).text().trim());
-			close();
-		}
-		String[] widgetLineChart = {"2019.08.09 (금)", "이메일마케팅: 9", "2019.08.08 (목)", "이메일마케팅: 8"};
-		for(int x=0,z=0;x<=1;x++) {
-			for(int y=0;y<=5;y++) {
-				$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).hover();				
-			}
-			for(int y=0;y<=1;y++) {
-				if($(".highcharts-tooltip", 1).text().trim().split("● ")[y].equals(widgetLineChart[z])) {
-					System.out.println(" *** marketingEffectSummary widgetLineChart(" + z + ") check Success !! *** ");
-				} else {
-					System.out.println(" *** marketingEffectSummary widgetLineChart(" + z + ") check Fail ... !@#$%^&*() *** ");
-					System.out.println($(".highcharts-tooltip", 1).text().trim().split("● ")[y]);
-					close();
-				}
-				z++;
-			}
-		}
-  		$(".close_wiget", 5).click();
-  		$("#widget6").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '6')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 9).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 6).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget7 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("가격비교 사이트")) {
-				System.out.println(" *** marketingEffectSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** marketingEffectSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** marketingEffectSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** marketingEffectSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- marketingEffectSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
+  	@Test(priority = 1) //여기서부터 수정 필요
   	public void bannerAD() {
   		System.out.println(" ! ----- bannerAD Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 6).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("배너광고")) {
 			System.out.println(" *** bannerAD pageLoad Success !! *** ");
 		} else {
@@ -319,11 +229,11 @@ public class marketingEffect {
 		}
   		System.out.println(" ! ----- bannerAD End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void bannerADTimeAvg() {
   		System.out.println(" ! ----- bannerADTimeAvg Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("배너광고 시간대별 평균")) {
 			System.out.println(" *** bannerADTimeAvg pageLoad Success !! *** ");
 		} else {
@@ -377,11 +287,11 @@ public class marketingEffect {
   		}
   		System.out.println(" ! ----- bannerADTimeAvg End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void emailMarketing() {
   		System.out.println(" ! ----- emailMarketing Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("이메일마케팅")) {
 			System.out.println(" *** emailMarketing pageLoad Success !! *** ");
 		} else {
@@ -626,11 +536,11 @@ public class marketingEffect {
   		switchTo().window(0);
   		System.out.println(" ! ----- emailMarketing End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void QRcodeAnalysis() {
   		System.out.println(" ! ----- QRcodeAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("QR코드 분석")) {
 			System.out.println(" *** QRcodeAnalysis pageLoad Success !! *** ");
 		} else {
@@ -709,11 +619,11 @@ public class marketingEffect {
   		}
   		System.out.println(" ! ----- QRcodeAnalysis End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void koreanInternetAddress() {
   		System.out.println(" ! ----- koreanInternetAddress Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("한글인터넷 주소")) {
 			System.out.println(" *** koreanInternetAddress pageLoad Success !! *** ");
 		} else {
@@ -792,11 +702,11 @@ public class marketingEffect {
   		}
   		System.out.println(" ! ----- koreanInternetAddress End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void comparePricesSite() {
   		System.out.println(" ! ----- comparePricesSite Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("가격비교 사이트")) {
 			System.out.println(" *** comparePricesSite pageLoad Success !! *** ");
 		} else {
@@ -875,11 +785,11 @@ public class marketingEffect {
   		}
   		System.out.println(" ! ----- comparePricesSite End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void campaignGroupAnalysis() {
   		System.out.println(" ! ----- campaignGroupAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("캠페인 그룹 분석")) {
 			System.out.println(" *** campaignGroupAnalysis pageLoad Success !! *** ");
 		} else {

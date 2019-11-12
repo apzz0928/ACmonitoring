@@ -32,8 +32,11 @@ public class Visitor {
 	private static int respCode;
 	
 	Date date = new Date();
+	Date date1 = new Date();
     SimpleDateFormat date_format = new SimpleDateFormat("YYYYMMddHHmmss");
+    SimpleDateFormat date_format1 = new SimpleDateFormat("YYYY-MM-dd");
     String id_date = date_format.format(date);
+    String id_date1 = date_format1.format(date1);
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -140,93 +143,11 @@ public class Visitor {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void visitorSummary() {
-  		System.out.println(" ! ----- visitorSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 14).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("방문자 요약")) {
-			System.out.println(" *** visitorSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** visitorSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-08')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-08)")) {
-			System.out.println(" *** visitorSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** visitorSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"방문 빈도 분석", "지역별 방문자", "국가별 방문자", "회사/기관별 방문자", "사용 언어별 방문자", "ISP별 방문자"};
-  		for(int i=0;i<=5;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** visitorSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** visitorSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", 5).waitUntil(visible, 10000);
-  		String[] widgetChart = {"1회8", "100.00%", "알수없음8", "100.00%", "기타8", "100.00%", "알수없음8", "100.00%", "한국어8", "100.00%", "기타8", "100.00%"};
-  		for(int i=0,z=0;i<=5;i++) {
-  			for(int x=0;x<=5;x++) {
-  				$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).hover();
-  			}
-			for(int y=0;y<=1;y++) {
-				if($(".highcharts-tooltip", i).text().trim().split(": ")[y].equals(widgetChart[z])) {
-	  				System.out.println(" *** visitorSummary widgetChart (" + z + ") check Success !! *** ");
-	  			} else {
-	  				System.out.println(" *** visitorSummary widgetChart (" + z + ") check Fail ... !@#$%^&*() *** ");
-	  				System.out.println($(".highcharts-tooltip", i).text().trim().split(": ")[y]);
-	  				close();
-				}
-				z++;
-			}
-  		}
-  		$(".close_wiget", 5).click();
-  		$("#widget6").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '12')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 7).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 6).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget7 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("ISP별 방문자")) {
-				System.out.println(" *** visitorSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** visitorSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-08)")) {
-			System.out.println(" *** visitorSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** visitorSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- visitorSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void recentlyVisitor() {
   		System.out.println(" ! ----- recentlyVisitor Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 13).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("최근 방문자")) {
 			System.out.println(" *** recentlyVisitor pageLoad Success !! *** ");
 		} else {
@@ -237,8 +158,8 @@ public class Visitor {
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		$(".myValue", 1).click();
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
-  		js("$j('#calendar_data1').val('2019-09-19')");
-  		js("$j('#calendar_data2').val('2019-09-19')");
+  		js("$j('#calendar_data1').val('2019-10-25')");
+  		js("$j('#calendar_data2').val('" + id_date1 + "')");
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		String[] statTopTableData = {"순번", "방문일시", "IP", "유입출처", "랜딩페이지", "페이지뷰", "전환", "회원ID", "웹브라우저"};
@@ -262,7 +183,7 @@ public class Visitor {
 				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
-  		$(".formgray", 0).setValue("");  		
+  		$(".formgray", 0).setValue("");
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statDataCenter > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
   		$(".statDataCenter > table > tbody > tr > td > a > img", 0).click();
@@ -278,11 +199,11 @@ public class Visitor {
   		switchTo().window(0);
   		System.out.println(" ! ----- recentlyVisitor End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	//@Test(priority = 2)
   	public void accessVisitor() {
   		System.out.println(" ! ----- accessVisitor Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("현재접속중인 방문자")) {
 			System.out.println(" *** accessVisitor pageLoad Success !! *** ");
 		} else {
@@ -310,11 +231,11 @@ public class Visitor {
 		}
   		System.out.println(" ! ----- accessVisitor End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void visitAnalysis() {
   		System.out.println(" ! ----- visitAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("방문 빈도 분석")) {
 			System.out.println(" *** visitAnalysis pageLoad Success !! *** ");
 		} else {
@@ -530,11 +451,11 @@ public class Visitor {
   		}
   		System.out.println(" ! ----- visitAnalysis End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void revisitTerm() {
   		System.out.println(" ! ----- revisitTerm Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("재방문간격")) {
 			System.out.println(" *** revisitTerm pageLoad Success !! *** ");
 		} else {
@@ -743,11 +664,11 @@ public class Visitor {
   		}
   		System.out.println(" ! ----- revisitTerm End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void regionVisitor() {
   		System.out.println(" ! ----- regionVisitor Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("지역별 방문자")) {
 			System.out.println(" *** regionVisitor pageLoad Success !! *** ");
 		} else {
@@ -974,11 +895,11 @@ public class Visitor {
   		}
   		System.out.println(" ! ----- regionVisitor End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void nationVisitor() {
   		System.out.println(" ! ----- nationVisitor Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("국가별 방문자")) {
 			System.out.println(" *** nationVisitor pageLoad Success !! *** ");
 		} else {
@@ -1135,11 +1056,11 @@ public class Visitor {
   		}
   		System.out.println(" ! ----- nationVisitor End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void companyVisitor() {
   		System.out.println(" ! ----- companyVisitor Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("회사/기관별 방문자")) {
 			System.out.println(" *** companyVisitor pageLoad Success !! *** ");
 		} else {
@@ -1296,11 +1217,11 @@ public class Visitor {
   		}
   		System.out.println(" ! ----- companyVisitor End ----- ! ");
   	}
-  	@Test(priority = 9)
+  	@Test(priority = 8)
   	public void languageVisitor() {
   		System.out.println(" ! ----- languageVisitor Start ----- ! ");
-  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 8).click();
+  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 7).click();
   		if($("h3", 0).text().trim().equals("사용 언어별 방문자")) {
 			System.out.println(" *** languageVisitor pageLoad Success !! *** ");
 		} else {
@@ -1527,11 +1448,11 @@ public class Visitor {
   		}
   		System.out.println(" ! ----- languageVisitor End ----- ! ");
   	}
-  	@Test(priority = 10)
+  	@Test(priority = 9)
   	public void TimeZone() {
   		System.out.println(" ! ----- TimeZone Start ----- ! ");
-  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 9).click();
+  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 8).click();
   		if($("h3", 0).text().trim().equals("TimeZone")) {
 			System.out.println(" *** TimeZone pageLoad Success !! *** ");
 		} else {
@@ -1737,11 +1658,11 @@ public class Visitor {
   		}
   		System.out.println(" ! ----- TimeZone End ----- ! ");
   	}
-  	@Test(priority = 11)
+  	@Test(priority = 10)
   	public void ISPVisitor() {
   		System.out.println(" ! ----- ISPVisitor Start ----- ! ");
-  		$(".active > ul > li > a > span", 10).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 10).click();
+  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 9).click();
   		if($("h3", 0).text().trim().equals("ISP별 방문자")) {
 			System.out.println(" *** ISPVisitor pageLoad Success !! *** ");
 		} else {

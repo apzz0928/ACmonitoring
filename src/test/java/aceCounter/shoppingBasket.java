@@ -140,76 +140,11 @@ public class shoppingBasket {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void shoppingBasketSummary() {
-  		System.out.println(" ! ----- shoppingBasketSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 19).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("장바구니 요약")) {
-			System.out.println(" *** shoppingBasketSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** shoppingBasketSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** shoppingBasketSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** shoppingBasketSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"담긴율이 높은 제품", "포기한 제품", "담긴율이 낮은 제품", "매출 vs 이탈 매출액"};
-  		for(int i=0;i<=3;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** shoppingBasketSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** shoppingBasketSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".close_wiget", 3).click();
-  		$("#widget4").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '17')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 4).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 3).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget5 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget5 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("매출 vs 이탈 매출액")) {
-				System.out.println(" *** shoppingBasketSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** shoppingBasketSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget5 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** shoppingBasketSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** shoppingBasketSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- shoppingBasketSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void productPutIn() {
   		System.out.println(" ! ----- productPutIn Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 18).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("담긴 제품")) {
 			System.out.println(" *** productPutIn pageLoad Success !! *** ");
 		} else {
@@ -304,11 +239,11 @@ public class shoppingBasket {
 		}
   		System.out.println(" ! ----- productPutIn End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void giveUpProduct() {
   		System.out.println(" ! ----- giveUpProduct Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("포기한 제품")) {
 			System.out.println(" *** giveUpProduct pageLoad Success !! *** ");
 		} else {
@@ -397,11 +332,11 @@ public class shoppingBasket {
   		}
   		System.out.println(" ! ----- giveUpProduct End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void departureSalesAnalysis() {
   		System.out.println(" ! ----- departureSalesAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("이탈매출 분석")) {
 			System.out.println(" *** departureSalesAnalysis pageLoad Success !! *** ");
 		} else {

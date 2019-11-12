@@ -140,76 +140,11 @@ public class searchADEffect {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void searchADEffectSummary() {
-  		System.out.println(" ! ----- searchADEffectSummary Start ----- ! ");
+  	public void searchADProduct() {
+  		System.out.println(" ! ----- searchADProduct Start ----- ! ");
   		$("#m_stat > ul > li > a", 5).click();
   		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
   		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("검색광고효과 요약")) {
-			System.out.println(" *** searchADEffectSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** searchADEffectSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** searchADEffectSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** searchADEffectSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"유입된 광고상품", "유입된 광고상품/검색어", "CPC 광고매체", "유입된 광고검색어", "전환된 광고상품/검색어", "CPC 시간대별 평균"};
-  		for(int i=0;i<=5;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** searchADEffectSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** searchADEffectSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".close_wiget", 5).click();
-  		$("#widget6").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '4')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 14).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 10).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget7 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("CPC 시간대별 평균")) {
-				System.out.println(" *** searchADEffectSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** searchADEffectSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** searchADEffectSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** searchADEffectSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- searchADEffectSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
-  	public void searchADProduct() {
-  		System.out.println(" ! ----- searchADProduct Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("검색광고 상품별")) {
 			System.out.println(" *** searchADProduct pageLoad Success !! *** ");
 		} else {
@@ -294,11 +229,11 @@ public class searchADEffect {
 		}
   		System.out.println(" ! ----- searchADProduct End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void searchADsearchKeyword() {
   		System.out.println(" ! ----- searchADsearchKeyword Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("검색광고 검색어별")) {
 			System.out.println(" *** searchADsearchKeyword pageLoad Success !! *** ");
 		} else {
@@ -377,11 +312,11 @@ public class searchADEffect {
 		}
   		System.out.println(" ! ----- searchADsearchKeyword End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void searchADProductKeyword() {
   		System.out.println(" ! ----- searchADProductKeyword Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("검색광고 상품/검색어")) {
 			System.out.println(" *** searchADProductKeyword pageLoad Success !! *** ");
 		} else {
@@ -460,11 +395,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- searchADProductKeyword End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void CPCADchannel() {
   		System.out.println(" ! ----- CPCADchannel Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("CPC 광고매체")) {
 			System.out.println(" *** CPCADchannel pageLoad Success !! *** ");
 		} else {
@@ -543,11 +478,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- CPCADchannel End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void naverSiteSearchAD() {
   		System.out.println(" ! ----- naverSiteSearchAD Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("네이버 사이트검색광고")) {
 			System.out.println(" *** naverSiteSearchAD pageLoad Success !! *** ");
 		} else {
@@ -626,11 +561,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- naverSiteSearchAD End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void brandSearch() {
   		System.out.println(" ! ----- brandSearch Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("브랜드검색 상세")) {
 			System.out.println(" *** brandSearch pageLoad Success !! *** ");
 		} else {
@@ -713,11 +648,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- brandSearch End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void CPCTimeAvg() {
   		System.out.println(" ! ----- CPCTimeAvg Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("CPC 시간대별 평균")) {
 			System.out.println(" *** CPCTimeAvg pageLoad Success !! *** ");
 		} else {
@@ -770,11 +705,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- CPCTimeAvg End ----- ! ");
   	}
-  	@Test(priority = 9)
+  	@Test(priority = 8)
   	public void CPCDailyAvg() {
   		System.out.println(" ! ----- CPCDailyAvg Start ----- ! ");
-  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 8).click();
+  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 7).click();
   		if($("h3", 0).text().trim().equals("CPC 요일별 평균")) {
 			System.out.println(" *** CPCDailyAvg pageLoad Success !! *** ");
 		} else {
@@ -826,11 +761,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- CPCDailyAvg End ----- ! ");
   	}
-  	@Test(priority = 10)
+  	@Test(priority = 9)
   	public void CPMTimgAvg() {
   		System.out.println(" ! ----- CPMTimgAvg Start ----- ! ");
-  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 9).click();
+  		$(".active > ul > li > a > span", 10).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 10).click();
   		if($("h3", 0).text().trim().equals("CPM 시간대별 평균")) {
 			System.out.println(" *** CPMTimgAvg pageLoad Success !! *** ");
 		} else {
@@ -883,11 +818,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- CPMTimgAvg End ----- ! ");
   	}
-  	@Test(priority = 11)
+  	@Test(priority = 10)
   	public void CPMDailyAvg() {
   		System.out.println(" ! ----- CPMDailyAvg Start ----- ! ");
-  		$(".active > ul > li > a > span", 10).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 10).click();
+  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 9).click();
   		if($("h3", 0).text().trim().equals("CPM 요일별 평균")) {
 			System.out.println(" *** CPMDailyAvg pageLoad Success !! *** ");
 		} else {
@@ -940,11 +875,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- CPMDailyAvg End ----- ! ");
   	}
-  	@Test(priority = 12)
+  	@Test(priority = 11)
   	public void CPMInflowIP() {
   		System.out.println(" ! ----- CPMInflowIP Start ----- ! ");
-  		$(".active > ul > li > a > span", 11).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 11).click();
+  		$(".active > ul > li > a > span", 10).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 10).click();
   		if($("h3", 0).text().trim().equals("CPM 유입 IP")) {
 			System.out.println(" *** CPMInflowIP pageLoad Success !! *** ");
 		} else {
@@ -1024,11 +959,11 @@ public class searchADEffect {
   		}
   		System.out.println(" ! ----- CPMInflowIP End ----- ! ");
   	}
-  	@Test(priority = 13)
+  	@Test(priority = 12)
   	public void CPMlandingPage() {
   		System.out.println(" ! ----- CPMlandingPage Start ----- ! ");
-  		$(".active > ul > li > a > span", 12).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 12).click();
+  		$(".active > ul > li > a > span", 11).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 11).click();
   		if($("h3", 0).text().trim().equals("CPM 랜딩페이지 이탈")) {
 			System.out.println(" *** CPMlandingPage pageLoad Success !! *** ");
 		} else {

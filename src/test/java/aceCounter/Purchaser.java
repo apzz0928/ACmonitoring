@@ -140,93 +140,11 @@ public class Purchaser {
   		System.out.println(" ! ----- login End ----- ! ");
   	}
   	@Test(priority = 1)
-  	public void purchaserSummary() {
-  		System.out.println(" ! ----- purchaserSummary Start ----- ! ");
-  		$("#m_stat > ul > li > a", 16).click();
-  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 0).click();
-  		if($("h3").text().trim().equals("구매자 요약")) {
-			System.out.println(" *** purchaserSummary pageLoad Success !! *** ");
-		} else {
-			System.out.println(" *** purchaserSummary pageLoad Fail ... !@#$%^&*() *** ");
-			System.out.println($("h3").text().trim());
-			close();
-  		}
-  		$("#date_range1 > a > img", 0).click();
-  		$(".tabcontent.defaultOpen").waitUntil(visible, 10000);
-  		$("#user_srt_date", 0).click();
-  		js("$j('#user_srt_date').val('2019-08-08')");
-  		js("$j('#user_end_date').val('2019-08-09')");
-  		$(".btn_srh").click();
-  		$(".black2", 0).waitUntil(visible, 10000);
-  		if($(".black2", 0).text().trim().equals("(2019-08-08~2019-08-09)")) {
-			System.out.println(" *** purchaserSummary calenderSet Success !! *** ");
-		} else {
-			System.out.println(" *** purchaserSummary calenderSet Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		String[] widgetTitle = {"구매분석", "신규방문/재방문구매율 추이", "재구매까지 걸린시간", "신규방문/재방문구매", "구매까지 걸린시간", "회원/비회원 구매건수"};
-  		for(int i=0;i<=5;i++) {
-  			if($(".w_handle > b", i).text().trim().equals(widgetTitle[i])) {
-  				System.out.println(" *** purchaserSummary widgetTitle (" + i + ") check Success !! *** ");
-  			} else {
-  				System.out.println(" *** purchaserSummary widgetTitle (" + i + ") check Fail ... !@#$%^&*() *** ");
-  				System.out.println($(".w_handle > b", i).text().trim());
-  				close();
-  			}
-  		}
-  		$(".highcharts-markers.highcharts-series-1.highcharts-tracker > path", 1).waitUntil(visible, 10000);
-  		String[] widgetChart = {"08/09 (금)", "구매건수: 0", "08/08 (목)", "구매건수: 0"};
-  		for(int i=0,z=0;i<=1;i++) {
-  			for(int x=0;x<=5;x++) {
-  				$(".highcharts-markers.highcharts-series-1.highcharts-tracker > path", i).hover();
-  			}
-			for(int y=0;y<=1;y++) {
-				if($(".highcharts-tooltip", 0).text().trim().split("● ")[y].equals(widgetChart[z])) {
-	  				System.out.println(" *** purchaserSummary widgetChart (" + z + ") check Success !! *** ");
-	  			} else {
-	  				System.out.println(" *** purchaserSummary widgetChart (" + z + ") check Fail ... !@#$%^&*() *** ");
-	  				System.out.println($(".highcharts-tooltip", i).text().trim().split(": ")[y]);
-	  				close();
-				}
-				z++;
-			}
-  		}
-  		$(".close_wiget", 5).click();
-  		$("#widget6").waitUntil(hidden, 10000);
-  		js("openWidgetRemoconSub('C', '14')");
-  		sleep(500);
-  		$(".set_bottom").waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 13).waitUntil(visible, 10000);
-  		$("tbody > tr > td > table > tbody > tr > td > a > img", 7).click();
-  		sleep(1500);
-  		$(".btn_close").click();
-  		$("#widget7 > .w_title > table > tbody > tr > .w_handle > b").waitUntil(visible, 10000);
-  		if($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim().equals("회원/비회원 구매건수")) {
-				System.out.println(" *** purchaserSummary widget del&add check Success !! *** ");
-			} else {
-				System.out.println(" *** purchaserSummary widget del&add check Fail ... !@#$%^&*() *** ");
-				System.out.println($("#widget7 > .w_title > table > tbody > tr > .w_handle > b").text().trim());
-				close();
-  		}
-  		$("#date_range1 > a > img", 1).scrollIntoView(false);
-  		$("#date_range1 > a > img", 1).click();
-  		$("#date_range1 > a > img", 1).waitUntil(hidden, 10000);
-  		if(!$(".black2", 0).text().trim().equals("(2019-08-08~2019-08-08)")) {
-			System.out.println(" *** purchaserSummary defalut set restore Success !! *** ");
-		} else {
-			System.out.println(" *** purchaserSummary defalut set restore Fail ... !@#$%^&*() *** ");
-			System.out.println($(".black2", 0).text().trim());
-			close();	
-  		}
-  		System.out.println(" ! ----- purchaserSummary End ----- ! ");
-  	}
-  	@Test(priority = 2)
   	public void purchaseAnalysis() {
   		System.out.println(" ! ----- purchaseAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 1).click();
+  		$("#m_stat > ul > li > a", 15).click();
+  		$(".active > ul > li > a > span", 0).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 0).click();
   		if($("h3", 0).text().trim().equals("구매분석")) {
 			System.out.println(" *** purchaseAnalysis pageLoad Success !! *** ");
 		} else {
@@ -371,11 +289,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- purchaseAnalysis End ----- ! ");
   	}
-  	@Test(priority = 3)
+  	@Test(priority = 2)
   	public void newReVisitPurchaser() {
   		System.out.println(" ! ----- newReVisitPurchaser Start ----- ! ");
-  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 2).click();
+  		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 1).click();
   		if($("h3", 0).text().trim().equals("신규방문과 재방문구매")) {
 			System.out.println(" *** newReVisitPurchaser pageLoad Success !! *** ");
 		} else {
@@ -447,11 +365,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- newReVisitPurchaser End ----- ! ");
   	}
-  	@Test(priority = 4)
+  	@Test(priority = 3)
   	public void visitVSpurchaser() {
   		System.out.println(" ! ----- visitVSpurchaser Start ----- ! ");
-  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 3).click();
+  		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 2).click();
   		if($("h3", 0).text().trim().equals("방문수vs구매수")) {
 			System.out.println(" *** visitVSpurchaser pageLoad Success !! *** ");
 		} else {
@@ -571,11 +489,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- visitVSpurchaser End ----- ! ");
   	}
-  	@Test(priority = 5)
+  	@Test(priority = 4)
   	public void newRePurchaser() {
   		System.out.println(" ! ----- newRePurchaser Start ----- ! ");
-  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 4).click();
+  		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 3).click();
   		if($("h3", 0).text().trim().equals("신규구매와 재구매")) {
 			System.out.println(" *** newRePurchaser pageLoad Success !! *** ");
 		} else {
@@ -647,11 +565,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- newRePurchaser End ----- ! ");
   	}
-  	@Test(priority = 6)
+  	@Test(priority = 5)
   	public void purchaserTime() {
   		System.out.println(" ! ----- purchaserTime Start ----- ! ");
-  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 5).click();
+  		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 4).click();
   		if($("h3", 0).text().trim().equals("구매까지 걸린시간")) {
 			System.out.println(" *** purchaserTime pageLoad Success !! *** ");
 		} else {
@@ -750,11 +668,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- purchaserTime End ----- ! ");
   	}
-  	@Test(priority = 7)
+  	@Test(priority = 6)
   	public void rePurchaserTerm() {
   		System.out.println(" ! ----- rePurchaserTerm Start ----- ! ");
-  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 6).click();
+  		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 5).click();
   		if($("h3", 0).text().trim().equals("재구매주기")) {
 			System.out.println(" *** rePurchaserTerm pageLoad Success !! *** ");
 		} else {
@@ -843,11 +761,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- rePurchaserTerm End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	@Test(priority = 7)
   	public void memberNoMemberPurchaser() {
   		System.out.println(" ! ----- memberNoMemberPurchaser Start ----- ! ");
-  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 7).click();
+  		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 6).click();
   		if($("h3", 0).text().trim().equals("회원vs비회원 구매")) {
 			System.out.println(" *** memberNoMemberPurchaser pageLoad Success !! *** ");
 		} else {
@@ -1013,11 +931,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- memberNoMemberPurchaser End ----- ! ");
   	}
-  	@Test(priority = 9)
+  	@Test(priority = 8)
   	public void memberAttributePurchaser() {
   		System.out.println(" ! ----- memberAttributePurchaser Start ----- ! ");
-  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 8).click();
+  		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 7).click();
   		if($("h3", 0).text().trim().equals("회원특성별 구매")) {
 			System.out.println(" *** memberAttributePurchaser pageLoad Success !! *** ");
 		} else {
@@ -1076,11 +994,11 @@ public class Purchaser {
 		}
   		System.out.println(" ! ----- memberAttributePurchaser End ----- ! ");
   	}
-  	@Test(priority = 10)
+  	@Test(priority = 9)
   	public void faverPurchasePrice() {
   		System.out.println(" ! ----- faverPurchasePrice Start ----- ! ");
-  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 9).click();
+  		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 8).click();
   		if($("h3", 0).text().trim().equals("구매선호 가격대")) {
 			System.out.println(" *** faverPurchasePrice pageLoad Success !! *** ");
 		} else {
@@ -1169,11 +1087,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- faverPurchasePrice End ----- ! ");
   	}
-  	@Test(priority = 11)
+  	@Test(priority = 10)
   	public void paymentAnalysis() {
   		System.out.println(" ! ----- paymentAnalysis Start ----- ! ");
-  		$(".active > ul > li > a > span", 10).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 10).click();
+  		$(".active > ul > li > a > span", 9).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 9).click();
   		if($("h3", 0).text().trim().equals("결제 수단 분석")) {
 			System.out.println(" *** paymentAnalysis pageLoad Success !! *** ");
 		} else {
@@ -1262,11 +1180,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- paymentAnalysis End ----- ! ");
   	}
-  	@Test(priority = 12)
+  	@Test(priority = 11)
   	public void timeAvgBuyCount() {
   		System.out.println(" ! ----- timeAvgBuyCount Start ----- ! ");
-  		$(".active > ul > li > a > span", 11).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 11).click();
+  		$(".active > ul > li > a > span", 10).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 10).click();
   		if($("h3", 0).text().trim().equals("시간대별평균구매수")) {
 			System.out.println(" *** timeAvgBuyCount pageLoad Success !! *** ");
 		} else {
@@ -1390,11 +1308,11 @@ public class Purchaser {
   		}
   		System.out.println(" ! ----- timeAvgBuyCount End ----- ! ");
   	}
-  	@Test(priority = 13)
+  	@Test(priority = 12)
   	public void dayAvgBuyCount() {
   		System.out.println(" ! ----- dayAvgBuyCount Start ----- ! ");
-  		$(".active > ul > li > a > span", 12).waitUntil(visible, 10000);
-  		$(".active > ul > li > a > span", 12).click();
+  		$(".active > ul > li > a > span", 11).waitUntil(visible, 10000);
+  		$(".active > ul > li > a > span", 11).click();
   		if($("h3", 0).text().trim().equals("요일별평균구매수")) {
 			System.out.println(" *** dayAvgBuyCount pageLoad Success !! *** ");
 		} else {
