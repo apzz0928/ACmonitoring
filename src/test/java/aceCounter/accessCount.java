@@ -285,7 +285,7 @@ public class accessCount {
   		}
   		System.out.println(" ! ----- pageView End ----- ! ");
   	}
-  	//@Test(priority = 2)
+  	@Test(priority = 2)
   	public void visitCount() {
   		System.out.println(" ! ----- visitCount Start ----- ! ");
   		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
@@ -298,8 +298,8 @@ public class accessCount {
 			close();
   		}
   		$(".btn_help", 0).waitUntil(visible, 10000);
-  		String[] summaryTopTableData = {"분석 기간", "방문수", "신규방문수", "재방문수"};
-  		for(int i=0;i<=3;i++) {
+  		String[] summaryTopTableData = {"분석 기간", "방문수", "신규방문수"};
+  		for(int i=0;i<=2;i++) {
   			if($(".summaryTopCenter", i).text().trim().equals(summaryTopTableData[i])) {
   				System.out.println(" *** visitCount summaryTopTableData(" + i + ") check Success !! *** ");
   			} else {
@@ -308,7 +308,7 @@ public class accessCount {
   				close();
   			}
   		}
-  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "3", "50.00%\n상승", "3", "50.00%\n상승", "0"};
+  		String[] summaryTableData = {"2019.08.08 ~ 2019.08.09", "38", "322.22%\n상승", "36", "300.00%\n상승", "2"};
   		for(int i=0;i<=5;i++) {
   			if($(".summaryDataCenter", i).text().trim().equals(summaryTableData[i])) {
   				System.out.println(" *** visitCount summaryTableData(" + i + ") check Success !! *** ");
@@ -318,7 +318,7 @@ public class accessCount {
   				close();
   			}
   		}
-  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "2", "2", "0"};
+  		String[] summaryFootTableData = {"2019.08.06 ~ 2019.08.07", "9", "9", "0"};
   		for(int i=0;i<=3;i++) {
   			if($(".summaryFootCenter", i).text().trim().equals(summaryFootTableData[i])) {
   				System.out.println(" *** visitCount summaryFootTableData(" + i + ") check Success !! *** ");
@@ -411,7 +411,7 @@ public class accessCount {
   		}
   		System.out.println(" ! ----- visitCount End ----- ! ");
   	}
-  	//@Test(priority = 3)
+  	@Test(priority = 3)
   	public void newVisitCount() {
   		System.out.println(" ! ----- newVisitCount Start ----- ! ");
   		$(".active > ul > li > a > span", 2).waitUntil(visible, 10000);
@@ -537,7 +537,7 @@ public class accessCount {
   		}
   		System.out.println(" ! ----- newVisitCount End ----- ! ");
   	}
-  	//@Test(priority = 4)
+  	@Test(priority = 4)
   	public void reVisitCount() {
   		System.out.println(" ! ----- reVisitCount Start ----- ! ");
   		$(".active > ul > li > a > span", 3).waitUntil(visible, 10000);
@@ -663,7 +663,7 @@ public class accessCount {
   		}
   		System.out.println(" ! ----- reVisitCount End ----- ! ");
   	}
-  	//@Test(priority = 5)
+  	@Test(priority = 5)
   	public void newAndReVisitCount() {
   		System.out.println(" ! ----- newAndReVisitCount Start ----- ! ");
   		$(".active > ul > li > a > span", 4).waitUntil(visible, 10000);
@@ -807,7 +807,7 @@ public class accessCount {
   		}
   		System.out.println(" ! ----- newAndReVisitCount End ----- ! ");
   	}
-  	//@Test(priority = 6)
+  	@Test(priority = 6)
   	public void pureVisitCount() {
   		System.out.println(" ! ----- pureVisitCount Start ----- ! ");
   		$(".active > ul > li > a > span", 5).waitUntil(visible, 10000);
@@ -934,7 +934,7 @@ public class accessCount {
   		}
   		System.out.println(" ! ----- pureVisitCount End ----- ! ");
   	}
-  	//@Test(priority = 7)
+  	@Test(priority = 7)
   	public void visitPageview() {
   		System.out.println(" ! ----- visitPageview Start ----- ! ");
   		$(".active > ul > li > a > span", 6).waitUntil(visible, 10000);
@@ -1060,7 +1060,7 @@ public class accessCount {
   		}
   		System.out.println(" ! ----- visitPageview End ----- ! ");
   	}
-  	@Test(priority = 8)
+  	//@Test(priority = 8)
   	public void timezoneCount() {
   		System.out.println(" ! ----- timezoneCount Start ----- ! ");
   		$(".active > ul > li > a > span", 7).waitUntil(visible, 10000);
@@ -1200,7 +1200,7 @@ public class accessCount {
   		}
   		System.out.println(" ! ----- timezoneCount End ----- ! ");
   	}
-  	@Test(priority = 9)
+  	//@Test(priority = 9)
   	public void dayCount() {
   		System.out.println(" ! ----- dayCount Start ----- ! ");
   		$(".active > ul > li > a > span", 8).waitUntil(visible, 10000);
