@@ -24,7 +24,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
-public class Convert {
+public class Convertt {
 	private static WebDriver driver;
 	@SuppressWarnings("unused")
 	private static String baseUrl, hubUrl, TestBrowser, id, pw, pw1, domain, checkMsg, temp_pw, A, B, pageLoadCheck;
@@ -99,7 +99,7 @@ public class Convert {
 	public static boolean linkCheck(String urlName, String urlLink) {
 		try {
 			huc = (HttpURLConnection) (new URL(urlLink).openConnection());
-			huc.setRequestMethod("HEAD");
+			huc.setRequestMethod("HEAD") ;
 			huc.connect();
 			respCode = huc.getResponseCode();
 			if (respCode >= 400) {
