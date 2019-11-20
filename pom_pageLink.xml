@@ -61,7 +61,7 @@
 		  		<inherited>true</inherited>
 		  			<configuration>
 		  				<suiteXmlFiles>
-		  					<suiteXmlFile>testng_Setting.xml</suiteXmlFile>
+		  					<suiteXmlFile>testng_pageLink.xml</suiteXmlFile>
 		  				</suiteXmlFiles>
 		  			</configuration>
 		  	</plugin>
