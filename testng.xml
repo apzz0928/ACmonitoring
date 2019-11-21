@@ -5,11 +5,11 @@
     <parameter name="browser" value="chrome" />
     <classes>
 <!--       <class name="aceCounter.DightyAudienceManager"/> -->
-<!--       <class name="aceCounter.signUp"/> -->
+      <class name="aceCounter.signUp"/>
 <!--       <class name="aceCounter.termination"/> -->
 <!--       <class name="aceCounter.Setting"/> -->
 <!--       <class name="aceCounter.serviceManage"/> -->
-      <class name="aceCounter.accessCount"/>
+<!--       <class name="aceCounter.accessCount"/> -->
 <!--       <class name="aceCounter.inflowPath"/> -->
 <!--       <class name="aceCounter.searchADEffect"/> -->
 <!--       <class name="aceCounter.marketingEffect"/> -->
