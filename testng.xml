@@ -5,7 +5,7 @@
     <parameter name="browser" value="chrome" />
     <classes>
 <!--       <class name="aceCounter.DightyAudienceManager"/> -->
-      <class name="aceCounter.signUp"/>
+<!--       <class name="aceCounter.signUp"/> -->
 <!--       <class name="aceCounter.termination"/> -->
 <!--       <class name="aceCounter.Setting"/> -->
 <!--       <class name="aceCounter.serviceManage"/> -->
@@ -15,7 +15,7 @@
 <!--       <class name="aceCounter.marketingEffect"/> -->
 <!--       <class name="aceCounter.Convert"/> -->
 <!--       <class name="aceCounter.movePath"/> -->
-<!--       <class name="aceCounter.Page"/> -->
+      <class name="aceCounter.Page"/>
 <!--       <class name="aceCounter.Content"/> -->
 <!--       <class name="aceCounter.pageLink"/> -->
 <!--       <class name="aceCounter.Member"/> -->

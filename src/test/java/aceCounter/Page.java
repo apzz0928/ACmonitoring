@@ -794,6 +794,7 @@ public class Page {
 	    for(int i=0,z=0;i<=2;i++) {
 	    	$(".highcharts-data-labels.highcharts-series-0.highcharts-tracker > g", i).click();
 	    	for(int x=0;x<=1;x++) {
+	    		sleep(500);
 	    		$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).waitUntil(visible, 10000);
 	    		for(int y=0;y<=5;y++) {
 	    			$(".highcharts-markers.highcharts-series-0.highcharts-tracker > path", x).hover();				
