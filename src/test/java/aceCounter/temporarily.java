@@ -34,8 +34,8 @@ public class temporarily {
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "https://www.acecounter.com/www2/main.amz";
-		//hubUrl = "http://10.0.75.1:5555/wd/hub";
-		hubUrl = "http://10.77.129.79:5555/wd/hub";
+		hubUrl = "http://10.0.75.1:5555/wd/hub";
+		//hubUrl = "http://10.77.129.79:5555/wd/hub";
 		pw = "qordlf";
 		A = "!@34";
 		B = "@#14";
