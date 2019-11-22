@@ -8,7 +8,7 @@
 <!--       <class name="aceCounter.signUp"/> -->
 <!--       <class name="aceCounter.termination"/> -->
 <!--       <class name="aceCounter.Setting"/> -->
-<!--       <class name="aceCounter.serviceManage"/> -->
+      <class name="aceCounter.serviceManage"/>
 <!--       <class name="aceCounter.accessCount"/> -->
 <!--       <class name="aceCounter.inflowPath"/> -->
 <!--       <class name="aceCounter.searchADEffect"/> -->
@@ -24,7 +24,7 @@
 <!--       <class name="aceCounter.Purchaser"/> -->
 <!--       <class name="aceCounter.Product"/> -->
 <!--       <class name="aceCounter.purchasePattern"/> -->
-      <class name="aceCounter.shoppingBasket"/>
+<!--       <class name="aceCounter.shoppingBasket"/> -->
 <!--       <class name="aceCounter.viralMarketing"/> -->
 
 

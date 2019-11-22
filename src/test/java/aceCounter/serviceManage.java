@@ -930,15 +930,12 @@ public class serviceManage {
 		}
 		for(int i=0;i<=8;i++) {
 			$("label > input", i).click();
-			System.out.println(i + " checkBox cancel");
 		}
 		for(int i=1;i<=8;i++) {
 			$(".select01", i).selectOption("7일 평균");
-			System.out.println(i + " selectBox select");
 		}
 		for(int i=1;i<=8;i++) {
 			$(".input01", i).setValue("0");
-			System.out.println(i + " percentInput modify");
 		}
 		$(".btn_pack.large", 0).click();
 		alertCheck("Monitoring modify confirm msg", "선택하신 알림 메일이 없습니다 \n" + "저장하시겠습니까?");
@@ -946,15 +943,12 @@ public class serviceManage {
 		$(".btn_pack.large", 0).waitUntil(visible, 10000);		
 		for(int i=0;i<=8;i++) {
 			$("label > input", i).click();
-			System.out.println(i + " checkBox check");
 		}
 		for(int i=1;i<=8;i++) {
 			$(".select01", i).selectOption("지난주 같은 요일");
-			System.out.println(i + " selectBox select");
 		}
 		for(int i=1;i<=8;i++) {
 			$(".input01", i).setValue("100");
-			System.out.println(i + " percentInput check");
 		}
 		$(".btn_pack.large", 0).click();
 		alertCheck("Monitoring save confirm msg", "저장하시겠습니까?");
