@@ -40,8 +40,8 @@ public class serviceManage {
 	@BeforeClass
 	public void beforeTest(String browser) throws MalformedURLException {
 		baseUrl = "http://www.acecounter.com/www2/main.amz";
-		hubUrl = "http://10.0.75.1:5555/wd/hub";
-		//hubUrl = "http://10.77.129.79:5555/wd/hub";
+		//hubUrl = "http://10.0.75.1:5555/wd/hub";
+		hubUrl = "http://10.77.129.79:5555/wd/hub";
 		id = "ap";
 		pw = "qordlf";
 		pw1 = "qordlf";
