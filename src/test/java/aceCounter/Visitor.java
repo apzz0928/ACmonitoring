@@ -36,7 +36,7 @@ public class Visitor {
     SimpleDateFormat date_format = new SimpleDateFormat("YYYYMMddHHmmss");
     SimpleDateFormat date_format1 = new SimpleDateFormat("YYYY-MM-dd");
     String id_date = date_format.format(date);
-    String id_date1 = date_format1.format(date1);
+    String today = date_format1.format(date1);
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -156,12 +156,11 @@ public class Visitor {
 			System.out.println($("h3", 0).text().trim());
 			close();
   		}
-  		/*
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		$(".myValue", 1).click();
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
   		js("$j('#calendar_data1').val('2019-12-16')");
-  		js("$j('#calendar_data2').val('" + id_date1 + "')");
+  		js("$j('#calendar_data2').val('" + today + "')");
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		String[] statTopTableData = {"순번", "방문일시", "IP", "유입출처", "랜딩페이지", "페이지뷰", "전환", "회원ID", "웹브라우저"};
@@ -177,7 +176,6 @@ public class Visitor {
   		$(".formgray", 0).setValue("1234");
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
-  		*/
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** recentlyVisitor no-data search check Success !! *** ");
@@ -186,7 +184,6 @@ public class Visitor {
 				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
-  		/*
   		$(".formgray", 0).setValue("");
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statDataCenter > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
@@ -201,7 +198,6 @@ public class Visitor {
 			close();
   		}
   		switchTo().window(0);
-  		*/
   		System.out.println(" ! ----- recentlyVisitor End ----- ! ");
   	}
   	//@Test(priority = 2)
