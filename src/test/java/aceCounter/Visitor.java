@@ -156,6 +156,7 @@ public class Visitor {
 			System.out.println($("h3", 0).text().trim());
 			close();
   		}
+  		/*
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		$(".myValue", 1).click();
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
@@ -176,6 +177,7 @@ public class Visitor {
   		$(".formgray", 0).setValue("1234");
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statFootCenter").waitUntil(hidden, 10000);
+  		*/
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		if($(".statFootRight").text().trim().equals("자료가 없습니다.")) {
 				System.out.println(" *** recentlyVisitor no-data search check Success !! *** ");
