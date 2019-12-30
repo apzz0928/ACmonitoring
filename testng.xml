@@ -4,8 +4,8 @@
   <test thread-count="5" name="Test">
     <parameter name="browser" value="chrome" />
     <classes>
-      <class name="aceCounter.DightyAudienceManager"/>
-<!--       <class name="aceCounter.signUp"/> -->
+<!--       <class name="aceCounter.DightyAudienceManager"/> -->
+      <class name="aceCounter.signUp"/>
 <!--       <class name="aceCounter.termination"/> -->
 <!--       <class name="aceCounter.Setting"/> -->
 <!--       <class name="aceCounter.serviceManage"/> -->

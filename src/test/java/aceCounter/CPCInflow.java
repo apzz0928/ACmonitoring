@@ -18,6 +18,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.codeborne.selenide.*;
 import com.codeborne.selenide.WebDriverRunner;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -525,6 +526,6 @@ public class CPCInflow {
   	}
 	@AfterClass
 	public void afterTest() {
-		closeWebDriver();
+		close();
 	}
 }
