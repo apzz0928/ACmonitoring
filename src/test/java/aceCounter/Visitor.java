@@ -186,6 +186,7 @@ public class Visitor {
 				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
+  		/*
   		$(".formgray", 0).setValue("");
   		$("form > table > tbody > tr > td > img", 0).click();
   		$(".statDataCenter > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
@@ -200,6 +201,7 @@ public class Visitor {
 			close();
   		}
   		switchTo().window(0);
+  		*/
   		System.out.println(" ! ----- recentlyVisitor End ----- ! ");
   	}
   	//@Test(priority = 2)
