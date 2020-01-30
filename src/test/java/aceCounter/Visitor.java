@@ -159,7 +159,7 @@ public class Visitor {
   		$(".btn_help", 0).waitUntil(visible, 10000);
   		$(".myValue", 1).click();
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
-  		js("$j('#calendar_data1').val('2019-12-29')");
+  		js("$j('#calendar_data1').val('2020-01-29')");
   		js("$j('#calendar_data2').val('" + today + "')");
   		$("#stat_calendar > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > a > img", 0).click();
   		$(".btn_help", 0).waitUntil(visible, 10000);
