@@ -472,9 +472,9 @@ public class searchADEffect {
   		String[] statTopTableData = {"광고매체", "유입수", "유입률", "구매건수", "구매율", "매출액", "반송수"};
   		for(int i=0;i<=6;i++) {
   			if($(".statDataCenter", i).text().trim().equals(statTopTableData[i])) {
-  				System.out.println(" *** visitInflow statTopTableData(" + i + ") check Success !! *** ");
+  				System.out.println(" *** searchADmedia statTopTableData(" + i + ") check Success !! *** ");
   			} else {
-  				System.out.println(" *** visitInflow statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
+  				System.out.println(" *** searchADmedia statTopTableData(" + i + ") check Fail ... !@#$%^&*() *** ");
   				System.out.println($(".statDataCenter", i).text().trim());
   				close();
   			}
