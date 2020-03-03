@@ -200,7 +200,7 @@ public class Visitor {
   		switchTo().window(0);
   		System.out.println(" ! ----- recentlyVisitor End ----- ! ");
   	}
-  	@Test(priority = 2)
+  	//@Test(priority = 2)
   	public void accessVisitor() {
   		System.out.println(" ! ----- accessVisitor Start ----- ! ");
   		$(".active > ul > li > a > span", 1).waitUntil(visible, 10000);
