@@ -184,8 +184,10 @@ public class Visitor {
 				System.out.println($(".statFootRight", 0).text().trim());
 				close();
   		}
+  		/*
   		$(".formgray", 0).setValue("");
   		$("form > table > tbody > tr > td > img", 0).click();
+  		System.out.println("검색버튼클릭");
   		$(".statDataCenter > table > tbody > tr > td > a > img", 0).waitUntil(visible, 10000);
   		$(".statDataCenter > table > tbody > tr > td > a > img", 0).click();
   		switchTo().window(1);
@@ -198,6 +200,7 @@ public class Visitor {
 			close();
   		}
   		switchTo().window(0);
+  		*/
   		System.out.println(" ! ----- recentlyVisitor End ----- ! ");
   	}
   	//@Test(priority = 2)
@@ -381,7 +384,7 @@ public class Visitor {
   			}
   		}
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
-  		switchTo().window(2);
+  		switchTo().window(1);
   		if($("h3", 0).text().trim().equals("방문 빈도 분석 추이")) {
 			System.out.println(" *** visitAnalysis pageLoad Progress Success !! *** ");
 		} else {
@@ -594,7 +597,7 @@ public class Visitor {
   			}
   		}
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
-  		switchTo().window(3);
+  		switchTo().window(2);
   		if($("h3", 0).text().trim().equals("재방문간격 추이")) {
 			System.out.println(" *** revisitTerm pageLoad Progress Success !! *** ");
 		} else {
@@ -825,7 +828,7 @@ public class Visitor {
   			}
   		}
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 0).click();
-  		switchTo().window(4);
+  		switchTo().window(3);
   		if($("h3", 0).text().trim().equals("지역별 방문자 추이")) {
 			System.out.println(" *** regionVisitor pageLoad Progress Success !! *** ");
 		} else {
@@ -1378,7 +1381,7 @@ public class Visitor {
   			}
   		}
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 1).click();
-  		switchTo().window(5);
+  		switchTo().window(4);
   		if($("h3", 0).text().trim().equals("사용 언어별 방문자 추이")) {
 			System.out.println(" *** languageVisitor pageLoad Progress Success !! *** ");
 		} else {
@@ -1588,7 +1591,7 @@ public class Visitor {
   			}
   		}
   		$(".statDataCenter > table > tbody > tr > td  > a > img", 21).click();
-  		switchTo().window(6);
+  		switchTo().window(5);
   		if($("h3", 0).text().trim().equals("TimeZone 추이")) {
 			System.out.println(" *** TimeZone pageLoad Progress Success !! *** ");
 		} else {
