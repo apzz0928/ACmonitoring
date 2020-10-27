@@ -201,6 +201,8 @@ public class serviceManage {
 			System.out.println($("h3", 0).text().trim());
 			close();
 		}
+		open("https://www.acecounter.com/stat/my/my_member_modify.amz");
+		$(".button.blue").waitUntil(visible, 10000);
 		$(".button.blue").click();
 		$(".lay_pop").waitUntil(visible, 10000);
 		$(".btn_pack.large", 2).waitUntil(visible, 10000);
@@ -667,10 +669,10 @@ public class serviceManage {
 		$(".input01", 3).setValue("");
 		$(".input01", 4).setValue("");
 		$(".btn_pack.large", 0).click();
-		alertCheck("extendCharge no passbook year null msg", "입금한 연도를 입력해주세요.");	
+		alertCheck("extendCharge no passbook year null msg", "입금할 연도를 입력해주세요.");	
 		$(".input01", 2).setValue("0000");
 		$(".btn_pack.large", 0).click();
-		alertCheck("extendCharge no passbook month null msg", "입금한 달을 입력해주세요.");
+		alertCheck("extendCharge no passbook month null msg", "입금할 달을 입력해주세요.");
 		$(".input01", 3).setValue("00");
 		$(".btn_pack.large", 0).click();
 		alertCheck("extendCharge no passbook day null msg", "입금일을 입력해주세요.");
@@ -791,7 +793,7 @@ public class serviceManage {
 		$(By.name("radio_ck"), 0).click();
 		$(".btn_pack.large", 0).click();
 		$(".input01", 0).waitUntil(visible, 10000);
-		$("img", 18).click();
+		$("img", 20).click();
 		$(".btn_pack.large", 0).click();
 		alertCheck("installScript name null msg", "신청인 이름을 입력해주세요.");
 		$(".input01", 0).setValue("신청인 이름");
@@ -970,8 +972,8 @@ public class serviceManage {
 			close();
 		}
 		$("input[name=search_keyword]", 1).setValue("1234567890");
-		$("img", 14).click();
-		$(".next").waitUntil(hidden, 10000);
+		$("img", 16).click();
+		$(".last").waitUntil(hidden, 10000);
 		if($("td", 3).text().trim().equals("데이터가 없습니다.")) {
 			System.out.println(" *** serviceNotice empty search check Success !! *** ");
 		} else {
@@ -980,7 +982,7 @@ public class serviceManage {
 			close();
 		}
 		$("input[name=search_keyword]", 1).setValue("단장");
-		$("img", 14).click();
+		$("img", 16).click();
 		$(".left", 1).waitUntil(visible, 10000);
 		if($(".left", 1).text().trim().equals("에이스카운터가 새롭게 단장되었습니다")) {
 			System.out.println(" *** serviceNotice search check Success !! *** ");
@@ -1015,7 +1017,7 @@ public class serviceManage {
 			close();
 		}
 		$("input[name=search_keyword]", 1).setValue("1234567890");
-		$("img", 14).click();
+		$("img", 16).click();
 		$(".next").waitUntil(hidden, 10000);
 		if($("td", 3).text().trim().equals("데이터가 없습니다.")) {
 			System.out.println(" *** serviceAlarm empty search check Success !! *** ");
@@ -1025,7 +1027,7 @@ public class serviceManage {
 			close();
 		}
 		$("input[name=search_keyword]", 1).setValue("종료");
-		$("img", 14).click();
+		$("img", 16).click();
 		$(".left", 3).waitUntil(visible, 10000);
 		if($(".left", 3).text().trim().equals("[서비스] 무료서비스 사용기간이 금일 종료됩니다.")) {
 			System.out.println(" *** serviceAlarm search check Success !! *** ");
