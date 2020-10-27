@@ -996,14 +996,14 @@ public class Setting {
 			System.out.println($(".left", 1).text().trim());
 			close();
 		}
-		$(".btn_white", 11).click();
+		$(".btn_white", 7).click();
 		alertCheck("QRcode del null msg", "삭제할 QR코드를 선택하세요.");
 		$(".js-checkbox", 0).click();
 		$(".js-checkbox", 0).click();
 		$(".js-checkbox", 0).click();
 		$(".js-checkbox", 0).click();
 		$(".js-checkbox", 0).click();
-		$(".btn_white", 11).click();
+		$(".btn_white", 7).click();
 		alertCheck("QRcode del confirm msg", "QR코드를 삭제하시겠습니까?\n" + "삭제된 QR코드는 분석통계에서 kw 변수값으로 표기됩니다.");
 		alertCheck("QRcode del msg", "QR코드가 삭제되었습니다.");
 		$(".js-checkbox", 1).waitUntil(hidden, 10000);
@@ -1114,7 +1114,7 @@ public class Setting {
 			System.out.println($("h2").text().trim());
 			close();
 		}
-		if($(".left", 1).text().trim().equals("캠페인 그룹명")) {
+		if($(".left", 1).text().trim().equals("캠페인 그룹명1")) {
 			System.out.println(" *** campaignGroup list check Success !! *** ");
 		} else {
 			System.out.println(" *** campaignGroup list check Fail ... !@#$%^&*() *** ");
@@ -1159,7 +1159,7 @@ public class Setting {
 		alertCheck("campaignGroup del confirm msg", "캠페인그룹을 삭제하시겠습니까?");
 		alertCheck("campaignGroup del confirm msg", "캠페인그룹이 삭제되었습니다.");
 		$(".left", 4).waitUntil(hidden, 10000);
-		if($(".left", 1).text().trim().equals("캠페인 그룹명")) {
+		if($(".left", 1).text().trim().equals("캠페인 그룹명1")) {
 			System.out.println(" *** campaignGroup delete check Success !! *** ");
 		} else {
 			System.out.println(" *** campaignGroup delete check Fail ... !@#$%^&*() *** ");
